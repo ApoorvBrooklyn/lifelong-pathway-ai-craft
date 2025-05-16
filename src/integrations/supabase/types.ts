@@ -33,6 +33,128 @@ export type Database = {
         }
         Relationships: []
       }
+      skills: {
+        Row: {
+          id: string
+          user_id: string
+          name: string
+          value: number
+          color: string | null
+          created_at: string
+          updated_at: string
+        }
+        Insert: {
+          id?: string
+          user_id: string
+          name: string
+          value: number
+          color?: string | null
+          created_at?: string
+          updated_at?: string
+        }
+        Update: {
+          id?: string
+          user_id?: string
+          name?: string
+          value?: number
+          color?: string | null
+          created_at?: string
+          updated_at?: string
+        }
+        Relationships: [
+          {
+            foreignKeyName: "skills_user_id_fkey"
+            columns: ["user_id"]
+            referencedRelation: "users"
+            referencedColumns: ["id"]
+          }
+        ]
+      }
+      courses: {
+        Row: {
+          id: string
+          title: string
+          provider: string
+          duration: string
+          level: string
+          image: string | null
+          url: string | null
+          match: number | null
+          description: string | null
+          created_at: string
+          updated_at: string
+        }
+        Insert: {
+          id?: string
+          title: string
+          provider: string
+          duration: string
+          level: string
+          image?: string | null
+          url?: string | null
+          match?: number | null
+          description?: string | null
+          created_at?: string
+          updated_at?: string
+        }
+        Update: {
+          id?: string
+          title?: string
+          provider?: string
+          duration?: string
+          level?: string
+          image?: string | null
+          url?: string | null
+          match?: number | null
+          description?: string | null
+          created_at?: string
+          updated_at?: string
+        }
+        Relationships: []
+      }
+      career_paths: {
+        Row: {
+          id: string
+          user_id: string
+          title: string
+          current_level: string
+          next_level: string
+          progress: number
+          skills_needed: string[]
+          created_at: string
+          updated_at: string
+        }
+        Insert: {
+          id?: string
+          user_id: string
+          title: string
+          current_level: string
+          next_level: string
+          progress: number
+          skills_needed?: string[]
+          created_at?: string
+          updated_at?: string
+        }
+        Update: {
+          id?: string
+          user_id?: string
+          title?: string
+          current_level?: string
+          next_level?: string
+          progress?: number
+          skills_needed?: string[]
+          created_at?: string
+          updated_at?: string
+        }
+        Relationships: [
+          {
+            foreignKeyName: "career_paths_user_id_fkey"
+            columns: ["user_id"]
+            referencedRelation: "users"
+            referencedColumns: ["id"]
+          }
+        ]
+      }
     }
     Views: {
       [_ in never]: never
