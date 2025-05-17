@@ -1,0 +1,102 @@
+[
+  {
+    "title": "Python NumPy Tutorial for Beginners",
+    "url": "https://www.youtube.com/watch?v=QUT1VHiLmmI",
+    "provider": "freeCodeCamp.org",
+    "views": 1825105,
+    "rating": 1.825105,
+    "source": "YouTube",
+    "resource_type": "video",
+    "price_type": "free",
+    "skill": "only numpy library"
+  },
+  {
+    "title": "Numpy Tutorial in Hindi",
+    "url": "https://www.youtube.com/watch?v=Rbh1rieb3zc",
+    "provider": "CodeWithHarry",
+    "views": 1130551,
+    "rating": 1.130551,
+    "source": "YouTube",
+    "resource_type": "video",
+    "price_type": "free",
+    "skill": "only numpy library"
+  },
+  {
+    "title": "Learn NUMPY in 5 minutes - BEST Python Library!",
+    "url": "https://www.youtube.com/watch?v=xECXZ3tyONo",
+    "provider": "Python Programmer",
+    "views": 949133,
+    "rating": 0.949133,
+    "source": "YouTube",
+    "resource_type": "video",
+    "price_type": "free",
+    "skill": "only numpy library"
+  },
+  {
+    "title": "Tutorial 4 - Numpy and Inbuilt Functions Tutorial",
+    "url": "https://www.youtube.com/watch?v=vh525RjO6C0",
+    "provider": "Krish Naik",
+    "views": 342071,
+    "rating": 0.342071,
+    "source": "YouTube",
+    "resource_type": "video",
+    "price_type": "free",
+    "skill": "only numpy library"
+  },
+  {
+    "title": "Numpy for Data Science | Full Course | Sagar Chouksey",
+    "url": "https://www.youtube.com/watch?v=9DhZ-JCWvDw",
+    "provider": "Coding With Sagar",
+    "views": 51060,
+    "rating": 0.05106,
+    "source": "YouTube",
+    "resource_type": "video",
+    "price_type": "free",
+    "skill": "only numpy library"
+  },
+  {
+    "title": "Python for Data Science, AI & Development",
+    "url": "https://www.coursera.org/learn/python-for-applied-data-science-ai",
+    "provider": "Unknown Provider",
+    "source": "Coursera",
+    "resource_type": "course",
+    "price_type": "mixed",
+    "skill": "only numpy library"
+  },
+  {
+    "title": "Meta React",
+    "url": "https://www.coursera.org/specializations/meta-react-specialization",
+    "provider": "Unknown Provider",
+    "source": "Coursera",
+    "resource_type": "course",
+    "price_type": "mixed",
+    "skill": "only numpy library"
+  },
+  {
+    "title": "Python for Everybody",
+    "url": "https://www.coursera.org/specializations/python",
+    "provider": "Unknown Provider",
+    "source": "Coursera",
+    "resource_type": "course",
+    "price_type": "mixed",
+    "skill": "only numpy library"
+  },
+  {
+    "title": "IBM Data Science",
+    "url": "https://www.coursera.org/professional-certificates/ibm-data-science",
+    "provider": "Unknown Provider",
+    "source": "Coursera",
+    "resource_type": "course",
+    "price_type": "mixed",
+    "skill": "only numpy library"
+  },
+  {
+    "title": "IBM Generative AI Engineering",
+    "url": "https://www.coursera.org/professional-certificates/ibm-generative-ai-engineering",
+    "provider": "Unknown Provider",
+    "source": "Coursera",
+    "resource_type": "course",
+    "price_type": "mixed",
+    "skill": "only numpy library"
+  }
+]

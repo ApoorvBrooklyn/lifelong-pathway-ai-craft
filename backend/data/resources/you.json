@@ -1,0 +1,102 @@
+[
+  {
+    "title": "YouTube Tutorials",
+    "url": "https://www.youtube.com/watch?v=oxJ-trI87U8",
+    "provider": "TheOdd1sOut",
+    "views": 10917086,
+    "rating": 10.917086,
+    "source": "YouTube",
+    "resource_type": "video",
+    "price_type": "free",
+    "skill": "you"
+  },
+  {
+    "title": "How to Yoyo with your First Yoyo",
+    "url": "https://www.youtube.com/watch?v=2IdYEUsSUS8",
+    "provider": "YoTricks",
+    "views": 9672474,
+    "rating": 9.672474,
+    "source": "YouTube",
+    "resource_type": "video",
+    "price_type": "free",
+    "skill": "you"
+  },
+  {
+    "title": "River Flows in You (Yiruma) | Fingerstyle Guitar Lesson (Tutorial) How to play Fingerstyle",
+    "url": "https://www.youtube.com/watch?v=n2at2weR-cI",
+    "provider": "Let'sPlayGuitar!",
+    "views": 7599164,
+    "rating": 7.599164,
+    "source": "YouTube",
+    "resource_type": "video",
+    "price_type": "free",
+    "skill": "you"
+  },
+  {
+    "title": "JENNIE - \u2018You & Me\u2019 \ud83c\udf19 Lisa Rhee Dance Tutorial",
+    "url": "https://www.youtube.com/watch?v=jkRdwewEsPc",
+    "provider": "imlisarhee",
+    "views": 227905,
+    "rating": 0.227905,
+    "source": "YouTube",
+    "resource_type": "video",
+    "price_type": "free",
+    "skill": "you"
+  },
+  {
+    "title": "SUYOU Tutorial & Guide 2024 (English): Combo Skills, Best Build, Tips & Tricks | Mobile Legends",
+    "url": "https://www.youtube.com/watch?v=nlsEKoSNsJA",
+    "provider": "SPHINXY",
+    "views": 165415,
+    "rating": 0.165415,
+    "source": "YouTube",
+    "resource_type": "video",
+    "price_type": "free",
+    "skill": "you"
+  },
+  {
+    "title": "Operating Systems and You: Becoming a Power User",
+    "url": "https://www.coursera.org/learn/os-power-user",
+    "provider": "Unknown Provider",
+    "source": "Coursera",
+    "resource_type": "course",
+    "price_type": "mixed",
+    "skill": "you"
+  },
+  {
+    "title": "Learning How to Learn: Powerful mental tools to help you master tough subjects",
+    "url": "https://www.coursera.org/learn/learning-how-to-learn",
+    "provider": "Unknown Provider",
+    "source": "Coursera",
+    "resource_type": "course",
+    "price_type": "mixed",
+    "skill": "you"
+  },
+  {
+    "title": "IBM AI Engineering",
+    "url": "https://www.coursera.org/professional-certificates/ai-engineer",
+    "provider": "Unknown Provider",
+    "source": "Coursera",
+    "resource_type": "course",
+    "price_type": "mixed",
+    "skill": "you"
+  },
+  {
+    "title": "IBM Data Science",
+    "url": "https://www.coursera.org/professional-certificates/ibm-data-science",
+    "provider": "Unknown Provider",
+    "source": "Coursera",
+    "resource_type": "course",
+    "price_type": "mixed",
+    "skill": "you"
+  },
+  {
+    "title": "Microsoft Power BI Data Analyst",
+    "url": "https://www.coursera.org/professional-certificates/microsoft-power-bi-data-analyst",
+    "provider": "Unknown Provider",
+    "source": "Coursera",
+    "resource_type": "course",
+    "price_type": "mixed",
+    "skill": "you"
+  }
+]

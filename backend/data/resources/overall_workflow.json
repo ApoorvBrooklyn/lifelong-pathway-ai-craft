@@ -1,0 +1,102 @@
+[
+  {
+    "title": "How to Define a Workflow Process - Project Management Training",
+    "url": "https://www.youtube.com/watch?v=FnuyET2HkPo",
+    "provider": "ProjectManager",
+    "views": 106674,
+    "rating": 0.106674,
+    "source": "YouTube",
+    "resource_type": "video",
+    "price_type": "free",
+    "skill": "overall workflow"
+  },
+  {
+    "title": "Host n8n for Almost FREE! Unlimited Workflows on a Budget",
+    "url": "https://www.youtube.com/watch?v=Xy31y_eS4MU",
+    "provider": "Automation-Tribe",
+    "views": 68223,
+    "rating": 0.068223,
+    "source": "YouTube",
+    "resource_type": "video",
+    "price_type": "free",
+    "skill": "overall workflow"
+  },
+  {
+    "title": "NetSuite Workflows Full Guide",
+    "url": "https://www.youtube.com/watch?v=HyvMJCejv7Q",
+    "provider": "SuperTraining",
+    "views": 27540,
+    "rating": 0.02754,
+    "source": "YouTube",
+    "resource_type": "video",
+    "price_type": "free",
+    "skill": "overall workflow"
+  },
+  {
+    "title": "10x your workflow with these premiere pro shortcuts #premierepro #premiereprotutorial",
+    "url": "https://www.youtube.com/watch?v=DlDgch1fJiI",
+    "provider": "Sebastien Jefferies",
+    "views": 20757,
+    "rating": 0.020757,
+    "source": "YouTube",
+    "resource_type": "video",
+    "price_type": "free",
+    "skill": "overall workflow"
+  },
+  {
+    "title": "\ud83d\udd25 This FREE plugin will change your video editing workflow FOREVER!",
+    "url": "https://www.youtube.com/watch?v=8MQfZTjbvPw",
+    "provider": "Sebastien Jefferies",
+    "views": 16133,
+    "rating": 0.016133,
+    "source": "YouTube",
+    "resource_type": "video",
+    "price_type": "free",
+    "skill": "overall workflow"
+  },
+  {
+    "title": "Unilever Supply Chain Data Analyst",
+    "url": "https://www.coursera.org/professional-certificates/unilever-supply-chain-data-analyst",
+    "provider": "Unknown Provider",
+    "source": "Coursera",
+    "resource_type": "course",
+    "price_type": "mixed",
+    "skill": "overall workflow"
+  },
+  {
+    "title": "Search Engine Optimization (SEO)",
+    "url": "https://www.coursera.org/specializations/seo",
+    "provider": "Unknown Provider",
+    "source": "Coursera",
+    "resource_type": "course",
+    "price_type": "mixed",
+    "skill": "overall workflow"
+  },
+  {
+    "title": "Excel Skills for Business",
+    "url": "https://www.coursera.org/specializations/excel",
+    "provider": "Unknown Provider",
+    "source": "Coursera",
+    "resource_type": "course",
+    "price_type": "mixed",
+    "skill": "overall workflow"
+  },
+  {
+    "title": "AI Foundations for Everyone",
+    "url": "https://www.coursera.org/specializations/ai-foundations-for-everyone",
+    "provider": "Unknown Provider",
+    "source": "Coursera",
+    "resource_type": "course",
+    "price_type": "mixed",
+    "skill": "overall workflow"
+  },
+  {
+    "title": "HRCI Human Resource Associate",
+    "url": "https://www.coursera.org/professional-certificates/hrci-human-resource-associate",
+    "provider": "Unknown Provider",
+    "source": "Coursera",
+    "resource_type": "course",
+    "price_type": "mixed",
+    "skill": "overall workflow"
+  }
+]

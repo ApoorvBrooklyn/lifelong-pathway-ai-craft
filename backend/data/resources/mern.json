@@ -1,0 +1,102 @@
+[
+  {
+    "title": "Complete Backend Developer course | Part 1",
+    "url": "https://www.youtube.com/watch?v=7fjOw8ApZ1I",
+    "provider": "Chai aur Code",
+    "views": 1040197,
+    "rating": 1.040197,
+    "source": "YouTube",
+    "resource_type": "video",
+    "price_type": "free",
+    "skill": "MERN"
+  },
+  {
+    "title": "Complete React JS Course | MERN Stack Development",
+    "url": "https://www.youtube.com/watch?v=E6tAtRi82QY",
+    "provider": "Sheryians Coding School",
+    "views": 479622,
+    "rating": 0.479622,
+    "source": "YouTube",
+    "resource_type": "video",
+    "price_type": "free",
+    "skill": "MERN"
+  },
+  {
+    "title": "MERN Stack Tutorial with Deployment \u2013 Beginner's Course",
+    "url": "https://www.youtube.com/watch?v=O3BUHwfHf84",
+    "provider": "freeCodeCamp.org",
+    "views": 423513,
+    "rating": 0.423513,
+    "source": "YouTube",
+    "resource_type": "video",
+    "price_type": "free",
+    "skill": "MERN"
+  },
+  {
+    "title": "Still Learning MERN Stack in 2025? Here\u2019s the HARSH Truth No One Tells You!",
+    "url": "https://www.youtube.com/watch?v=cCnonxT-oZc",
+    "provider": "Ankit G",
+    "views": 14575,
+    "rating": 0.014575,
+    "source": "YouTube",
+    "resource_type": "video",
+    "price_type": "free",
+    "skill": "MERN"
+  },
+  {
+    "title": "MERN: full-Stack E-commerce Website | Day 7 |  (Node.js + Express + EJS + MongoDB) | Code Backend",
+    "url": "https://www.youtube.com/watch?v=NXZcphu9h5M",
+    "provider": "Code Backend",
+    "views": 311,
+    "rating": 0.000311,
+    "source": "YouTube",
+    "resource_type": "video",
+    "price_type": "free",
+    "skill": "MERN"
+  },
+  {
+    "title": "MERN Stack Front To Back: Full Stack React, Redux & Node.js",
+    "url": "https://www.coursera.org/specializations/packt-mern-stack-front-to-back-full-stack-react-redux-and-node-js",
+    "provider": "Unknown Provider",
+    "source": "Coursera",
+    "resource_type": "course",
+    "price_type": "mixed",
+    "skill": "MERN"
+  },
+  {
+    "title": "IBM Full Stack Software Developer",
+    "url": "https://www.coursera.org/professional-certificates/ibm-full-stack-cloud-developer",
+    "provider": "Unknown Provider",
+    "source": "Coursera",
+    "resource_type": "course",
+    "price_type": "mixed",
+    "skill": "MERN"
+  },
+  {
+    "title": "IBM Full-Stack JavaScript Developer",
+    "url": "https://www.coursera.org/professional-certificates/ibm-full-stack-javascript-developer",
+    "provider": "Unknown Provider",
+    "source": "Coursera",
+    "resource_type": "course",
+    "price_type": "mixed",
+    "skill": "MERN"
+  },
+  {
+    "title": "The Full Stack",
+    "url": "https://www.coursera.org/learn/the-full-stack",
+    "provider": "Unknown Provider",
+    "source": "Coursera",
+    "resource_type": "course",
+    "price_type": "mixed",
+    "skill": "MERN"
+  },
+  {
+    "title": "Deep Learning: Recurrent Neural Networks with Python",
+    "url": "https://www.coursera.org/specializations/packt-deep-learning-recurrent-neural-networks-with-python",
+    "provider": "Unknown Provider",
+    "source": "Coursera",
+    "resource_type": "course",
+    "price_type": "mixed",
+    "skill": "MERN"
+  }
+]

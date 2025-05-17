@@ -1,0 +1,131 @@
+[
+  {
+    "title": "CSS Tutorial for Beginners | Complete CSS with Project, Notes & Code",
+    "url": "https://www.youtube.com/watch?v=ESnrn1kAD4E",
+    "provider": "Apna College",
+    "views": 12080124,
+    "rating": 12.080124,
+    "source": "YouTube",
+    "resource_type": "video",
+    "price_type": "free",
+    "skill": "CSS"
+  },
+  {
+    "title": "CSS Tutorial In Hindi (With Notes) \ud83d\udd25",
+    "url": "https://www.youtube.com/watch?v=Edsxf_NBFrw",
+    "provider": "CodeWithHarry",
+    "views": 6951654,
+    "rating": 6.951654,
+    "source": "YouTube",
+    "resource_type": "video",
+    "price_type": "free",
+    "skill": "CSS"
+  },
+  {
+    "title": "CSS Tutorial \u2013 Full Course for Beginners",
+    "url": "https://www.youtube.com/watch?v=OXGznpKZ_sA",
+    "provider": "freeCodeCamp.org",
+    "views": 2436924,
+    "rating": 2.436924,
+    "source": "YouTube",
+    "resource_type": "video",
+    "price_type": "free",
+    "skill": "CSS"
+  },
+  {
+    "title": "Learn CSS in 1 hour \ud83c\udfa8",
+    "url": "https://www.youtube.com/watch?v=wRNinF7YQqQ",
+    "provider": "Bro Code",
+    "views": 1591254,
+    "rating": 1.591254,
+    "source": "YouTube",
+    "resource_type": "video",
+    "price_type": "free",
+    "skill": "CSS"
+  },
+  {
+    "title": "CSS Tutorial For Beginners In Hindi 2024  \ud83d\udd25",
+    "url": "https://www.youtube.com/watch?v=dSJM4Gyh8jE",
+    "provider": "CodeHelp - by Babbar",
+    "views": 281438,
+    "rating": 0.281438,
+    "source": "YouTube",
+    "resource_type": "video",
+    "price_type": "free",
+    "skill": "CSS"
+  },
+  {
+    "title": "CSS",
+    "url": "https://www.coursera.org/specializations/css",
+    "provider": "Unknown Provider",
+    "source": "Coursera",
+    "resource_type": "course",
+    "price_type": "mixed",
+    "skill": "CSS"
+  },
+  {
+    "title": "IBM Full Stack Software Developer",
+    "url": "https://www.coursera.org/professional-certificates/ibm-full-stack-cloud-developer",
+    "provider": "Unknown Provider",
+    "source": "Coursera",
+    "resource_type": "course",
+    "price_type": "mixed",
+    "skill": "CSS"
+  },
+  {
+    "title": "Microsoft Front-End Developer",
+    "url": "https://www.coursera.org/professional-certificates/microsoft-front-end-developer",
+    "provider": "Unknown Provider",
+    "source": "Coursera",
+    "resource_type": "course",
+    "price_type": "mixed",
+    "skill": "CSS"
+  },
+  {
+    "title": "Microsoft Full-Stack Developer",
+    "url": "https://www.coursera.org/professional-certificates/microsoft-full-stack-developer",
+    "provider": "Unknown Provider",
+    "source": "Coursera",
+    "resource_type": "course",
+    "price_type": "mixed",
+    "skill": "CSS"
+  },
+  {
+    "title": "Meta Front-End Developer",
+    "url": "https://www.coursera.org/professional-certificates/meta-front-end-developer",
+    "provider": "Unknown Provider",
+    "source": "Coursera",
+    "resource_type": "course",
+    "price_type": "mixed",
+    "skill": "CSS"
+  },
+  {
+    "title": "Learn CSS in 20 Minutes",
+    "url": "https://www.youtube.com/watch?v=1PnVor36_40",
+    "provider": "Web Dev Simplified",
+    "views": 2047439,
+    "rating": 2.047439,
+    "source": "YouTube",
+    "resource_type": "video",
+    "price_type": "free",
+    "skill": "CSS"
+  },
+  {
+    "title": "HTML and CSS in depth",
+    "url": "https://www.coursera.org/learn/html-and-css-in-depth",
+    "provider": "Unknown Provider",
+    "source": "Coursera",
+    "resource_type": "course",
+    "price_type": "mixed",
+    "skill": "CSS"
+  },
+  {
+    "title": "Introduction to HTML, CSS, & JavaScript",
+    "url": "https://www.coursera.org/learn/introduction-html-css-javascript",
+    "provider": "Unknown Provider",
+    "source": "Coursera",
+    "resource_type": "course",
+    "price_type": "mixed",
+    "skill": "CSS"
+  }
+]

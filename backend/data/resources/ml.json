@@ -1,0 +1,102 @@
+[
+  {
+    "title": "Machine Learning for Everybody \u2013 Full Course",
+    "url": "https://www.youtube.com/watch?v=i_LwzRVP7bg",
+    "provider": "freeCodeCamp.org",
+    "views": 8665693,
+    "rating": 8.665693,
+    "source": "YouTube",
+    "resource_type": "video",
+    "price_type": "free",
+    "skill": "ML"
+  },
+  {
+    "title": "Python Machine Learning Tutorial (Data Science)",
+    "url": "https://www.youtube.com/watch?v=7eh4d6sabA0",
+    "provider": "Programming with Mosh",
+    "views": 3224977,
+    "rating": 3.224977,
+    "source": "YouTube",
+    "resource_type": "video",
+    "price_type": "free",
+    "skill": "ML"
+  },
+  {
+    "title": "Machine Learning with Python | Machine Learning Tutorial for Beginners | Machine Learning Tutorial",
+    "url": "https://www.youtube.com/watch?v=RnFGwxJwx-0",
+    "provider": "Great Learning",
+    "views": 1362393,
+    "rating": 1.362393,
+    "source": "YouTube",
+    "resource_type": "video",
+    "price_type": "free",
+    "skill": "ML"
+  },
+  {
+    "title": "Complete Machine Learning In 6 Hours| Krish Naik",
+    "url": "https://www.youtube.com/watch?v=JxgmHe2NyeY",
+    "provider": "Krish Naik",
+    "views": 1255581,
+    "rating": 1.255581,
+    "source": "YouTube",
+    "resource_type": "video",
+    "price_type": "free",
+    "skill": "ML"
+  },
+  {
+    "title": "\u2705\ufe0f Sun Tutorial By Decoder mlbb #mobilelegends #mlbb #ml",
+    "url": "https://www.youtube.com/watch?v=BbGnyGRhzso",
+    "provider": "DECODER MLBB ",
+    "views": 2687,
+    "rating": 0.002687,
+    "source": "YouTube",
+    "resource_type": "video",
+    "price_type": "free",
+    "skill": "ML"
+  },
+  {
+    "title": "Microsoft AI & ML Engineering",
+    "url": "https://www.coursera.org/professional-certificates/microsoft-ai-and-ml-engineering",
+    "provider": "Unknown Provider",
+    "source": "Coursera",
+    "resource_type": "course",
+    "price_type": "mixed",
+    "skill": "ML"
+  },
+  {
+    "title": "MLOps | Machine Learning Operations",
+    "url": "https://www.coursera.org/specializations/mlops-machine-learning-duke",
+    "provider": "Unknown Provider",
+    "source": "Coursera",
+    "resource_type": "course",
+    "price_type": "mixed",
+    "skill": "ML"
+  },
+  {
+    "title": "Machine Learning",
+    "url": "https://www.coursera.org/specializations/machine-learning-introduction",
+    "provider": "Unknown Provider",
+    "source": "Coursera",
+    "resource_type": "course",
+    "price_type": "mixed",
+    "skill": "ML"
+  },
+  {
+    "title": "Preparing for Google Cloud Certification: Machine Learning Engineer",
+    "url": "https://www.coursera.org/professional-certificates/preparing-for-google-cloud-machine-learning-engineer-professional-certificate",
+    "provider": "Unknown Provider",
+    "source": "Coursera",
+    "resource_type": "course",
+    "price_type": "mixed",
+    "skill": "ML"
+  },
+  {
+    "title": "Digital Transformation Using AI/ML with Google Cloud",
+    "url": "https://www.coursera.org/specializations/digital-transformation-using-ai-ml-with-google-cloud",
+    "provider": "Unknown Provider",
+    "source": "Coursera",
+    "resource_type": "course",
+    "price_type": "mixed",
+    "skill": "ML"
+  }
+]

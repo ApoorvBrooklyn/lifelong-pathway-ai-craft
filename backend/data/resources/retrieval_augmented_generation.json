@@ -1,0 +1,102 @@
+[
+  {
+    "title": "What is Retrieval-Augmented Generation (RAG)?",
+    "url": "https://www.youtube.com/watch?v=T-D1OfcDW1M",
+    "provider": "IBM Technology",
+    "views": 1143606,
+    "rating": 1.143606,
+    "source": "YouTube",
+    "resource_type": "video",
+    "price_type": "free",
+    "skill": "retrieval augmented generation"
+  },
+  {
+    "title": "Learn RAG From Scratch \u2013 Python AI Tutorial from a LangChain Engineer",
+    "url": "https://www.youtube.com/watch?v=sVcwVQRHIc8",
+    "provider": "freeCodeCamp.org",
+    "views": 763063,
+    "rating": 0.763063,
+    "source": "YouTube",
+    "resource_type": "video",
+    "price_type": "free",
+    "skill": "retrieval augmented generation"
+  },
+  {
+    "title": "What is RAG? (Retrieval Augmented Generation)",
+    "url": "https://www.youtube.com/watch?v=u47GtXwePms",
+    "provider": "Don Woodlock",
+    "views": 238450,
+    "rating": 0.23845,
+    "source": "YouTube",
+    "resource_type": "video",
+    "price_type": "free",
+    "skill": "retrieval augmented generation"
+  },
+  {
+    "title": "How to set up RAG - Retrieval Augmented Generation (demo)",
+    "url": "https://www.youtube.com/watch?v=P8tOjiYEFqU",
+    "provider": "Don Woodlock",
+    "views": 62894,
+    "rating": 0.062894,
+    "source": "YouTube",
+    "resource_type": "video",
+    "price_type": "free",
+    "skill": "retrieval augmented generation"
+  },
+  {
+    "title": "Setting up Retrieval Augmented Generation (RAG) in 3 Steps",
+    "url": "https://www.youtube.com/watch?v=LpKGm1jJXv4",
+    "provider": "IBM Technology",
+    "views": 25463,
+    "rating": 0.025463,
+    "source": "YouTube",
+    "resource_type": "video",
+    "price_type": "free",
+    "skill": "retrieval augmented generation"
+  },
+  {
+    "title": "Introduction to Retrieval Augmented Generation (RAG)",
+    "url": "https://www.coursera.org/learn/introduction-to-retrieval-augmented-generation-rag",
+    "provider": "Unknown Provider",
+    "source": "Coursera",
+    "resource_type": "course",
+    "price_type": "mixed",
+    "skill": "retrieval augmented generation"
+  },
+  {
+    "title": "Introduction to Retrieval Augmented Generation (RAG)",
+    "url": "https://www.coursera.org/projects/introduction-to-rag",
+    "provider": "Unknown Provider",
+    "source": "Coursera",
+    "resource_type": "course",
+    "price_type": "mixed",
+    "skill": "retrieval augmented generation"
+  },
+  {
+    "title": "Generative AI: Prompt Engineering Basics",
+    "url": "https://www.coursera.org/learn/generative-ai-prompt-engineering-for-everyone",
+    "provider": "Unknown Provider",
+    "source": "Coursera",
+    "resource_type": "course",
+    "price_type": "mixed",
+    "skill": "retrieval augmented generation"
+  },
+  {
+    "title": "LangChain Chat with Your Data",
+    "url": "https://www.coursera.org/projects/langchain-chat-with-your-data-project",
+    "provider": "Unknown Provider",
+    "source": "Coursera",
+    "resource_type": "course",
+    "price_type": "mixed",
+    "skill": "retrieval augmented generation"
+  },
+  {
+    "title": "Advanced Prompt Engineering for Everyone",
+    "url": "https://www.coursera.org/learn/advanced-prompt-engineering-for-everyone",
+    "provider": "Unknown Provider",
+    "source": "Coursera",
+    "resource_type": "course",
+    "price_type": "mixed",
+    "skill": "retrieval augmented generation"
+  }
+]

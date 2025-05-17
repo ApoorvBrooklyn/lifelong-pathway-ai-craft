@@ -1,0 +1,102 @@
+[
+  {
+    "title": "Give me 8 minutes, and I'll improve your communication skills by 88%...",
+    "url": "https://www.youtube.com/watch?v=7hr60EumwQ4",
+    "provider": "Jak Piggott",
+    "views": 5299126,
+    "rating": 5.299126,
+    "source": "YouTube",
+    "resource_type": "video",
+    "price_type": "free",
+    "skill": "Communication and Soft Skill"
+  },
+  {
+    "title": "3 Steps To Quickly Improve Your Communication Skills",
+    "url": "https://www.youtube.com/watch?v=759ltCNvZNM",
+    "provider": "Vinh Giang",
+    "views": 5020751,
+    "rating": 5.020751,
+    "source": "YouTube",
+    "resource_type": "video",
+    "price_type": "free",
+    "skill": "Communication and Soft Skill"
+  },
+  {
+    "title": "Top 5 Communication Skills Lessons",
+    "url": "https://www.youtube.com/watch?v=ZW4CfKuumUs",
+    "provider": "Vinh Giang",
+    "views": 1720974,
+    "rating": 1.720974,
+    "source": "YouTube",
+    "resource_type": "video",
+    "price_type": "free",
+    "skill": "Communication and Soft Skill"
+  },
+  {
+    "title": "Top 5 Tips to Improve Communication Skills | Soft Skills For Beginners | Soft Skills | Simplilearn",
+    "url": "https://www.youtube.com/watch?v=pJ7RgUCEd5M",
+    "provider": "Simplilearn",
+    "views": 208003,
+    "rating": 0.208003,
+    "source": "YouTube",
+    "resource_type": "video",
+    "price_type": "free",
+    "skill": "Communication and Soft Skill"
+  },
+  {
+    "title": "Master Your Communication Skills For Interviews | Watch This To Clear Any Job Interview",
+    "url": "https://www.youtube.com/watch?v=RfFbA5uHqqw",
+    "provider": "Diksha Arora - Interview Coach",
+    "views": 57004,
+    "rating": 0.057004,
+    "source": "YouTube",
+    "resource_type": "video",
+    "price_type": "free",
+    "skill": "Communication and Soft Skill"
+  },
+  {
+    "title": "People and Soft Skills for Professional and Personal Success",
+    "url": "https://www.coursera.org/specializations/people-and-soft-skills-for-professional-success",
+    "provider": "Unknown Provider",
+    "source": "Coursera",
+    "resource_type": "course",
+    "price_type": "mixed",
+    "skill": "Communication and Soft Skill"
+  },
+  {
+    "title": "Professional Skills for the Workplace",
+    "url": "https://www.coursera.org/specializations/professional-skills-for-the-workplace",
+    "provider": "Unknown Provider",
+    "source": "Coursera",
+    "resource_type": "course",
+    "price_type": "mixed",
+    "skill": "Communication and Soft Skill"
+  },
+  {
+    "title": "Effective Communication: Writing, Design, and Presentation",
+    "url": "https://www.coursera.org/specializations/effective-business-communication",
+    "provider": "Unknown Provider",
+    "source": "Coursera",
+    "resource_type": "course",
+    "price_type": "mixed",
+    "skill": "Communication and Soft Skill"
+  },
+  {
+    "title": "Active Listening: Enhancing Communication Skills",
+    "url": "https://www.coursera.org/learn/active-listening-enhancing-communication-skills",
+    "provider": "Unknown Provider",
+    "source": "Coursera",
+    "resource_type": "course",
+    "price_type": "mixed",
+    "skill": "Communication and Soft Skill"
+  },
+  {
+    "title": "Business Communication",
+    "url": "https://www.coursera.org/specializations/business-communication",
+    "provider": "Unknown Provider",
+    "source": "Coursera",
+    "resource_type": "course",
+    "price_type": "mixed",
+    "skill": "Communication and Soft Skill"
+  }
+]

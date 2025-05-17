@@ -1,0 +1,102 @@
+[
+  {
+    "title": "The book every electronics nerd should own #shorts",
+    "url": "https://www.youtube.com/watch?v=gx0YYt66AGk",
+    "provider": "Jeff Geerling",
+    "views": 4783029,
+    "rating": 4.783029,
+    "source": "YouTube",
+    "resource_type": "video",
+    "price_type": "free",
+    "skill": "engineering"
+  },
+  {
+    "title": "Transistors Explained - What is a transistor?",
+    "url": "https://www.youtube.com/watch?v=EACjoPZPYzI",
+    "provider": "The Engineering Mindset",
+    "views": 2958769,
+    "rating": 2.958769,
+    "source": "YouTube",
+    "resource_type": "video",
+    "price_type": "free",
+    "skill": "engineering"
+  },
+  {
+    "title": "Prompt Engineering Tutorial \u2013 Master ChatGPT and LLM Responses",
+    "url": "https://www.youtube.com/watch?v=_ZvnD73m40o",
+    "provider": "freeCodeCamp.org",
+    "views": 2081071,
+    "rating": 2.081071,
+    "source": "YouTube",
+    "resource_type": "video",
+    "price_type": "free",
+    "skill": "engineering"
+  },
+  {
+    "title": "When An Engineer Gets Their Heart Broken \ud83d\udc80 #electronics #arduino #engineering",
+    "url": "https://www.youtube.com/watch?v=na2f9i8YmZI",
+    "provider": "PLACITECH",
+    "views": 1345376,
+    "rating": 1.345376,
+    "source": "YouTube",
+    "resource_type": "video",
+    "price_type": "free",
+    "skill": "engineering"
+  },
+  {
+    "title": "VLSI Design and Testing Module 1 - Introduction to CMOS Circuits Basics of PMOS and NMOS Transistors",
+    "url": "https://www.youtube.com/watch?v=QWFQnHtIk24",
+    "provider": "VTU Developer ",
+    "views": 141,
+    "rating": 0.000141,
+    "source": "YouTube",
+    "resource_type": "video",
+    "price_type": "free",
+    "skill": "engineering"
+  },
+  {
+    "title": "Introduction to Engineering Mechanics",
+    "url": "https://www.coursera.org/learn/engineering-mechanics-statics",
+    "provider": "Unknown Provider",
+    "source": "Coursera",
+    "resource_type": "course",
+    "price_type": "mixed",
+    "skill": "engineering"
+  },
+  {
+    "title": "Introduction to Systems Engineering",
+    "url": "https://www.coursera.org/specializations/introduction-systems-engineering",
+    "provider": "Unknown Provider",
+    "source": "Coursera",
+    "resource_type": "course",
+    "price_type": "mixed",
+    "skill": "engineering"
+  },
+  {
+    "title": "Fundamental Skills in Engineering Design",
+    "url": "https://www.coursera.org/learn/fundamental-skills-in-engineering-design",
+    "provider": "Unknown Provider",
+    "source": "Coursera",
+    "resource_type": "course",
+    "price_type": "mixed",
+    "skill": "engineering"
+  },
+  {
+    "title": "Engineering Project Management",
+    "url": "https://www.coursera.org/specializations/engineering-project-management",
+    "provider": "Unknown Provider",
+    "source": "Coursera",
+    "resource_type": "course",
+    "price_type": "mixed",
+    "skill": "engineering"
+  },
+  {
+    "title": "Systems Engineering",
+    "url": "https://www.coursera.org/learn/systems-engineering-mathworks",
+    "provider": "Unknown Provider",
+    "source": "Coursera",
+    "resource_type": "course",
+    "price_type": "mixed",
+    "skill": "engineering"
+  }
+]

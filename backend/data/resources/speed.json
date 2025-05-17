@@ -1,0 +1,102 @@
+[
+  {
+    "title": "5 exercises to increase speed",
+    "url": "https://www.youtube.com/watch?v=Hf8ITUevwwI",
+    "provider": "Unisport",
+    "views": 4688693,
+    "rating": 4.688693,
+    "source": "YouTube",
+    "resource_type": "video",
+    "price_type": "free",
+    "skill": "speed"
+  },
+  {
+    "title": "How To Type Faster (Tips for every stage 0  - 50 - 100 - 150 WPM)",
+    "url": "https://www.youtube.com/watch?v=QAb3ATOpBpE",
+    "provider": "Mr Chops",
+    "views": 2172314,
+    "rating": 2.172314,
+    "source": "YouTube",
+    "resource_type": "video",
+    "price_type": "free",
+    "skill": "speed"
+  },
+  {
+    "title": "How to Play Speed (the card game!)",
+    "url": "https://www.youtube.com/watch?v=vqtuntlmn6U",
+    "provider": "wikiHow",
+    "views": 1009144,
+    "rating": 1.009144,
+    "source": "YouTube",
+    "resource_type": "video",
+    "price_type": "free",
+    "skill": "speed"
+  },
+  {
+    "title": "Full Course - How to Type 3x Faster",
+    "url": "https://www.youtube.com/watch?v=tU_AXrvQjpo",
+    "provider": "Ali Abdaal",
+    "views": 461308,
+    "rating": 0.461308,
+    "source": "YouTube",
+    "resource_type": "video",
+    "price_type": "free",
+    "skill": "speed"
+  },
+  {
+    "title": "The SECRET to Speed Ramps",
+    "url": "https://www.youtube.com/watch?v=voW4ZHeAy2g",
+    "provider": "Gaku Lange",
+    "views": 118996,
+    "rating": 0.118996,
+    "source": "YouTube",
+    "resource_type": "video",
+    "price_type": "free",
+    "skill": "speed"
+  },
+  {
+    "title": "CSS",
+    "url": "https://www.coursera.org/specializations/css",
+    "provider": "Unknown Provider",
+    "source": "Coursera",
+    "resource_type": "course",
+    "price_type": "mixed",
+    "skill": "speed"
+  },
+  {
+    "title": "Microsoft 365 Fundamentals",
+    "url": "https://www.coursera.org/specializations/microsoft-365-fundamentals",
+    "provider": "Unknown Provider",
+    "source": "Coursera",
+    "resource_type": "course",
+    "price_type": "mixed",
+    "skill": "speed"
+  },
+  {
+    "title": "Mathematics for Machine Learning",
+    "url": "https://www.coursera.org/specializations/mathematics-machine-learning",
+    "provider": "Unknown Provider",
+    "source": "Coursera",
+    "resource_type": "course",
+    "price_type": "mixed",
+    "skill": "speed"
+  },
+  {
+    "title": "AI Agents and Agentic AI in Python: Powered by Generative AI",
+    "url": "https://www.coursera.org/specializations/ai-agents-python",
+    "provider": "Unknown Provider",
+    "source": "Coursera",
+    "resource_type": "course",
+    "price_type": "mixed",
+    "skill": "speed"
+  },
+  {
+    "title": "DevOps, Cloud, and Agile Foundations",
+    "url": "https://www.coursera.org/specializations/devops-cloud-and-agile-foundations",
+    "provider": "Unknown Provider",
+    "source": "Coursera",
+    "resource_type": "course",
+    "price_type": "mixed",
+    "skill": "speed"
+  }
+]

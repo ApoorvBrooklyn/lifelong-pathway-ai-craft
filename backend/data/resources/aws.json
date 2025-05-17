@@ -1,0 +1,102 @@
+[
+  {
+    "title": "AWS Tutorial For Beginners | AWS Full Course - Learn AWS In 10 Hours | AWS Training | Edureka",
+    "url": "https://www.youtube.com/watch?v=k1RI5locZE4",
+    "provider": "edureka!",
+    "views": 5316025,
+    "rating": 5.316025,
+    "source": "YouTube",
+    "resource_type": "video",
+    "price_type": "free",
+    "skill": "AWS"
+  },
+  {
+    "title": "AWS Certified Cloud Practitioner Certification Course (CLF-C02) - Pass the Exam!",
+    "url": "https://www.youtube.com/watch?v=NhDYbskXRgc",
+    "provider": "freeCodeCamp.org",
+    "views": 1745940,
+    "rating": 1.74594,
+    "source": "YouTube",
+    "resource_type": "video",
+    "price_type": "free",
+    "skill": "AWS"
+  },
+  {
+    "title": "AWS in ONE VIDEO \ud83d\udd25 For Beginners 2025 [HINDI] | MPrashant",
+    "url": "https://www.youtube.com/watch?v=N4sJj-SxX00",
+    "provider": "M Prashant",
+    "views": 317376,
+    "rating": 0.317376,
+    "source": "YouTube",
+    "resource_type": "video",
+    "price_type": "free",
+    "skill": "AWS"
+  },
+  {
+    "title": "AWS Tutorial for Beginners (2025)",
+    "url": "https://www.youtube.com/watch?v=Nzv-tzU-UAw",
+    "provider": "Kevin Stratvert",
+    "views": 10094,
+    "rating": 0.010094,
+    "source": "YouTube",
+    "resource_type": "video",
+    "price_type": "free",
+    "skill": "AWS"
+  },
+  {
+    "title": "FileMaker Server Complete Deployment Tutorial on AWS - Day 5",
+    "url": "https://www.youtube.com/watch?v=9SxfZ0tw4zI",
+    "provider": "FileMaker Training Videos",
+    "views": 51,
+    "rating": 5.1e-05,
+    "source": "YouTube",
+    "resource_type": "video",
+    "price_type": "free",
+    "skill": "AWS"
+  },
+  {
+    "title": "AWS Fundamentals",
+    "url": "https://www.coursera.org/specializations/aws-fundamentals",
+    "provider": "Unknown Provider",
+    "source": "Coursera",
+    "resource_type": "course",
+    "price_type": "mixed",
+    "skill": "AWS"
+  },
+  {
+    "title": "AWS Cloud Technology Consultant",
+    "url": "https://www.coursera.org/professional-certificates/aws-cloud-technology-consultant",
+    "provider": "Unknown Provider",
+    "source": "Coursera",
+    "resource_type": "course",
+    "price_type": "mixed",
+    "skill": "AWS"
+  },
+  {
+    "title": "AWS Cloud Practitioner Certification",
+    "url": "https://www.coursera.org/specializations/aws-cloud-practitioner-certification-course",
+    "provider": "Unknown Provider",
+    "source": "Coursera",
+    "resource_type": "course",
+    "price_type": "mixed",
+    "skill": "AWS"
+  },
+  {
+    "title": "AWS Cloud Solutions Architect",
+    "url": "https://www.coursera.org/professional-certificates/aws-cloud-solutions-architect",
+    "provider": "Unknown Provider",
+    "source": "Coursera",
+    "resource_type": "course",
+    "price_type": "mixed",
+    "skill": "AWS"
+  },
+  {
+    "title": "AWS Solutions Architect - Associate",
+    "url": "https://www.coursera.org/specializations/aws-certified-solutions-architect-associate-course",
+    "provider": "Unknown Provider",
+    "source": "Coursera",
+    "resource_type": "course",
+    "price_type": "mixed",
+    "skill": "AWS"
+  }
+]

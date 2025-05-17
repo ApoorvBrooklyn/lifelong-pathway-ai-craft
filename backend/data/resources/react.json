@@ -1,0 +1,122 @@
+[
+  {
+    "title": "React JS - React Tutorial for Beginners",
+    "url": "https://www.youtube.com/watch?v=Ke90Tje7VS0",
+    "provider": "Programming with Mosh",
+    "views": 6292034,
+    "rating": 6.292034,
+    "source": "YouTube",
+    "resource_type": "video",
+    "price_type": "free",
+    "skill": "React"
+  },
+  {
+    "title": "React Tutorial for Beginners",
+    "url": "https://www.youtube.com/watch?v=SqcY0GlETPk",
+    "provider": "Programming with Mosh",
+    "views": 4489158,
+    "rating": 4.489158,
+    "source": "YouTube",
+    "resource_type": "video",
+    "price_type": "free",
+    "skill": "React"
+  },
+  {
+    "title": "React Tutorial in Hindi \ud83d\udd25\ud83d\udd25",
+    "url": "https://www.youtube.com/watch?v=RGKi6LSPDLU",
+    "provider": "CodeWithHarry",
+    "views": 3245089,
+    "rating": 3.245089,
+    "source": "YouTube",
+    "resource_type": "video",
+    "price_type": "free",
+    "skill": "React"
+  },
+  {
+    "title": "Learn React JS - Full Beginner\u2019s Tutorial & Practice Projects",
+    "url": "https://www.youtube.com/watch?v=x4rFhThSX04",
+    "provider": "freeCodeCamp.org",
+    "views": 574496,
+    "rating": 0.574496,
+    "source": "YouTube",
+    "resource_type": "video",
+    "price_type": "free",
+    "skill": "React"
+  },
+  {
+    "title": "React JS Tutorial for Beginners (2025) \ud83d\udd25\ud83d\udcdd | Learn Components, JSX, Props, Vite & Virtual DOM Quick",
+    "url": "https://www.youtube.com/watch?v=zUx56TYIE24",
+    "provider": "Tech Jashwanth",
+    "views": 539,
+    "rating": 0.000539,
+    "source": "YouTube",
+    "resource_type": "video",
+    "price_type": "free",
+    "skill": "React"
+  },
+  {
+    "title": "Meta React Native",
+    "url": "https://www.coursera.org/specializations/meta-react-native",
+    "provider": "Unknown Provider",
+    "source": "Coursera",
+    "resource_type": "course",
+    "price_type": "mixed",
+    "skill": "React"
+  },
+  {
+    "title": "React Basics",
+    "url": "https://www.coursera.org/learn/react-basics",
+    "provider": "Unknown Provider",
+    "source": "Coursera",
+    "resource_type": "course",
+    "price_type": "mixed",
+    "skill": "React"
+  },
+  {
+    "title": "Become a Professional React Developer",
+    "url": "https://www.coursera.org/specializations/react",
+    "provider": "Unknown Provider",
+    "source": "Coursera",
+    "resource_type": "course",
+    "price_type": "mixed",
+    "skill": "React"
+  },
+  {
+    "title": "Advanced React",
+    "url": "https://www.coursera.org/learn/advanced-react",
+    "provider": "Unknown Provider",
+    "source": "Coursera",
+    "resource_type": "course",
+    "price_type": "mixed",
+    "skill": "React"
+  },
+  {
+    "title": "Developing Mobile Apps with React Native",
+    "url": "https://www.coursera.org/specializations/developing-mobile-apps-with-react-native",
+    "provider": "Unknown Provider",
+    "source": "Coursera",
+    "resource_type": "course",
+    "price_type": "mixed",
+    "skill": "React"
+  },
+  {
+    "title": "React Native",
+    "url": "https://www.coursera.org/learn/react-native-course",
+    "provider": "Unknown Provider",
+    "source": "Coursera",
+    "resource_type": "course",
+    "price_type": "mixed",
+    "skill": "React"
+  },
+  {
+    "title": "React Tutorial For Beginners",
+    "url": "https://www.youtube.com/watch?v=xxRAA0v2lvM",
+    "provider": "LearnWebCode",
+    "views": 9398,
+    "rating": 0.009398,
+    "source": "YouTube",
+    "resource_type": "video",
+    "price_type": "free",
+    "skill": "React"
+  }
+]

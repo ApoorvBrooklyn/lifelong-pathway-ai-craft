@@ -1,0 +1,102 @@
+[
+  {
+    "title": "AWS Tutorial For Beginners | AWS Full Course - Learn AWS In 10 Hours | AWS Training | Edureka",
+    "url": "https://www.youtube.com/watch?v=k1RI5locZE4",
+    "provider": "edureka!",
+    "views": 5316025,
+    "rating": 5.316025,
+    "source": "YouTube",
+    "resource_type": "video",
+    "price_type": "free",
+    "skill": "Cloud"
+  },
+  {
+    "title": "AWS Certified Cloud Practitioner Certification Course (CLF-C02) - Pass the Exam!",
+    "url": "https://www.youtube.com/watch?v=NhDYbskXRgc",
+    "provider": "freeCodeCamp.org",
+    "views": 1745940,
+    "rating": 1.74594,
+    "source": "YouTube",
+    "resource_type": "video",
+    "price_type": "free",
+    "skill": "Cloud"
+  },
+  {
+    "title": "Google Cloud Platform Full Course | GCP Tutorial | Google Cloud Training | Edureka",
+    "url": "https://www.youtube.com/watch?v=IUU6OR8yHCc",
+    "provider": "edureka!",
+    "views": 822183,
+    "rating": 0.822183,
+    "source": "YouTube",
+    "resource_type": "video",
+    "price_type": "free",
+    "skill": "Cloud"
+  },
+  {
+    "title": "AWS in ONE VIDEO \ud83d\udd25 For Beginners 2025 [HINDI] | MPrashant",
+    "url": "https://www.youtube.com/watch?v=N4sJj-SxX00",
+    "provider": "M Prashant",
+    "views": 317376,
+    "rating": 0.317376,
+    "source": "YouTube",
+    "resource_type": "video",
+    "price_type": "free",
+    "skill": "Cloud"
+  },
+  {
+    "title": "Build Cloud Apps in 60 Seconds: Your Ultimate Guide! #CloudDevelopment #DevLife #TechUSA #CloudApps",
+    "url": "https://www.youtube.com/watch?v=UI-fBM5S6J0",
+    "provider": "ScalaCode\u2122",
+    "views": 351,
+    "rating": 0.000351,
+    "source": "YouTube",
+    "resource_type": "video",
+    "price_type": "free",
+    "skill": "Cloud"
+  },
+  {
+    "title": "Preparing for Google Cloud Certification: Cloud Developer",
+    "url": "https://www.coursera.org/professional-certificates/google-cloud-developer",
+    "provider": "Unknown Provider",
+    "source": "Coursera",
+    "resource_type": "course",
+    "price_type": "mixed",
+    "skill": "Cloud"
+  },
+  {
+    "title": "Introduction to Cloud Computing",
+    "url": "https://www.coursera.org/learn/introduction-to-cloud",
+    "provider": "Unknown Provider",
+    "source": "Coursera",
+    "resource_type": "course",
+    "price_type": "mixed",
+    "skill": "Cloud"
+  },
+  {
+    "title": "Google Cloud Database Engineer",
+    "url": "https://www.coursera.org/specializations/google-cloud-database-engineer",
+    "provider": "Unknown Provider",
+    "source": "Coursera",
+    "resource_type": "course",
+    "price_type": "mixed",
+    "skill": "Cloud"
+  },
+  {
+    "title": "AWS Cloud Practitioner Certification",
+    "url": "https://www.coursera.org/specializations/aws-cloud-practitioner-certification-course",
+    "provider": "Unknown Provider",
+    "source": "Coursera",
+    "resource_type": "course",
+    "price_type": "mixed",
+    "skill": "Cloud"
+  },
+  {
+    "title": "Google Cloud Digital Leader Training",
+    "url": "https://www.coursera.org/professional-certificates/google-cloud-digital-leader-training",
+    "provider": "Unknown Provider",
+    "source": "Coursera",
+    "resource_type": "course",
+    "price_type": "mixed",
+    "skill": "Cloud"
+  }
+]

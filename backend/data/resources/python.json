@@ -1,0 +1,102 @@
+[
+  {
+    "title": "Learn Python - Full Course for Beginners [Tutorial]",
+    "url": "https://www.youtube.com/watch?v=rfscVS0vtbw",
+    "provider": "freeCodeCamp.org",
+    "views": 46637904,
+    "rating": 46.637904,
+    "source": "YouTube",
+    "resource_type": "video",
+    "price_type": "free",
+    "skill": "python"
+  },
+  {
+    "title": "Python Full Course for Beginners",
+    "url": "https://www.youtube.com/watch?v=_uQrJ0TkZlc",
+    "provider": "Programming with Mosh",
+    "views": 44400486,
+    "rating": 44.400486,
+    "source": "YouTube",
+    "resource_type": "video",
+    "price_type": "free",
+    "skill": "python"
+  },
+  {
+    "title": "Python Tutorial For Beginners in Hindi | Complete Python Course \ud83d\udd25",
+    "url": "https://www.youtube.com/watch?v=UrsmFxEIp5k",
+    "provider": "CodeWithHarry",
+    "views": 8236869,
+    "rating": 8.236869,
+    "source": "YouTube",
+    "resource_type": "video",
+    "price_type": "free",
+    "skill": "python"
+  },
+  {
+    "title": "Python Tutorial for Beginners - Full Course (with Notes & Practice Questions)",
+    "url": "https://www.youtube.com/watch?v=ERCMXc8x7mc",
+    "provider": "Apna College",
+    "views": 7258820,
+    "rating": 7.25882,
+    "source": "YouTube",
+    "resource_type": "video",
+    "price_type": "free",
+    "skill": "python"
+  },
+  {
+    "title": "Python Tutorial for Beginners - Learn Python in 5 Hours [FULL COURSE]",
+    "url": "https://www.youtube.com/watch?v=t8pPdKYpowI",
+    "provider": "TechWorld with Nana",
+    "views": 6341306,
+    "rating": 6.341306,
+    "source": "YouTube",
+    "resource_type": "video",
+    "price_type": "free",
+    "skill": "python"
+  },
+  {
+    "title": "Python for Data Science, AI & Development",
+    "url": "https://www.coursera.org/learn/python-for-applied-data-science-ai",
+    "provider": "Unknown Provider",
+    "source": "Coursera",
+    "resource_type": "course",
+    "price_type": "mixed",
+    "skill": "python"
+  },
+  {
+    "title": "Crash Course on Python",
+    "url": "https://www.coursera.org/learn/python-crash-course",
+    "provider": "Unknown Provider",
+    "source": "Coursera",
+    "resource_type": "course",
+    "price_type": "mixed",
+    "skill": "python"
+  },
+  {
+    "title": "AI Agents and Agentic AI in Python: Powered by Generative AI",
+    "url": "https://www.coursera.org/specializations/ai-agents-python",
+    "provider": "Unknown Provider",
+    "source": "Coursera",
+    "resource_type": "course",
+    "price_type": "mixed",
+    "skill": "python"
+  },
+  {
+    "title": "DeepLearning.AI Data Analytics",
+    "url": "https://www.coursera.org/professional-certificates/data-analytics",
+    "provider": "Unknown Provider",
+    "source": "Coursera",
+    "resource_type": "course",
+    "price_type": "mixed",
+    "skill": "python"
+  },
+  {
+    "title": "Data Analysis with Python",
+    "url": "https://www.coursera.org/learn/data-analysis-with-python",
+    "provider": "Unknown Provider",
+    "source": "Coursera",
+    "resource_type": "course",
+    "price_type": "mixed",
+    "skill": "python"
+  }
+]

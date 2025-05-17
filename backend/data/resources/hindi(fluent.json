@@ -1,0 +1,102 @@
+[
+  {
+    "title": "Thinking you can speak Hindi...",
+    "url": "https://www.youtube.com/watch?v=FghyuG4ebZs",
+    "provider": "queensimba",
+    "views": 21035745,
+    "rating": 21.035745,
+    "source": "YouTube",
+    "resource_type": "video",
+    "price_type": "free",
+    "skill": "hindi(fluent"
+  },
+  {
+    "title": "Learn Hindi in 30 Minutes - ALL the Basics You Need",
+    "url": "https://www.youtube.com/watch?v=1lrz11BbqCA",
+    "provider": "Learn Hindi with HindiPod101.com",
+    "views": 7204147,
+    "rating": 7.204147,
+    "source": "YouTube",
+    "resource_type": "video",
+    "price_type": "free",
+    "skill": "hindi(fluent"
+  },
+  {
+    "title": "2 Hours of Daily Hindi Conversations - Hindi Practice for ALL Learners",
+    "url": "https://www.youtube.com/watch?v=Ps0OiTpCZD8",
+    "provider": "Learn Hindi with HindiPod101.com",
+    "views": 778356,
+    "rating": 0.778356,
+    "source": "YouTube",
+    "resource_type": "video",
+    "price_type": "free",
+    "skill": "hindi(fluent"
+  },
+  {
+    "title": "20 Daily Hindi Conversations - Hindi Practice for Beginners",
+    "url": "https://www.youtube.com/watch?v=58XLv3tZvM0",
+    "provider": "Learn Hindi with HindiPod101.com",
+    "views": 414481,
+    "rating": 0.414481,
+    "source": "YouTube",
+    "resource_type": "video",
+    "price_type": "free",
+    "skill": "hindi(fluent"
+  },
+  {
+    "title": "Hindi in 30 minutes - Learn Hindi through English",
+    "url": "https://www.youtube.com/watch?v=JkSibjcgEhc",
+    "provider": "Watch and Learn Hindi",
+    "views": 230364,
+    "rating": 0.230364,
+    "source": "YouTube",
+    "resource_type": "video",
+    "price_type": "free",
+    "skill": "hindi(fluent"
+  },
+  {
+    "title": "Improve Your English Communication Skills",
+    "url": "https://www.coursera.org/specializations/improve-english",
+    "provider": "Unknown Provider",
+    "source": "Coursera",
+    "resource_type": "course",
+    "price_type": "mixed",
+    "skill": "hindi(fluent"
+  },
+  {
+    "title": "IBM Data Science",
+    "url": "https://www.coursera.org/professional-certificates/ibm-data-science",
+    "provider": "Unknown Provider",
+    "source": "Coursera",
+    "resource_type": "course",
+    "price_type": "mixed",
+    "skill": "hindi(fluent"
+  },
+  {
+    "title": "Machine Learning",
+    "url": "https://www.coursera.org/specializations/machine-learning-introduction",
+    "provider": "Unknown Provider",
+    "source": "Coursera",
+    "resource_type": "course",
+    "price_type": "mixed",
+    "skill": "hindi(fluent"
+  },
+  {
+    "title": "IBM AI Developer",
+    "url": "https://www.coursera.org/professional-certificates/applied-artifical-intelligence-ibm-watson-ai",
+    "provider": "Unknown Provider",
+    "source": "Coursera",
+    "resource_type": "course",
+    "price_type": "mixed",
+    "skill": "hindi(fluent"
+  },
+  {
+    "title": "Deep Learning",
+    "url": "https://www.coursera.org/specializations/deep-learning",
+    "provider": "Unknown Provider",
+    "source": "Coursera",
+    "resource_type": "course",
+    "price_type": "mixed",
+    "skill": "hindi(fluent"
+  }
+]

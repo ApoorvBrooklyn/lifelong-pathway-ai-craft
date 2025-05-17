@@ -1,0 +1,142 @@
+[
+  {
+    "title": "Learn JavaScript - Full Course for Beginners",
+    "url": "https://www.youtube.com/watch?v=PkZNo7MFNFg",
+    "provider": "freeCodeCamp.org",
+    "views": 19659220,
+    "rating": 19.65922,
+    "source": "YouTube",
+    "resource_type": "video",
+    "price_type": "free",
+    "skill": "JavaScript"
+  },
+  {
+    "title": "JavaScript Course for Beginners \u2013 Your First Step to Web Development",
+    "url": "https://www.youtube.com/watch?v=W6NZfCO5SIk",
+    "provider": "Programming with Mosh",
+    "views": 14011182,
+    "rating": 14.011182,
+    "source": "YouTube",
+    "resource_type": "video",
+    "price_type": "free",
+    "skill": "JavaScript"
+  },
+  {
+    "title": "JavaScript Tutorial Full Course - Beginner to Pro",
+    "url": "https://www.youtube.com/watch?v=EerdGm-ehJQ",
+    "provider": "SuperSimpleDev",
+    "views": 4962366,
+    "rating": 4.962366,
+    "source": "YouTube",
+    "resource_type": "video",
+    "price_type": "free",
+    "skill": "JavaScript"
+  },
+  {
+    "title": "JavaScript Tutorial (2024) for Beginners to Pro (with Notes, Projects & Practice Questions)",
+    "url": "https://www.youtube.com/watch?v=VlPiVmYuoqw",
+    "provider": "Apna College",
+    "views": 4498860,
+    "rating": 4.49886,
+    "source": "YouTube",
+    "resource_type": "video",
+    "price_type": "free",
+    "skill": "JavaScript"
+  },
+  {
+    "title": "Playwright TypeScript #31 Mouse Actions in Playwright Testing",
+    "url": "https://www.youtube.com/watch?v=7WkWQYrmb0k",
+    "provider": "Testers Talk",
+    "views": 171,
+    "rating": 0.000171,
+    "source": "YouTube",
+    "resource_type": "video",
+    "price_type": "free",
+    "skill": "JavaScript"
+  },
+  {
+    "title": "Meta Front-End Developer",
+    "url": "https://www.coursera.org/professional-certificates/meta-front-end-developer",
+    "provider": "Unknown Provider",
+    "source": "Coursera",
+    "resource_type": "course",
+    "price_type": "mixed",
+    "skill": "JavaScript"
+  },
+  {
+    "title": "Meta iOS Developer",
+    "url": "https://www.coursera.org/professional-certificates/meta-ios-developer",
+    "provider": "Unknown Provider",
+    "source": "Coursera",
+    "resource_type": "course",
+    "price_type": "mixed",
+    "skill": "JavaScript"
+  },
+  {
+    "title": "Microsoft Front-End Developer",
+    "url": "https://www.coursera.org/professional-certificates/microsoft-front-end-developer",
+    "provider": "Unknown Provider",
+    "source": "Coursera",
+    "resource_type": "course",
+    "price_type": "mixed",
+    "skill": "JavaScript"
+  },
+  {
+    "title": "Microsoft Full-Stack Developer",
+    "url": "https://www.coursera.org/professional-certificates/microsoft-full-stack-developer",
+    "provider": "Unknown Provider",
+    "source": "Coursera",
+    "resource_type": "course",
+    "price_type": "mixed",
+    "skill": "JavaScript"
+  },
+  {
+    "title": "Meta Android Developer",
+    "url": "https://www.coursera.org/professional-certificates/meta-android-developer",
+    "provider": "Unknown Provider",
+    "source": "Coursera",
+    "resource_type": "course",
+    "price_type": "mixed",
+    "skill": "JavaScript"
+  },
+  {
+    "title": "JavaScript Tutorial In Hindi",
+    "url": "https://www.youtube.com/watch?v=hKB-YGF14SY",
+    "provider": "CodeWithHarry",
+    "views": 7132640,
+    "rating": 7.13264,
+    "source": "YouTube",
+    "resource_type": "video",
+    "price_type": "free",
+    "skill": "JavaScript"
+  },
+  {
+    "title": "IBM Full-Stack JavaScript Developer",
+    "url": "https://www.coursera.org/professional-certificates/ibm-full-stack-javascript-developer",
+    "provider": "Unknown Provider",
+    "source": "Coursera",
+    "resource_type": "course",
+    "price_type": "mixed",
+    "skill": "JavaScript"
+  },
+  {
+    "title": "Meta React",
+    "url": "https://www.coursera.org/specializations/meta-react-specialization",
+    "provider": "Unknown Provider",
+    "source": "Coursera",
+    "resource_type": "course",
+    "price_type": "mixed",
+    "skill": "JavaScript"
+  },
+  {
+    "title": "How To Create Digital Clock Using HTML, CSS & JavaScript | JavaScript Tutorials for Beginners",
+    "url": "https://www.youtube.com/watch?v=bP4mLk_9XiQ",
+    "provider": "The Royal Coding (Let's Code like Royalty)",
+    "views": 53,
+    "rating": 5.3e-05,
+    "source": "YouTube",
+    "resource_type": "video",
+    "price_type": "free",
+    "skill": "JavaScript"
+  }
+]

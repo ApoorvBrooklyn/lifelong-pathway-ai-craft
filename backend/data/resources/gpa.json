@@ -1,0 +1,102 @@
+[
+  {
+    "title": "Your GPA Doesn\u2019t Matter",
+    "url": "https://www.youtube.com/watch?v=TrrgIzUphGE",
+    "provider": "Gohar Khan",
+    "views": 6411904,
+    "rating": 6.411904,
+    "source": "YouTube",
+    "resource_type": "video",
+    "price_type": "free",
+    "skill": "gpa"
+  },
+  {
+    "title": "How to Calculate GPA: A Step-by-Step Guide for Students | \ud83d\ude09  #shorts",
+    "url": "https://www.youtube.com/watch?v=YeWTD8ftKpE",
+    "provider": "Illustrative Tutor",
+    "views": 186783,
+    "rating": 0.186783,
+    "source": "YouTube",
+    "resource_type": "video",
+    "price_type": "free",
+    "skill": "gpa"
+  },
+  {
+    "title": "How to Calculate GPA Using MS Excel",
+    "url": "https://www.youtube.com/watch?v=C0isSXywFaQ",
+    "provider": "Excel, Word and PowerPoint Tutorials from Howtech",
+    "views": 173736,
+    "rating": 0.173736,
+    "source": "YouTube",
+    "resource_type": "video",
+    "price_type": "free",
+    "skill": "gpa"
+  },
+  {
+    "title": "Scott Pilgrim vs My GPA by Mom Jeans. (Chorus) #shorts",
+    "url": "https://www.youtube.com/watch?v=c9QZvmq8TD0",
+    "provider": "ipsaous",
+    "views": 6004,
+    "rating": 0.006004,
+    "source": "YouTube",
+    "resource_type": "video",
+    "price_type": "free",
+    "skill": "gpa"
+  },
+  {
+    "title": "How to Calculate Your GPA Using Excel: Easy Step-by-Step Guide",
+    "url": "https://www.youtube.com/watch?v=RiqKraFd5yI",
+    "provider": "Tutorials",
+    "views": 235,
+    "rating": 0.000235,
+    "source": "YouTube",
+    "resource_type": "video",
+    "price_type": "free",
+    "skill": "gpa"
+  },
+  {
+    "title": "Google Data Analytics",
+    "url": "https://www.coursera.org/professional-certificates/google-data-analytics",
+    "provider": "Unknown Provider",
+    "source": "Coursera",
+    "resource_type": "course",
+    "price_type": "mixed",
+    "skill": "gpa"
+  },
+  {
+    "title": "Graphic Design",
+    "url": "https://www.coursera.org/specializations/graphic-design",
+    "provider": "Unknown Provider",
+    "source": "Coursera",
+    "resource_type": "course",
+    "price_type": "mixed",
+    "skill": "gpa"
+  },
+  {
+    "title": "Google Advanced Data Analytics",
+    "url": "https://www.coursera.org/professional-certificates/google-advanced-data-analytics",
+    "provider": "Unknown Provider",
+    "source": "Coursera",
+    "resource_type": "course",
+    "price_type": "mixed",
+    "skill": "gpa"
+  },
+  {
+    "title": "Generative Adversarial Networks (GANs)",
+    "url": "https://www.coursera.org/specializations/generative-adversarial-networks-gans",
+    "provider": "Unknown Provider",
+    "source": "Coursera",
+    "resource_type": "course",
+    "price_type": "mixed",
+    "skill": "gpa"
+  },
+  {
+    "title": "GPU Programming",
+    "url": "https://www.coursera.org/specializations/gpu-programming",
+    "provider": "Unknown Provider",
+    "source": "Coursera",
+    "resource_type": "course",
+    "price_type": "mixed",
+    "skill": "gpa"
+  }
+]

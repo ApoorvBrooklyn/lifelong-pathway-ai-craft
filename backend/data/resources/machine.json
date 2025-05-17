@@ -1,0 +1,102 @@
+[
+  {
+    "title": "How to steam milk (no cuts) #barista #coffee #goldenbrowncoffee #steaming #milk #espresso",
+    "url": "https://www.youtube.com/watch?v=b2DRfAPB0QA",
+    "provider": "Golden Brown Coffee",
+    "views": 2795181,
+    "rating": 2.795181,
+    "source": "YouTube",
+    "resource_type": "video",
+    "price_type": "free",
+    "skill": "machine"
+  },
+  {
+    "title": "Leg Extension Machine Tutorial",
+    "url": "https://www.youtube.com/watch?v=xd9m2S_Rw4s",
+    "provider": "Morgan, M.S., CPT, WFS, FNS",
+    "views": 206194,
+    "rating": 0.206194,
+    "source": "YouTube",
+    "resource_type": "video",
+    "price_type": "free",
+    "skill": "machine"
+  },
+  {
+    "title": "How to Cast On (Begin) on a Loom Knitting Machine",
+    "url": "https://www.youtube.com/watch?v=dT_X43gYRdI",
+    "provider": "Tay Minks",
+    "views": 165954,
+    "rating": 0.165954,
+    "source": "YouTube",
+    "resource_type": "video",
+    "price_type": "free",
+    "skill": "machine"
+  },
+  {
+    "title": "How to sew piping (sewing tutorial)",
+    "url": "https://www.youtube.com/watch?v=n-uTeK0Vwow",
+    "provider": "Julija Gobere (SewingJulie)",
+    "views": 90060,
+    "rating": 0.09006,
+    "source": "YouTube",
+    "resource_type": "video",
+    "price_type": "free",
+    "skill": "machine"
+  },
+  {
+    "title": "Sewing machine for beginners \ud83d\udc9f #sewingtipsandtricks #sewing #sewingmachine",
+    "url": "https://www.youtube.com/watch?v=8SHDMVTkOQE",
+    "provider": "Sew & Style Tips",
+    "views": 68745,
+    "rating": 0.068745,
+    "source": "YouTube",
+    "resource_type": "video",
+    "price_type": "free",
+    "skill": "machine"
+  },
+  {
+    "title": "Machine Learning",
+    "url": "https://www.coursera.org/specializations/machine-learning-introduction",
+    "provider": "Unknown Provider",
+    "source": "Coursera",
+    "resource_type": "course",
+    "price_type": "mixed",
+    "skill": "machine"
+  },
+  {
+    "title": "Machine Learning with Python",
+    "url": "https://www.coursera.org/learn/machine-learning-with-python",
+    "provider": "Unknown Provider",
+    "source": "Coursera",
+    "resource_type": "course",
+    "price_type": "mixed",
+    "skill": "machine"
+  },
+  {
+    "title": "IBM Machine Learning",
+    "url": "https://www.coursera.org/professional-certificates/ibm-machine-learning",
+    "provider": "Unknown Provider",
+    "source": "Coursera",
+    "resource_type": "course",
+    "price_type": "mixed",
+    "skill": "machine"
+  },
+  {
+    "title": "Machine Learning",
+    "url": "https://www.coursera.org/specializations/machine-learning",
+    "provider": "Unknown Provider",
+    "source": "Coursera",
+    "resource_type": "course",
+    "price_type": "mixed",
+    "skill": "machine"
+  },
+  {
+    "title": "Mathematics for Machine Learning",
+    "url": "https://www.coursera.org/specializations/mathematics-machine-learning",
+    "provider": "Unknown Provider",
+    "source": "Coursera",
+    "resource_type": "course",
+    "price_type": "mixed",
+    "skill": "machine"
+  }
+]

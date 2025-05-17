@@ -1,0 +1,102 @@
+[
+  {
+    "title": "DevOps In 5 Minutes | What Is DevOps?| DevOps Explained | DevOps Tutorial For Beginners |Simplilearn",
+    "url": "https://www.youtube.com/watch?v=Xrgk023l4lI",
+    "provider": "Simplilearn",
+    "views": 1999171,
+    "rating": 1.999171,
+    "source": "YouTube",
+    "resource_type": "video",
+    "price_type": "free",
+    "skill": "implementation"
+  },
+  {
+    "title": "DevOpsified | Complete DevOps Implementation in one project",
+    "url": "https://www.youtube.com/watch?v=HGu9sgoHaJ0",
+    "provider": "Abhishek.Veeramalla",
+    "views": 136075,
+    "rating": 0.136075,
+    "source": "YouTube",
+    "resource_type": "video",
+    "price_type": "free",
+    "skill": "implementation"
+  },
+  {
+    "title": "Zoho Books Implementation Master Class | Complete Step-by-Step Setup & Onboarding - 2024 \ud83d\udd25\ud83d\udd25\ud83d\udd25",
+    "url": "https://www.youtube.com/watch?v=gvsLjlDOG-8",
+    "provider": "Zoho Mastery Hub",
+    "views": 30567,
+    "rating": 0.030567,
+    "source": "YouTube",
+    "resource_type": "video",
+    "price_type": "free",
+    "skill": "implementation"
+  },
+  {
+    "title": "Depth First Search (DFS) Algorithm Python Implementation",
+    "url": "https://www.youtube.com/watch?v=KL_AhurZB1M",
+    "provider": "Greg Hogg",
+    "views": 22516,
+    "rating": 0.022516,
+    "source": "YouTube",
+    "resource_type": "video",
+    "price_type": "free",
+    "skill": "implementation"
+  },
+  {
+    "title": "PPO Implementation from Scratch | Reinforcement Learning",
+    "url": "https://www.youtube.com/watch?v=xHf8oKd7cgU",
+    "provider": "Papers in 100 Lines of Code",
+    "views": 4232,
+    "rating": 0.004232,
+    "source": "YouTube",
+    "resource_type": "video",
+    "price_type": "free",
+    "skill": "implementation"
+  },
+  {
+    "title": "Strategy Implementation",
+    "url": "https://www.coursera.org/learn/strategy-implementation",
+    "provider": "Unknown Provider",
+    "source": "Coursera",
+    "resource_type": "course",
+    "price_type": "mixed",
+    "skill": "implementation"
+  },
+  {
+    "title": "Software Engineering: Implementation and Testing",
+    "url": "https://www.coursera.org/learn/software-engineering-implementation-and-testing",
+    "provider": "Unknown Provider",
+    "source": "Coursera",
+    "resource_type": "course",
+    "price_type": "mixed",
+    "skill": "implementation"
+  },
+  {
+    "title": "Mindfulness and Well-being",
+    "url": "https://www.coursera.org/specializations/mindfulness-and-well-being",
+    "provider": "Unknown Provider",
+    "source": "Coursera",
+    "resource_type": "course",
+    "price_type": "mixed",
+    "skill": "implementation"
+  },
+  {
+    "title": "Project Management Foundations, Initiation, and Planning",
+    "url": "https://www.coursera.org/learn/project-management-foundations-initiation-and-planning",
+    "provider": "Unknown Provider",
+    "source": "Coursera",
+    "resource_type": "course",
+    "price_type": "mixed",
+    "skill": "implementation"
+  },
+  {
+    "title": "ChatGPT for Project Management: Execution, Tracking, Success",
+    "url": "https://www.coursera.org/learn/chatgpt-project-management-execution",
+    "provider": "Unknown Provider",
+    "source": "Coursera",
+    "resource_type": "course",
+    "price_type": "mixed",
+    "skill": "implementation"
+  }
+]

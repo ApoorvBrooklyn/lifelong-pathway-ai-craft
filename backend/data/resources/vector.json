@@ -1,0 +1,102 @@
+[
+  {
+    "title": "Everything You Need to Know About VECTORS",
+    "url": "https://www.youtube.com/watch?v=Ej3ZVxljJfo",
+    "provider": "FloatyMonkey",
+    "views": 1534735,
+    "rating": 1.534735,
+    "source": "YouTube",
+    "resource_type": "video",
+    "price_type": "free",
+    "skill": "vector"
+  },
+  {
+    "title": "One Click - Image Trace - Short Illustrator Tutorial",
+    "url": "https://www.youtube.com/watch?v=9BiYTAZflWk",
+    "provider": "Obaeda Korani",
+    "views": 438562,
+    "rating": 0.438562,
+    "source": "YouTube",
+    "resource_type": "video",
+    "price_type": "free",
+    "skill": "vector"
+  },
+  {
+    "title": "How To Draw Digital Art \ud83c\udfa8 Vector Portrait Illustration \u2728\ufe0f Vector art",
+    "url": "https://www.youtube.com/watch?v=A-2EfvSM3_M",
+    "provider": "CleekArt",
+    "views": 276791,
+    "rating": 0.276791,
+    "source": "YouTube",
+    "resource_type": "video",
+    "price_type": "free",
+    "skill": "vector"
+  },
+  {
+    "title": "How to draw vector illustrations in Adobe Fresco",
+    "url": "https://www.youtube.com/watch?v=6uptaqf2ofQ",
+    "provider": "Ashleigh Green",
+    "views": 265371,
+    "rating": 0.265371,
+    "source": "YouTube",
+    "resource_type": "video",
+    "price_type": "free",
+    "skill": "vector"
+  },
+  {
+    "title": "Adobe illustrator tutorial | Make 3D Realistic Football #adobeillustrator #vectorgraphics",
+    "url": "https://www.youtube.com/watch?v=v1NVOSwa_OY",
+    "provider": "Skill by Ecommerce",
+    "views": 36987,
+    "rating": 0.036987,
+    "source": "YouTube",
+    "resource_type": "video",
+    "price_type": "free",
+    "skill": "vector"
+  },
+  {
+    "title": "Vector Database Fundamentals",
+    "url": "https://www.coursera.org/specializations/vector-database-fundamentals",
+    "provider": "Unknown Provider",
+    "source": "Coursera",
+    "resource_type": "course",
+    "price_type": "mixed",
+    "skill": "vector"
+  },
+  {
+    "title": "Vector Calculus for Engineers",
+    "url": "https://www.coursera.org/learn/vector-calculus-engineers",
+    "provider": "Unknown Provider",
+    "source": "Coursera",
+    "resource_type": "course",
+    "price_type": "mixed",
+    "skill": "vector"
+  },
+  {
+    "title": "Vector Search and Embeddings",
+    "url": "https://www.coursera.org/learn/vector-search-and-embeddings",
+    "provider": "Unknown Provider",
+    "source": "Coursera",
+    "resource_type": "course",
+    "price_type": "mixed",
+    "skill": "vector"
+  },
+  {
+    "title": "Vector Databases: An Introduction with Chroma DB",
+    "url": "https://www.coursera.org/learn/vector-databases-introduction-with-chromadb",
+    "provider": "Unknown Provider",
+    "source": "Coursera",
+    "resource_type": "course",
+    "price_type": "mixed",
+    "skill": "vector"
+  },
+  {
+    "title": "Natural Language Processing with Classification and Vector Spaces",
+    "url": "https://www.coursera.org/learn/classification-vector-spaces-in-nlp",
+    "provider": "Unknown Provider",
+    "source": "Coursera",
+    "resource_type": "course",
+    "price_type": "mixed",
+    "skill": "vector"
+  }
+]

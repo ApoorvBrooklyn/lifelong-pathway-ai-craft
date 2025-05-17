@@ -1,0 +1,102 @@
+[
+  {
+    "title": "Introduction to Encoders and Decoders",
+    "url": "https://www.youtube.com/watch?v=feBvhLFQEDk",
+    "provider": "Neso Academy",
+    "views": 2609738,
+    "rating": 2.609738,
+    "source": "YouTube",
+    "resource_type": "video",
+    "price_type": "free",
+    "skill": "decoder blocks"
+  },
+  {
+    "title": "2 to 4 Decoder Design",
+    "url": "https://www.youtube.com/watch?v=iir1ahUmSGc",
+    "provider": "TutorialsPoint",
+    "views": 695538,
+    "rating": 0.695538,
+    "source": "YouTube",
+    "resource_type": "video",
+    "price_type": "free",
+    "skill": "decoder blocks"
+  },
+  {
+    "title": "Decoder Explained | What is Decoder? Applications of Decoder | 5 to 32 Decoder using 3 to 8 Decoders",
+    "url": "https://www.youtube.com/watch?v=a3wh7xV5PBU",
+    "provider": "ALL ABOUT ELECTRONICS",
+    "views": 399633,
+    "rating": 0.399633,
+    "source": "YouTube",
+    "resource_type": "video",
+    "price_type": "free",
+    "skill": "decoder blocks"
+  },
+  {
+    "title": "Decoder block",
+    "url": "https://www.youtube.com/watch?v=cVuyWE4yMBU",
+    "provider": "IIT Madras - B.S. Degree Programme",
+    "views": 5694,
+    "rating": 0.005694,
+    "source": "YouTube",
+    "resource_type": "video",
+    "price_type": "free",
+    "skill": "decoder blocks"
+  },
+  {
+    "title": "Decoders theory with all block diagrams",
+    "url": "https://www.youtube.com/watch?v=YCzUG6Z4NIs",
+    "provider": "Tanmay Gupta",
+    "views": 17,
+    "rating": 1.7e-05,
+    "source": "YouTube",
+    "resource_type": "video",
+    "price_type": "free",
+    "skill": "decoder blocks"
+  },
+  {
+    "title": "Generative AI Fundamentals",
+    "url": "https://www.coursera.org/specializations/generative-ai-for-everyone",
+    "provider": "Unknown Provider",
+    "source": "Coursera",
+    "resource_type": "course",
+    "price_type": "mixed",
+    "skill": "decoder blocks"
+  },
+  {
+    "title": "FPGA Design for Embedded Systems",
+    "url": "https://www.coursera.org/specializations/fpga-design",
+    "provider": "Unknown Provider",
+    "source": "Coursera",
+    "resource_type": "course",
+    "price_type": "mixed",
+    "skill": "decoder blocks"
+  },
+  {
+    "title": "Generative AI for Data Analysts",
+    "url": "https://www.coursera.org/specializations/generative-ai-for-data-analysts",
+    "provider": "Unknown Provider",
+    "source": "Coursera",
+    "resource_type": "course",
+    "price_type": "mixed",
+    "skill": "decoder blocks"
+  },
+  {
+    "title": "Fintech: Foundations & Applications of Financial Technology",
+    "url": "https://www.coursera.org/specializations/wharton-fintech",
+    "provider": "Unknown Provider",
+    "source": "Coursera",
+    "resource_type": "course",
+    "price_type": "mixed",
+    "skill": "decoder blocks"
+  },
+  {
+    "title": "Functional Programming in Scala",
+    "url": "https://www.coursera.org/specializations/scala",
+    "provider": "Unknown Provider",
+    "source": "Coursera",
+    "resource_type": "course",
+    "price_type": "mixed",
+    "skill": "decoder blocks"
+  }
+]

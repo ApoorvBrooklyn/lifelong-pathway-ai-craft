@@ -1,0 +1,164 @@
+[
+  {
+    "title": "Backend web development - a complete overview",
+    "url": "https://www.youtube.com/watch?v=XBu54nfzxAQ",
+    "provider": "SuperSimpleDev",
+    "views": 2123200,
+    "rating": 2.1232,
+    "source": "YouTube",
+    "resource_type": "video",
+    "price_type": "free",
+    "skill": "Backend"
+  },
+  {
+    "title": "Complete Backend Course | Build and Deploy Your First Production-Ready API",
+    "url": "https://www.youtube.com/watch?v=rOpEN1JDaD0",
+    "provider": "JavaScript Mastery",
+    "views": 663457,
+    "rating": 0.663457,
+    "source": "YouTube",
+    "resource_type": "video",
+    "price_type": "free",
+    "skill": "Backend"
+  },
+  {
+    "title": "The Complete Backend Developer Roadmap",
+    "url": "https://www.youtube.com/watch?v=OeEHJgzqS1k",
+    "provider": "Programming with Mosh",
+    "views": 465566,
+    "rating": 0.465566,
+    "source": "YouTube",
+    "resource_type": "video",
+    "price_type": "free",
+    "skill": "Backend"
+  },
+  {
+    "title": "Learn Backend Development in 4 Hours | Backend Web Development Full Course",
+    "url": "https://www.youtube.com/watch?v=Q-icS7yZz5k",
+    "provider": "Sheryians Coding School",
+    "views": 304380,
+    "rating": 0.30438,
+    "source": "YouTube",
+    "resource_type": "video",
+    "price_type": "free",
+    "skill": "Backend"
+  },
+  {
+    "title": "Node JS Full Course 2024 | Complete Backend Development Course | Part 1",
+    "url": "https://www.youtube.com/watch?v=MIJt9H69QVc",
+    "provider": "Sangam Mukherjee",
+    "views": 236710,
+    "rating": 0.23671,
+    "source": "YouTube",
+    "resource_type": "video",
+    "price_type": "free",
+    "skill": "Backend"
+  },
+  {
+    "title": "IBM Back-End Development",
+    "url": "https://www.coursera.org/professional-certificates/ibm-backend-development",
+    "provider": "Unknown Provider",
+    "source": "Coursera",
+    "resource_type": "course",
+    "price_type": "mixed",
+    "skill": "Backend"
+  },
+  {
+    "title": "Meta Back-End Developer",
+    "url": "https://www.coursera.org/professional-certificates/meta-back-end-developer",
+    "provider": "Unknown Provider",
+    "source": "Coursera",
+    "resource_type": "course",
+    "price_type": "mixed",
+    "skill": "Backend"
+  },
+  {
+    "title": "Microsoft Back-End Developer",
+    "url": "https://www.coursera.org/professional-certificates/microsoft-back-end-developer",
+    "provider": "Unknown Provider",
+    "source": "Coursera",
+    "resource_type": "course",
+    "price_type": "mixed",
+    "skill": "Backend"
+  },
+  {
+    "title": "IBM Back-end JavaScript Developer",
+    "url": "https://www.coursera.org/professional-certificates/backend-javascript-developer",
+    "provider": "Unknown Provider",
+    "source": "Coursera",
+    "resource_type": "course",
+    "price_type": "mixed",
+    "skill": "Backend"
+  },
+  {
+    "title": "Data Structures & Backend with Java",
+    "url": "https://www.coursera.org/learn/data-structures--backend-with-java",
+    "provider": "Unknown Provider",
+    "source": "Coursera",
+    "resource_type": "course",
+    "price_type": "mixed",
+    "skill": "Backend"
+  },
+  {
+    "title": "HTML Input Tags List Tutorial For Beginners (Web Development)",
+    "url": "https://www.youtube.com/watch?v=GO_sp-Wl00M",
+    "provider": "CodeWithAnmol",
+    "views": 292561,
+    "rating": 0.292561,
+    "source": "YouTube",
+    "resource_type": "video",
+    "price_type": "free",
+    "skill": "Backend"
+  },
+  {
+    "title": "Spring Security | Java Spring Boot Authentication & Authorization | Hindi",
+    "url": "https://www.youtube.com/watch?v=Y-KHJ5RaOo8",
+    "provider": "CogniSolver",
+    "views": 199,
+    "rating": 0.000199,
+    "source": "YouTube",
+    "resource_type": "video",
+    "price_type": "free",
+    "skill": "Backend"
+  },
+  {
+    "title": "\u0645\u0637\u0648\u0651\u0631 \u0627\u0644\u0648\u0627\u062c\u0647\u0629 \u0627\u0644\u062e\u0644\u0641\u064a\u0629 \u0645\u0646 Meta",
+    "url": "https://www.coursera.org/professional-certificates/meta-back-end-developer-ar",
+    "provider": "Unknown Provider",
+    "source": "Coursera",
+    "resource_type": "course",
+    "price_type": "mixed",
+    "skill": "Backend"
+  },
+  {
+    "title": "Meta Full-Stack Developer",
+    "url": "https://www.coursera.org/specializations/meta-full-stack-developer",
+    "provider": "Unknown Provider",
+    "source": "Coursera",
+    "resource_type": "course",
+    "price_type": "mixed",
+    "skill": "Backend"
+  },
+  {
+    "title": "How The Backend Works",
+    "url": "https://www.youtube.com/watch?v=4r6WdaY3SOA",
+    "provider": "Web Dev Simplified",
+    "views": 583683,
+    "rating": 0.583683,
+    "source": "YouTube",
+    "resource_type": "video",
+    "price_type": "free",
+    "skill": "Backend"
+  },
+  {
+    "title": "Back-End Web Development (Tutorial for Beginners)",
+    "url": "https://www.youtube.com/watch?v=1oTuMPIwHmk",
+    "provider": "LearnWebCode",
+    "views": 71550,
+    "rating": 0.07155,
+    "source": "YouTube",
+    "resource_type": "video",
+    "price_type": "free",
+    "skill": "Backend"
+  }
+]

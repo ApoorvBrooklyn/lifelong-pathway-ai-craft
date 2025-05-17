@@ -1,0 +1,102 @@
+[
+  {
+    "title": "ChatGPT Tutorial - A Crash Course on Chat GPT for Beginners",
+    "url": "https://www.youtube.com/watch?v=JTxsNm9IdYU",
+    "provider": "Adrian Twarog",
+    "views": 5900493,
+    "rating": 5.900493,
+    "source": "YouTube",
+    "resource_type": "video",
+    "price_type": "free",
+    "skill": "gpt"
+  },
+  {
+    "title": "ChatGPT Tutorial: How to Use Chat GPT For Beginners",
+    "url": "https://www.youtube.com/watch?v=Gaf_jCnA6mc",
+    "provider": "Charlie Chang",
+    "views": 3941202,
+    "rating": 3.941202,
+    "source": "YouTube",
+    "resource_type": "video",
+    "price_type": "free",
+    "skill": "gpt"
+  },
+  {
+    "title": "How to use ChatGPT in 2025 | ChatGPT Tutorial | ChatGPT Full Course",
+    "url": "https://www.youtube.com/watch?v=mnULGqkVONI",
+    "provider": "Great Learning",
+    "views": 1031404,
+    "rating": 1.031404,
+    "source": "YouTube",
+    "resource_type": "video",
+    "price_type": "free",
+    "skill": "gpt"
+  },
+  {
+    "title": "How to Create Custom GPT | OpenAI Tutorial",
+    "url": "https://www.youtube.com/watch?v=0Q1AQAxpdGg",
+    "provider": "Kevin Stratvert",
+    "views": 331475,
+    "rating": 0.331475,
+    "source": "YouTube",
+    "resource_type": "video",
+    "price_type": "free",
+    "skill": "gpt"
+  },
+  {
+    "title": "How To Create Custom GPTs For Beginners",
+    "url": "https://www.youtube.com/watch?v=ABVwhZWg1Uk",
+    "provider": "The AI Advantage",
+    "views": 120541,
+    "rating": 0.120541,
+    "source": "YouTube",
+    "resource_type": "video",
+    "price_type": "free",
+    "skill": "gpt"
+  },
+  {
+    "title": "Prompt Engineering for ChatGPT",
+    "url": "https://www.coursera.org/learn/prompt-engineering",
+    "provider": "Unknown Provider",
+    "source": "Coursera",
+    "resource_type": "course",
+    "price_type": "mixed",
+    "skill": "gpt"
+  },
+  {
+    "title": "ChatGPT: Excel at Personal Automation with GPTs, AI & Zapier",
+    "url": "https://www.coursera.org/specializations/chatgpt-gpt-zapier-excel-at-automation",
+    "provider": "Unknown Provider",
+    "source": "Coursera",
+    "resource_type": "course",
+    "price_type": "mixed",
+    "skill": "gpt"
+  },
+  {
+    "title": "OpenAI GPTs: Creating Your Own Custom AI Assistants",
+    "url": "https://www.coursera.org/learn/openai-custom-gpts",
+    "provider": "Unknown Provider",
+    "source": "Coursera",
+    "resource_type": "course",
+    "price_type": "mixed",
+    "skill": "gpt"
+  },
+  {
+    "title": "Generative AI: Prompt Engineering Basics",
+    "url": "https://www.coursera.org/learn/generative-ai-prompt-engineering-for-everyone",
+    "provider": "Unknown Provider",
+    "source": "Coursera",
+    "resource_type": "course",
+    "price_type": "mixed",
+    "skill": "gpt"
+  },
+  {
+    "title": "ChatGPT for Project Management - Leveraging AI for Success",
+    "url": "https://www.coursera.org/specializations/chatgpt-project-management",
+    "provider": "Unknown Provider",
+    "source": "Coursera",
+    "resource_type": "course",
+    "price_type": "mixed",
+    "skill": "gpt"
+  }
+]
