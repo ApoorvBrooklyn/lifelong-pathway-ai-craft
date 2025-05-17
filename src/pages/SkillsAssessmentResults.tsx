@@ -95,9 +95,6 @@ const SkillsAssessmentResults: React.FC<SkillsAssessmentResultsProps> = ({ analy
                   {riskAssessment.map((risk: any, idx: number) => (
                     <div key={idx} className="bg-red-50 p-4 rounded-md">
                       <h4 className="font-medium text-red-800">{risk.risk}</h4>
-                      <p className="text-gray-700 mt-1">
-                        <span className="font-medium">Mitigation:</span> {risk.mitigation_strategy}
-                      </p>
                     </div>
                   ))}
                 </div>
