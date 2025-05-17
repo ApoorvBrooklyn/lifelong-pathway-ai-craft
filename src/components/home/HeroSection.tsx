@@ -19,7 +19,7 @@ const HeroSection = () => {
                 <Link to="/assessment">Start Skill Assessment</Link>
               </Button>
               <Button asChild size="lg" variant="outline" className="text-base">
-                <Link to="/paths">Explore Career Paths</Link>
+                <Link to="/career-paths">Explore VR based Career Paths</Link>
               </Button>
             </div>
           </div>

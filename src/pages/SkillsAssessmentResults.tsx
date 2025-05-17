@@ -111,9 +111,9 @@ const SkillsAssessmentResults: React.FC<SkillsAssessmentResultsProps> = ({ analy
               <div>
                 <h3 className="text-xl font-semibold mb-3">Required Skills</h3>
                 <div className="flex flex-wrap gap-2 mb-6">
-                  {requiredSkills.map((skill: string, idx: number) => (
+                  {requiredSkills.map((skill: any, idx: number) => (
                     <Badge key={idx} variant="secondary" className="text-sm py-1 px-3">
-                      {skill}
+                      {typeof skill === 'object' ? skill.skill : skill}
                     </Badge>
                   ))}
                 </div>
@@ -126,21 +126,27 @@ const SkillsAssessmentResults: React.FC<SkillsAssessmentResultsProps> = ({ analy
                     <div key={idx} className="border border-gray-200 rounded-md overflow-hidden">
                       <div className="bg-gray-50 p-3 border-b border-gray-200">
                         <h4 className="font-medium">{gap.skill}</h4>
+                        <p className="text-sm text-gray-600 mt-1">{gap.gap}</p>
                       </div>
                       <div className="p-4">
                         <div className="flex items-center justify-between mb-1">
                           <span className="text-sm text-gray-500">Current Level</span>
-                          <span className="text-sm font-medium">{gap.current_level}</span>
+                          <span className="text-sm font-medium">{gap.current_score}%</span>
                         </div>
                         <Progress 
-                          value={(gap.current_level / gap.target_level) * 100} 
+                          value={gap.current_score} 
                           className="h-2 mb-3"
                         />
                         <div className="flex items-center justify-between mb-1">
                           <span className="text-sm text-gray-500">Target Level</span>
-                          <span className="text-sm font-medium">{gap.target_level}</span>
+                          <span className="text-sm font-medium">{gap.target_score}%</span>
                         </div>
-                        <Progress value={100} className="h-2 mb-3" />
+                        <Progress value={gap.target_score} className="h-2 mb-3" />
+                        <div className="mt-2">
+                          <Badge variant={gap.priority === 'high' ? 'secondary' : 'default'}>
+                            Priority: {gap.priority}
+                          </Badge>
+                        </div>
                       </div>
                     </div>
                   ))}
@@ -166,19 +172,40 @@ const SkillsAssessmentResults: React.FC<SkillsAssessmentResultsProps> = ({ analy
                         <div className="absolute left-[-32px] top-0 w-4 h-4 rounded-full bg-blue-500"></div>
                         
                         <div className="bg-white border border-gray-200 rounded-lg shadow-sm p-4">
-                          <h4 className="font-medium text-lg">{phase.phase}</h4>
-                          <p className="text-gray-600 text-sm mt-1">Duration: {phase.duration} months</p>
+                          <h4 className="font-medium text-lg">{phase.title}</h4>
+                          <p className="text-gray-600 text-sm mt-1">{phase.description}</p>
+                          <p className="text-gray-600 text-sm mt-1">Duration: {phase.duration}</p>
                           
-                          {phase.skills && phase.skills.length > 0 && (
+                          {phase.skills_to_develop && phase.skills_to_develop.length > 0 && (
                             <div className="mt-3">
                               <h5 className="text-sm font-medium mb-2">Skills to Learn:</h5>
                               <div className="flex flex-wrap gap-2">
-                                {phase.skills.map((skill: string, skillIdx: number) => (
+                                {phase.skills_to_develop.map((skill: string, skillIdx: number) => (
                                   <Badge key={skillIdx} variant="outline" className="bg-blue-50">
                                     {skill}
                                   </Badge>
                                 ))}
                               </div>
+                            </div>
+                          )}
+
+                          {phase.resources && phase.resources.length > 0 && (
+                            <div className="mt-3">
+                              <h5 className="text-sm font-medium mb-2">Resources:</h5>
+                              <ul className="list-disc pl-5 space-y-1">
+                                {phase.resources.map((resource: string, resourceIdx: number) => (
+                                  <li key={resourceIdx}>
+                                    <a 
+                                      href={resource} 
+                                      target="_blank" 
+                                      rel="noopener noreferrer"
+                                      className="text-blue-600 hover:text-blue-800 text-sm"
+                                    >
+                                      {resource}
+                                    </a>
+                                  </li>
+                                ))}
+                              </ul>
                             </div>
                           )}
                         </div>
@@ -197,7 +224,20 @@ const SkillsAssessmentResults: React.FC<SkillsAssessmentResultsProps> = ({ analy
                         {milestone.target_date}
                       </div>
                       <div className="flex-grow p-3 bg-green-50 rounded-md">
-                        {milestone.milestone}
+                        <h4 className="font-medium">{milestone.milestone}</h4>
+                        <p className="text-sm text-gray-600 mt-1">{milestone.description}</p>
+                        {milestone.dependencies && milestone.dependencies.length > 0 && (
+                          <div className="mt-2">
+                            <span className="text-sm text-gray-500">Dependencies: </span>
+                            <div className="flex flex-wrap gap-1 mt-1">
+                              {milestone.dependencies.map((dep: string, depIdx: number) => (
+                                <Badge key={depIdx} variant="outline" className="bg-gray-50">
+                                  {dep}
+                                </Badge>
+                              ))}
+                            </div>
+                          </div>
+                        )}
                       </div>
                     </div>
                   ))}
@@ -213,22 +253,26 @@ const SkillsAssessmentResults: React.FC<SkillsAssessmentResultsProps> = ({ analy
               {resources.map((resource: any, idx: number) => (
                 <div key={idx} className="bg-white border border-gray-200 rounded-lg shadow-sm overflow-hidden hover:shadow-md transition-shadow">
                   <div className="p-4">
-                    <h4 className="font-medium text-blue-700 mb-2">{resource.resource}</h4>
-                    <p className="text-gray-600 text-sm italic mb-3">{resource.type}</p>
+                    <h4 className="font-medium text-blue-700 mb-2">
+                      <a 
+                        href={resource.url} 
+                        target="_blank" 
+                        rel="noopener noreferrer"
+                        className="hover:text-blue-900"
+                      >
+                        {resource.title}
+                      </a>
+                    </h4>
+                    <p className="text-gray-600 text-sm italic mb-2">{resource.type}</p>
+                    <p className="text-gray-600 text-sm mb-3">{resource.description}</p>
                     
-                    <div className="flex items-center justify-between">
-                      <Badge variant={resource.cost === 'free' ? 'success' : 
-                              (resource.cost === 'low' ? 'secondary' : 'default')}>
-                        {resource.cost === 'free' ? 'Free' : 
-                         resource.cost === 'low' ? 'Low Cost' : 
-                         resource.cost === 'medium' ? 'Medium Cost' : 'High Cost'}
+                    <div className="flex flex-wrap gap-2">
+                      <Badge variant="secondary">
+                        {resource.difficulty}
                       </Badge>
-                      
-                      {resource.interactive && (
-                        <Badge variant="outline" className="bg-purple-50">
-                          Interactive
-                        </Badge>
-                      )}
+                      <Badge variant="outline">
+                        {resource.estimated_time}
+                      </Badge>
                     </div>
                   </div>
                 </div>

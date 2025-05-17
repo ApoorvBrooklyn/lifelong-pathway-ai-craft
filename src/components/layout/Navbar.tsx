@@ -1,8 +1,8 @@
 
-import { useState } from "react";
+import { useState , useEffect} from "react";
 import { Button } from "@/components/ui/button";
 import { Link, useNavigate } from "react-router-dom";
-import { GraduationCap, LogOut, User } from "lucide-react";
+import { GraduationCap, LogOut, User, Box } from "lucide-react";
 import { useSession } from "@/providers/SessionProvider";
 import { supabase } from "@/integrations/supabase/client";
 import {
@@ -18,9 +18,19 @@ import { useToast } from "@/hooks/use-toast";
 
 const Navbar = () => {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const [webXRSupported, setWebXRSupported] = useState(false);
   const { user } = useSession();
   const navigate = useNavigate();
   const { toast } = useToast();
+  useEffect(() => {
+    // Check for WebXR support
+    if ('xr' in navigator) {
+      (navigator as any).xr?.isSessionSupported('immersive-vr')
+        .then((supported: boolean) => setWebXRSupported(supported))
+        .catch(() => setWebXRSupported(false));
+    }
+  }, []);
+
 
   const toggleMobileMenu = () => {
     setIsMobileMenuOpen(!isMobileMenuOpen);
@@ -43,6 +53,10 @@ const Navbar = () => {
       });
     }
   };
+  const launchCareerPaths = (e) => {
+    e.preventDefault();
+    navigate("/career-paths");
+  };
 
   const userInitials = user?.email
     ? user.email.substring(0, 2).toUpperCase()
@@ -62,9 +76,17 @@ const Navbar = () => {
           {/* Desktop Navigation */}
           <div className="hidden md:flex items-center space-x-6">
             <Link to="/" className="text-foreground hover:text-primary font-medium">Home</Link>
-            <Link to="/assessment" className="text-foreground hover:text-primary font-medium">Skills Assessment</Link>
-            <Link to="/paths" className="text-foreground hover:text-primary font-medium">Career Paths</Link>
-            <Link to="/learning" className="text-foreground hover:text-primary font-medium">Learning</Link>
+            <Link to="/assessment" className="text-foreground hover:text-primary font-medium">Skills and Gap Analysis</Link> 
+           <Button 
+              onClick={launchCareerPaths} 
+              variant="ghost" 
+              className="flex items-center font-medium"
+            >
+              <Box className="h-4 w-4 mr-1" />
+              VR Career path
+            </Button>
+
+            <Link to="/learning" className="text-foreground hover:text-primary font-medium">Self Assessment and Certification</Link>
             
             {user ? (
               <DropdownMenu>
@@ -148,13 +170,17 @@ const Navbar = () => {
               >
                 Skills Assessment
               </Link>
-              <Link 
-                to="/paths" 
-                className="text-foreground hover:text-primary font-medium block px-3 py-2"
-                onClick={() => setIsMobileMenuOpen(false)}
+              <Button
+                onClick={(e) => {
+                  launchCareerPaths(e);
+                  setIsMobileMenuOpen(false);
+                }}
+                variant="ghost"
+                className="text-foreground hover:text-primary font-medium flex items-center justify-start px-3 py-2 w-full"
               >
+                <Box className="h-4 w-4 mr-1" />
                 Career Paths
-              </Link>
+              </Button>
               <Link 
                 to="/learning" 
                 className="text-foreground hover:text-primary font-medium block px-3 py-2"

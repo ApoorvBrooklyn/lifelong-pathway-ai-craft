@@ -309,29 +309,80 @@ Budget: {budget}
 
 Please provide a structured analysis including:
 1. Required skills for the target role
-2. Skill gaps analysis
-3. Learning path recommendations
+2. Skill gaps analysis with current and target scores
+3. Learning path recommendations with clear phases and milestones
 4. Timeline-based milestones
 5. Resource recommendations based on learning style and budget
 6. Risk assessment and mitigation strategies
 
 Format the response as a JSON object with the following structure:
 {{
-    "required_skills": [],
-    "skill_gaps": [],
-    "learning_path": [],
-    "milestones": [],
-    "resources": [],
-    "risk_assessment": []
+    "required_skills": [
+        {{
+            "skill": "skill name",
+            "importance": "high/medium/low",
+            "description": "brief description"
+        }}
+    ],
+    "skill_gaps": [
+        {{
+            "skill": "skill name",
+            "current_score": 0-100,
+            "target_score": 0-100,
+            "gap": "description of the gap",
+            "priority": "high/medium/low"
+        }}
+    ],
+    "learning_path": [
+        {{
+            "phase": "phase number",
+            "title": "phase title",
+            "description": "phase description",
+            "duration": "estimated duration",
+            "skills_to_develop": ["skill1", "skill2"],
+            "resources": ["resource1", "resource2"]
+        }}
+    ],
+    "milestones": [
+        {{
+            "milestone": "milestone name",
+            "description": "milestone description",
+            "target_date": "YYYY-MM-DD",
+            "dependencies": ["dependency1", "dependency2"]
+        }}
+    ],
+    "resources": [
+        {{
+            "title": "resource title",
+            "type": "course/video/book",
+            "url": "resource url",
+            "description": "resource description",
+            "difficulty": "beginner/intermediate/advanced",
+            "estimated_time": "estimated completion time"
+        }}
+    ],
+    "risk_assessment": [
+        {{
+            "risk": "risk description",
+            "impact": "high/medium/low",
+            "probability": "high/medium/low",
+            "mitigation": "mitigation strategy"
+        }}
+    ]
 }}
 
-IMPORTANT: Return ONLY the JSON object without any additional text, markdown formatting, or explanations."""
+IMPORTANT: 
+1. Return ONLY the JSON object without any additional text, markdown formatting, or explanations.
+2. Always include current_score and target_score for each skill gap.
+3. Ensure learning_path has at least 3 phases with clear progression.
+4. Include at least 5 resources per skill gap.
+5. All scores should be between 0-100."""
 
         logger.debug("Sending request to Groq API")
         completion = groq_client.chat.completions.create(
             model=GROQ_MODEL,
             messages=[
-                {"role": "system", "content": "You are a career development expert specializing in technical roles and skill gap analysis. Always respond with valid JSON only, without any additional text or formatting."},
+                {"role": "system", "content": "You are a career development expert specializing in technical roles and skill gap analysis. Always respond with valid JSON only, without any additional text or formatting. Ensure all required fields are present and properly formatted."},
                 {"role": "user", "content": prompt}
             ],
             temperature=0.7,
@@ -346,11 +397,43 @@ IMPORTANT: Return ONLY the JSON object without any additional text, markdown for
         
         try:
             # Clean the response text to ensure it's valid JSON
-            # Remove any markdown code block indicators
             response_text = response_text.replace('```json', '').replace('```', '').strip()
             
             # Parse the JSON
             analysis = json.loads(response_text)
+            
+            # Validate required fields
+            required_fields = ['required_skills', 'skill_gaps', 'learning_path', 'milestones', 'resources', 'risk_assessment']
+            for field in required_fields:
+                if field not in analysis or not analysis[field]:
+                    logger.error(f"Missing or empty required field: {field}")
+                    # Add default values for missing fields
+                    if field == 'skill_gaps':
+                        analysis[field] = [{
+                            'skill': skill,
+                            'current_score': 0,
+                            'target_score': 100,
+                            'gap': f"Need to develop {skill}",
+                            'priority': 'high'
+                        } for skill in current_skills]
+                    elif field == 'learning_path':
+                        analysis[field] = [{
+                            'phase': '1',
+                            'title': 'Foundation',
+                            'description': 'Build fundamental skills',
+                            'duration': '3 months',
+                            'skills_to_develop': current_skills,
+                            'resources': []
+                        }]
+                    elif field == 'resources':
+                        analysis[field] = [{
+                            'title': f'Introduction to {skill}',
+                            'type': 'course',
+                            'url': f'https://example.com/{skill}',
+                            'description': f'Learn the basics of {skill}',
+                            'difficulty': 'beginner',
+                            'estimated_time': '2 weeks'
+                        } for skill in current_skills]
             
             # Add a summary section for frontend display
             analysis['summary'] = {
@@ -372,9 +455,19 @@ IMPORTANT: Return ONLY the JSON object without any additional text, markdown for
         except json.JSONDecodeError as e:
             logger.error(f"Failed to parse JSON response: {str(e)}")
             logger.error(f"Raw response that failed to parse: {response_text}")
+            # Return a default response with basic structure
             return {
-                "error": "Failed to parse Groq response as JSON",
-                "raw_response": response_text
+                "required_skills": [{"skill": skill, "importance": "high", "description": f"Required for {target_role}"} for skill in current_skills],
+                "skill_gaps": [{"skill": skill, "current_score": 0, "target_score": 100, "gap": f"Need to develop {skill}", "priority": "high"} for skill in current_skills],
+                "learning_path": [{"phase": "1", "title": "Foundation", "description": "Build fundamental skills", "duration": "3 months", "skills_to_develop": current_skills, "resources": []}],
+                "milestones": [{"milestone": f"Learn {skill}", "description": f"Master {skill}", "target_date": "2024-12-31", "dependencies": []} for skill in current_skills],
+                "resources": [{"title": f"Introduction to {skill}", "type": "course", "url": f"https://example.com/{skill}", "description": f"Learn the basics of {skill}", "difficulty": "beginner", "estimated_time": "2 weeks"} for skill in current_skills],
+                "risk_assessment": [{"risk": "Skill gap", "impact": "high", "probability": "high", "mitigation": "Regular practice and learning"}],
+                "summary": {
+                    "title": f"Career Path Analysis for {target_role}",
+                    "overview": f"Basic analysis for {target_role} role",
+                    "key_findings": ["Basic skill analysis", "Learning path created", "Resources recommended"]
+                }
             }
             
     except Exception as e:
@@ -854,9 +947,82 @@ def get_resources(skill):
             with open(skill_file, 'r') as f:
                 resources = json.load(f)
         
+        # If no resources found, try to find similar skills
+        if not resources:
+            # List of common skill variations
+            skill_variations = {
+                'python': ['programming', 'coding', 'software development'],
+                'javascript': ['web development', 'frontend', 'programming'],
+                'machine learning': ['ai', 'artificial intelligence', 'data science'],
+                'data science': ['analytics', 'machine learning', 'statistics'],
+                'web development': ['frontend', 'backend', 'full stack'],
+                'cloud': ['aws', 'azure', 'gcp', 'devops'],
+                'devops': ['cloud', 'automation', 'ci/cd'],
+                'database': ['sql', 'nosql', 'data management'],
+                'mobile': ['android', 'ios', 'react native'],
+                'security': ['cybersecurity', 'information security', 'network security']
+            }
+            
+            # Try to find resources for similar skills
+            similar_skills = skill_variations.get(skill.lower(), [])
+            for similar_skill in similar_skills:
+                similar_file = os.path.join(resources_dir, f"{similar_skill.lower().replace(' ', '_')}.json")
+                if os.path.exists(similar_file):
+                    with open(similar_file, 'r') as f:
+                        similar_resources = json.load(f)
+                        resources.extend(similar_resources)
+        
+        # If still no resources, return default resources
+        if not resources:
+            resources = [
+                {
+                    "title": f"Introduction to {skill}",
+                    "url": f"https://www.coursera.org/search?query={skill}",
+                    "provider": "Coursera",
+                    "source": "Coursera",
+                    "resource_type": "course",
+                    "price_type": "mixed",
+                    "skill": skill
+                },
+                {
+                    "title": f"Learn {skill} - Full Course for Beginners",
+                    "url": f"https://www.youtube.com/results?search_query=learn+{skill}+tutorial",
+                    "provider": "YouTube",
+                    "source": "YouTube",
+                    "resource_type": "video",
+                    "price_type": "free",
+                    "skill": skill
+                },
+                {
+                    "title": f"{skill} Documentation",
+                    "url": f"https://www.google.com/search?q={skill}+documentation",
+                    "provider": "Official Documentation",
+                    "source": "Documentation",
+                    "resource_type": "documentation",
+                    "price_type": "free",
+                    "skill": skill
+                }
+            ]
+        
+        # Sort resources by rating if available
+        resources.sort(key=lambda x: x.get('rating', 0), reverse=True)
+        
+        # Ensure we have a mix of resource types
+        resource_types = ['course', 'video', 'documentation']
+        final_resources = []
+        for resource_type in resource_types:
+            type_resources = [r for r in resources if r.get('resource_type', '').lower() == resource_type]
+            if type_resources:
+                final_resources.extend(type_resources[:max_results // len(resource_types)])
+        
+        # If we don't have enough resources, add more from the original list
+        if len(final_resources) < max_results:
+            remaining = [r for r in resources if r not in final_resources]
+            final_resources.extend(remaining[:max_results - len(final_resources)])
+        
         return jsonify({
             'skill': skill,
-            'resources': resources[:max_results]
+            'resources': final_resources[:max_results]
         })
         
     except Exception as e:
