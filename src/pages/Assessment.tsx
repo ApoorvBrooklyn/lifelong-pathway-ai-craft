@@ -1,4 +1,3 @@
-
 import { useState, useRef, FormEvent } from "react";
 import Navbar from "@/components/layout/Navbar";
 import Footer from "@/components/layout/Footer";
@@ -9,6 +8,8 @@ import { Progress } from "@/components/ui/progress";
 import SkillsRadarChart from "@/components/dashboard/SkillsRadarChart";
 import { useToast } from "@/components/ui/use-toast";
 import { Loader2 } from "lucide-react";
+import SkillsAssessmentResults from './SkillsAssessmentResults';
+import axios from 'axios';
 
 // Mock data for radar chart
 const skillsData = [
@@ -176,8 +177,14 @@ const Assessment = () => {
         }
         
         const results = await response.json();
+        console.log("Received assessment results:", results); // Log the entire response
         setAssessmentResults(results);
         setCompleted(true);
+
+        // Save assessment results automatically
+        if (results) {
+          await handleSaveAssessment();
+        }
       } catch (error) {
         console.error('Error submitting assessment:', error);
         toast({
@@ -219,6 +226,79 @@ const Assessment = () => {
     // Reset file input
     if (fileInputRef.current) {
       fileInputRef.current.value = '';
+    }
+  };
+
+  const [analysisData, setAnalysisData] = useState(null);
+  const [error, setError] = useState(null);
+
+  async function fetchAnalysis() {
+    setLoading(true);
+    try {
+      const response = await axios.post('/api/assess-skills', {
+        // Your skill assessment data
+        targetRole: 'Machine Learning Engineer',
+        jobDescription: '...',
+        // other fields
+      });
+      setAnalysisData(response.data);
+    } catch (err) {
+      setError(err.message || 'Failed to fetch analysis');
+    } finally {
+      setLoading(false);
+    }
+  }
+
+  const handleSaveAssessment = async () => {
+    if (!assessmentResults) return;
+    
+    try {
+      const saveData = {
+        user_id: localStorage.getItem('user_id') || undefined, // Get user ID from local storage if available
+        user_name: localStorage.getItem('user_name') || undefined,
+        target_role: formData.targetRole,
+        current_role: formData.currentRole,
+        experience: formData.experience,
+        timeframe: formData.timeframe,
+        assessment_results: assessmentResults
+      };
+      
+      const response = await fetch('http://localhost:5000/api/save-assessment', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(saveData),
+      });
+      
+      if (!response.ok) {
+        throw new Error('Failed to save assessment');
+      }
+      
+      const result = await response.json();
+      
+      // Store user ID for future use
+      if (result.user_id) {
+        localStorage.setItem('user_id', result.user_id);
+      }
+      
+      // Store assessment ID
+      if (result.assessment_id) {
+        localStorage.setItem('latest_assessment_id', result.assessment_id);
+      }
+      
+      toast({
+        title: "Assessment saved successfully",
+        description: "You can view your learning path in the dashboard.",
+      });
+      
+    } catch (error) {
+      console.error('Error saving assessment:', error);
+      toast({
+        title: "Failed to save assessment",
+        description: "There was a problem saving your assessment.",
+        variant: "destructive"
+      });
     }
   };
 
@@ -518,160 +598,28 @@ const Assessment = () => {
               </Card>
             ) : (
               <div>
-                <Card className="mb-6">
-                  <CardHeader>
-                    <CardTitle>Your Skills Assessment Results</CardTitle>
-                  </CardHeader>
-                  <CardContent>
-                    <Tabs defaultValue="overview">
-                      <TabsList className="grid w-full grid-cols-3">
-                        <TabsTrigger value="overview">Overview</TabsTrigger>
-                        <TabsTrigger value="strengths">Strengths</TabsTrigger>
-                        <TabsTrigger value="improvement">Areas for Growth</TabsTrigger>
-                      </TabsList>
-                      <TabsContent value="overview" className="pt-6">
-                        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                          <div>
-                            <h3 className="text-lg font-medium mb-3">Skill Distribution</h3>
-                            <SkillsRadarChart data={assessmentResults?.skillScores || skillsData} />
-                          </div>
-                          <div>
-                            <h3 className="text-lg font-medium mb-3">Assessment Summary</h3>
-                            <p className="text-muted-foreground mb-4">
-                              {assessmentResults?.estimatedMonths ? (
-                                <>Based on our analysis, we estimate it will take approximately {assessmentResults.estimatedMonths} months to reach your target role with your current commitment level.</>
-                              ) : (
-                                <>Based on your profile, you have strong technical skills particularly in frontend development. 
-                                Your problem-solving abilities are excellent, but there are opportunities to develop leadership 
-                                and strategic communication skills to reach your career goals.</>
-                              )}
-                            </p>
-                            
-                            <h4 className="font-medium mb-2">Skill Gaps:</h4>
-                            {assessmentResults?.skillGaps ? (
-                              <div className="space-y-2 mb-4">
-                                {assessmentResults.skillGaps.highPriority?.length > 0 && (
-                                  <div className="p-2 bg-red-50 border border-red-200 rounded-md">
-                                    <p className="font-medium text-sm text-red-800 mb-1">High Priority Gaps:</p>
-                                    <p className="text-sm text-red-700">
-                                      {assessmentResults.skillGaps.highPriority.join(", ")}
-                                    </p>
-                                  </div>
-                                )}
-                                
-                                {assessmentResults.skillGaps.mediumPriority?.length > 0 && (
-                                  <div className="p-2 bg-amber-50 border border-amber-200 rounded-md">
-                                    <p className="font-medium text-sm text-amber-800 mb-1">Medium Priority Gaps:</p>
-                                    <p className="text-sm text-amber-700">
-                                      {assessmentResults.skillGaps.mediumPriority.join(", ")}
-                                    </p>
-                                  </div>
-                                )}
-                              </div>
-                            ) : (
-                              <p className="text-muted-foreground mb-4">
-                                Upload your resume and add a job description to identify specific skill gaps.
-                              </p>
-                            )}
-                            
-                            <h4 className="font-medium mb-2">Recommended Focus Areas:</h4>
-                            <ul className="list-disc pl-5 space-y-1 mb-4">
-                              {assessmentResults?.recommendations ? (
-                                assessmentResults.recommendations.map((rec: string, index: number) => (
-                                  <li key={index}>{rec}</li>
-                                ))
-                              ) : (
-                                <>
-                                  <li>Team leadership and management</li>
-                                  <li>Technical communication with non-technical stakeholders</li>
-                                  <li>Advanced React patterns and architecture</li>
-                                </>
-                              )}
-                            </ul>
-                            
-                            {assessmentResults?.improvementAreas && assessmentResults.improvementAreas.length > 0 && (
-                              <>
-                                <h4 className="font-medium mb-2">Areas for Improvement:</h4>
-                                <ul className="list-disc pl-5 space-y-1">
-                                  {assessmentResults.improvementAreas.map((area: string, index: number) => (
-                                    <li key={index}>{area}</li>
-                                  ))}
-                                </ul>
-                              </>
-                            )}
-                            
-                            {assessmentResults?.timelineRecommendations && assessmentResults.timelineRecommendations.length > 0 && (
-                              <div className="mt-4 p-3 bg-blue-50 border border-blue-200 rounded-md">
-                                <p className="text-sm text-blue-800">
-                                  <strong>Timeline Assessment:</strong> {assessmentResults.timelineRecommendations[0]}
-                                </p>
-                              </div>
-                            )}
-                          </div>
-                        </div>
-                      </TabsContent>
-                      <TabsContent value="strengths" className="pt-6">
-                        <h3 className="text-lg font-medium mb-3">Your Key Strengths</h3>
-                        <ul className="space-y-3">
-                          <li className="flex items-start">
-                            <span className="inline-flex bg-green-100 text-green-800 rounded-full p-1 mr-2">✓</span>
-                            <div>
-                              <span className="font-medium">Technical Proficiency</span>
-                              <p className="text-muted-foreground">Strong coding skills with expertise in JavaScript and modern frameworks.</p>
-                            </div>
-                          </li>
-                          <li className="flex items-start">
-                            <span className="inline-flex bg-green-100 text-green-800 rounded-full p-1 mr-2">✓</span>
-                            <div>
-                              <span className="font-medium">Problem Solving</span>
-                              <p className="text-muted-foreground">Excellent ability to diagnose complex technical issues and implement effective solutions.</p>
-                            </div>
-                          </li>
-                          <li className="flex items-start">
-                            <span className="inline-flex bg-green-100 text-green-800 rounded-full p-1 mr-2">✓</span>
-                            <div>
-                              <span className="font-medium">Adaptability</span>
-                              <p className="text-muted-foreground">Quick to learn new technologies and frameworks as needed for projects.</p>
-                            </div>
-                          </li>
-                        </ul>
-                      </TabsContent>
-                      <TabsContent value="improvement" className="pt-6">
-                        <h3 className="text-lg font-medium mb-3">Areas for Development</h3>
-                        <ul className="space-y-3">
-                          <li className="flex items-start">
-                            <span className="inline-flex bg-amber-100 text-amber-800 rounded-full p-1 mr-2">!</span>
-                            <div>
-                              <span className="font-medium">Leadership Skills</span>
-                              <p className="text-muted-foreground">Developing mentorship abilities and team coordination skills would help in progression to senior roles.</p>
-                            </div>
-                          </li>
-                          <li className="flex items-start">
-                            <span className="inline-flex bg-amber-100 text-amber-800 rounded-full p-1 mr-2">!</span>
-                            <div>
-                              <span className="font-medium">Strategic Communication</span>
-                              <p className="text-muted-foreground">Improving ability to communicate technical concepts to non-technical stakeholders.</p>
-                            </div>
-                          </li>
-                          <li className="flex items-start">
-                            <span className="inline-flex bg-amber-100 text-amber-800 rounded-full p-1 mr-2">!</span>
-                            <div>
-                              <span className="font-medium">System Architecture</span>
-                              <p className="text-muted-foreground">Enhancing knowledge of broader system design principles for more complex applications.</p>
-                            </div>
-                          </li>
-                        </ul>
-                      </TabsContent>
-                    </Tabs>
-                  </CardContent>
-                </Card>
+                {assessmentResults ? (
+                  <SkillsAssessmentResults analysisData={assessmentResults} />
+                ) : (
+                  <Card className="mb-6">
+                    <CardHeader>
+                      <CardTitle>No Results Available</CardTitle>
+                    </CardHeader>
+                    <CardContent>
+                      <p>No assessment results were returned. Please try again.</p>
+                    </CardContent>
+                  </Card>
+                )}
                 
                 <div className="flex justify-center mt-8">
                   <Button onClick={resetAssessment} variant="outline" className="mr-4">
                     Restart Assessment
                   </Button>
-                  <Button asChild>
-                    <a href="/dashboard">View Recommended Paths</a>
+                  <Button asChild className="mr-4">
+                    <a href="/dashboard">View Dashboard</a>
+                  </Button>
+                  <Button asChild variant="secondary">
+                    <a href={`/learning-path/${localStorage.getItem('latest_assessment_id')}`}>View Learning Path</a>
                   </Button>
                 </div>
               </div>

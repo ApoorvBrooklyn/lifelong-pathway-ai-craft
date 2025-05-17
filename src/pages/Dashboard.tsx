@@ -1,7 +1,8 @@
 import { useState, useEffect } from "react";
+import { useNavigate } from "react-router-dom";
 import Navbar from "@/components/layout/Navbar";
 import Footer from "@/components/layout/Footer";
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+import { Card, CardContent, CardHeader, CardTitle, CardDescription, CardFooter } from "@/components/ui/card";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { Button } from "@/components/ui/button";
 import CareerProgressCard from "@/components/dashboard/CareerProgressCard";
@@ -10,6 +11,15 @@ import SkillsRadarChart from "@/components/dashboard/SkillsRadarChart";
 import { useToast } from "@/components/ui/use-toast";
 import { useSession } from "@/providers/SessionProvider";
 import { getUserProfile, getRecommendedCourses, getUserSkills, getCareerProgress } from "@/integrations/supabase/api";
+import { 
+  Loader2,
+  ChevronRight,
+  PlusCircle,
+  Briefcase,
+  Target,
+  Clock,
+  School
+} from "lucide-react";
 
 // Fallback data
 const fallbackSkillsData = [
@@ -53,7 +63,19 @@ const fallbackCourses = [
   }
 ];
 
+interface Assessment {
+  id: string;
+  user_id: string;
+  target_role: string;
+  current_role: string;
+  experience: string;
+  timeframe: string;
+  created_at: string;
+  assessment_data: any;
+}
+
 const Dashboard = () => {
+  const navigate = useNavigate();
   const { toast } = useToast();
   const { user } = useSession();
   const [profile, setProfile] = useState(null);
@@ -61,6 +83,8 @@ const Dashboard = () => {
   const [courses, setCourses] = useState(fallbackCourses);
   const [careerPaths, setCareerPaths] = useState([]);
   const [loading, setLoading] = useState(true);
+  const [assessments, setAssessments] = useState<Assessment[]>([]);
+  const [error, setError] = useState<string | null>(null);
 
   useEffect(() => {
     // Only fetch data if user is available
@@ -111,6 +135,42 @@ const Dashboard = () => {
     }
   }, [user, toast]);
 
+  useEffect(() => {
+    const fetchAssessments = async () => {
+      // Get user ID from local storage
+      const userId = localStorage.getItem('user_id');
+      
+      if (!userId) {
+        setLoading(false);
+        return; // No assessments to fetch
+      }
+      
+      try {
+        const response = await fetch(`http://localhost:5000/api/get-assessments/${userId}`);
+        
+        if (!response.ok) {
+          throw new Error('Failed to fetch assessments');
+        }
+        
+        const data = await response.json();
+        setAssessments(data.assessments || []);
+        
+      } catch (error) {
+        console.error('Error fetching assessments:', error);
+        setError("Failed to load assessments");
+        toast({
+          title: "Error loading assessments",
+          description: "There was a problem fetching your saved assessments.",
+          variant: "destructive"
+        });
+      } finally {
+        setLoading(false);
+      }
+    };
+    
+    fetchAssessments();
+  }, [toast]);
+
   const getFormattedDate = () => {
     const date = new Date();
     return date.toLocaleDateString('en-US', { 
@@ -120,152 +180,133 @@ const Dashboard = () => {
     });
   };
 
+  const handleNewAssessment = () => {
+    navigate('/assessment');
+  };
+  
+  const handleViewLearningPath = (assessmentId: string) => {
+    navigate(`/learning-path/${assessmentId}`);
+  };
+
   return (
     <div>
       <Navbar />
       <main className="pt-28 pb-16">
         <div className="container mx-auto px-4">
-          <div className="flex flex-col md:flex-row items-baseline justify-between mb-8">
-            <h1 className="text-3xl font-bold">Your Career Dashboard</h1>
-            <p className="text-muted-foreground">Last updated: {getFormattedDate()}</p>
-          </div>
-
-          <div className="grid grid-cols-1 lg:grid-cols-3 gap-6 mb-8">
-            <Card className="lg:col-span-2">
-              <CardHeader>
-                <CardTitle>Career Progress</CardTitle>
-              </CardHeader>
-              <CardContent>
-                {loading ? (
-                  <div className="flex items-center justify-center h-40">
-                    <div className="animate-spin rounded-full h-8 w-8 border-b-2 border-primary"></div>
+          <div className="max-w-5xl mx-auto">
+            <div className="flex flex-col md:flex-row md:items-center md:justify-between mb-8">
+              <div>
+                <h1 className="text-3xl font-bold">Your Dashboard</h1>
+                <p className="text-muted-foreground">Track your career development journey</p>
+              </div>
+              <Button className="mt-4 md:mt-0" onClick={handleNewAssessment}>
+                <PlusCircle className="mr-2 h-4 w-4" />
+                New Assessment
+              </Button>
+            </div>
+            
+            {loading ? (
+              <div className="flex flex-col items-center justify-center py-12">
+                <Loader2 className="h-8 w-8 animate-spin text-primary" />
+                <p className="mt-4 text-muted-foreground">Loading your assessments...</p>
+              </div>
+            ) : assessments.length === 0 ? (
+              <Card className="p-12 text-center bg-gray-50">
+                <CardContent className="flex flex-col items-center">
+                  <div className="bg-primary/10 p-4 rounded-full mb-4">
+                    <Target className="h-10 w-10 text-primary" />
                   </div>
-                ) : careerPaths.length > 0 ? (
-                  <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                    {careerPaths.map((path, index) => (
-                      <CareerProgressCard
-                        key={index}
-                        title={path.title}
-                        currentLevel={path.current_level}
-                        nextLevel={path.next_level}
-                        progress={path.progress}
-                        skillsNeeded={path.skills_needed}
-                      />
-                    ))}
-                  </div>
-                ) : (
-                  <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                    <CareerProgressCard
-                      title="Frontend Development"
-                      currentLevel="Mid-Level Developer"
-                      nextLevel="Senior Developer"
-                      progress={65}
-                      skillsNeeded={["Advanced React Patterns", "System Architecture", "Team Leadership"]}
-                    />
-                    <CareerProgressCard
-                      title="Technical Leadership"
-                      currentLevel="Individual Contributor"
-                      nextLevel="Tech Lead"
-                      progress={40}
-                      skillsNeeded={["Mentoring", "Project Planning", "Cross-team Communication"]}
-                    />
-                  </div>
-                )}
-              </CardContent>
-            </Card>
-
-            <Card>
-              <CardHeader>
-                <CardTitle>Your Skill Profile</CardTitle>
-              </CardHeader>
-              <CardContent>
-                {loading ? (
-                  <div className="flex items-center justify-center h-40">
-                    <div className="animate-spin rounded-full h-8 w-8 border-b-2 border-primary"></div>
-                  </div>
-                ) : (
-                  <>
-                    <SkillsRadarChart data={skills} />
-                    <div className="mt-6 text-center">
-                      <Button asChild variant="outline" size="sm">
-                        <a href="/assessment">Update Skills Assessment</a>
-                      </Button>
-                    </div>
-                  </>
-                )}
-              </CardContent>
-            </Card>
-          </div>
-
-          <Card className="mb-8">
-            <CardHeader>
-              <CardTitle>Learning Recommendations</CardTitle>
-            </CardHeader>
-            <CardContent>
-              <Tabs defaultValue="courses">
-                <TabsList className="grid w-full grid-cols-3 mb-6">
-                  <TabsTrigger value="courses">Courses</TabsTrigger>
-                  <TabsTrigger value="projects">Projects</TabsTrigger>
-                  <TabsTrigger value="mentors">Mentorship</TabsTrigger>
-                </TabsList>
-                <TabsContent value="courses">
-                  {loading ? (
-                    <div className="flex items-center justify-center h-40">
-                      <div className="animate-spin rounded-full h-8 w-8 border-b-2 border-primary"></div>
-                    </div>
-                  ) : (
-                    <>
-                      <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-                        {courses.map((course) => (
-                          <CourseCard
-                            key={course.id}
-                            title={course.title}
-                            provider={course.provider}
-                            duration={course.duration}
-                            level={course.level}
-                            image={course.image}
-                            url={course.url}
-                            match={course.match}
-                          />
-                        ))}
-                      </div>
-                      <div className="mt-6 text-center">
-                        <Button variant="outline">View All Recommendations</Button>
-                      </div>
-                    </>
-                  )}
-                </TabsContent>
-                <TabsContent value="projects">
-                  <div className="text-center py-12">
-                    <p className="text-muted-foreground mb-3">Complete your skills assessment to get project recommendations</p>
-                    <Button asChild>
-                      <a href="/assessment">Take Skills Assessment</a>
-                    </Button>
-                  </div>
-                </TabsContent>
-                <TabsContent value="mentors">
-                  <div className="text-center py-12">
-                    <p className="text-muted-foreground mb-3">Mentorship matching coming soon!</p>
-                    <Button disabled>Join Waitlist</Button>
-                  </div>
-                </TabsContent>
-              </Tabs>
-            </CardContent>
-          </Card>
-
-          <Card>
-            <CardHeader>
-              <CardTitle>Learning Progress</CardTitle>
-            </CardHeader>
-            <CardContent>
-              <div className="text-center py-12">
-                <p className="text-muted-foreground mb-3">Start a course to track your learning progress</p>
-                <Button asChild>
-                  <a href="#courses">Browse Courses</a>
+                  <h2 className="text-xl font-semibold mb-2">No Assessments Yet</h2>
+                  <p className="text-muted-foreground max-w-md mx-auto mb-6">
+                    Complete a skills assessment to get personalized learning paths and career recommendations.
+                  </p>
+                  <Button onClick={handleNewAssessment}>
+                    Start Your First Assessment
+                  </Button>
+                </CardContent>
+              </Card>
+            ) : (
+              <>
+                <h2 className="text-xl font-semibold mb-4">Your Learning Paths</h2>
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-8">
+                  {assessments.map((assessment) => {
+                    const targetRole = assessment.target_role;
+                    const currentRole = assessment.current_role || 'Not specified';
+                    const createdAt = new Date(assessment.created_at).toLocaleDateString();
+                    
+                    // Extract some stats from assessment data
+                    const { analysis } = assessment.assessment_data;
+                    const milestoneCount = analysis.milestones?.length || 0;
+                    const skillGapCount = analysis.skill_gaps?.length || 0;
+                    const resourceCount = analysis.resources?.length || 0;
+                    
+                    return (
+                      <Card key={assessment.id} className="hover:shadow-md transition-shadow">
+                        <CardHeader>
+                          <CardTitle className="flex items-center gap-2">
+                            <Briefcase className="h-5 w-5 text-primary" />
+                            {targetRole}
+                          </CardTitle>
+                          <CardDescription>
+                            From: {currentRole} • Created: {createdAt}
+                          </CardDescription>
+                        </CardHeader>
+                        <CardContent>
+                          <div className="grid grid-cols-3 gap-2 mb-4">
+                            <div className="bg-blue-50 p-2 rounded text-center">
+                              <p className="text-sm text-blue-700 font-medium">{milestoneCount}</p>
+                              <p className="text-xs text-blue-600">Milestones</p>
+                            </div>
+                            <div className="bg-amber-50 p-2 rounded text-center">
+                              <p className="text-sm text-amber-700 font-medium">{skillGapCount}</p>
+                              <p className="text-xs text-amber-600">Skill Gaps</p>
+                            </div>
+                            <div className="bg-green-50 p-2 rounded text-center">
+                              <p className="text-sm text-green-700 font-medium">{resourceCount}</p>
+                              <p className="text-xs text-green-600">Resources</p>
+                            </div>
+                          </div>
+                          
+                          <div className="flex items-center mt-3">
+                            <Clock className="h-4 w-4 text-muted-foreground mr-2" />
+                            <span className="text-sm text-muted-foreground">
+                              Target timeframe: {assessment.timeframe}
+                            </span>
+                          </div>
+                          
+                          <div className="flex items-center mt-2">
+                            <School className="h-4 w-4 text-muted-foreground mr-2" />
+                            <span className="text-sm text-muted-foreground">
+                              Experience level: {assessment.experience}
+                            </span>
+                          </div>
+                        </CardContent>
+                        <CardFooter className="bg-slate-50 py-3">
+                          <Button 
+                            variant="ghost" 
+                            className="w-full justify-between"
+                            onClick={() => handleViewLearningPath(assessment.id)}
+                          >
+                            View Learning Path
+                            <ChevronRight className="h-4 w-4" />
+                          </Button>
+                        </CardFooter>
+                      </Card>
+                    );
+                  })}
+                </div>
+              </>
+            )}
+            
+            {error && (
+              <div className="bg-red-50 border border-red-200 rounded-md p-4 mt-6">
+                <p className="text-red-800">{error}</p>
+                <Button variant="outline" className="mt-2" onClick={() => window.location.reload()}>
+                  Try Again
                 </Button>
               </div>
-            </CardContent>
-          </Card>
+            )}
+          </div>
         </div>
       </main>
       <Footer />

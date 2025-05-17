@@ -10,9 +10,44 @@ import PyPDF2
 import docx
 import spacy
 import re
+from groq import Groq
+import json
+from typing import Dict, List, Any
+import logging
+import asyncio
+from datetime import datetime
+
+# Local imports
+from resource_scraper import get_resources_for_skills
+
+# Configure logging
+logging.basicConfig(level=logging.DEBUG)
+logger = logging.getLogger(__name__)
 
 app = Flask(__name__)
 CORS(app)  # Enable CORS for all routes
+
+
+# Configure Groq client
+GROQ_API_KEY = "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"
+if not GROQ_API_KEY:
+    raise ValueError("GROQ_API_KEY environment variable is not set")
+
+# Update to use the latest Llama 4 model
+GROQ_MODEL = "meta-llama/llama-4-scout-17b-16e-instruct"  # Latest Llama 4 model
+
+try:
+    groq_client = Groq(api_key=GROQ_API_KEY)
+    # Test the client with a simple request
+    test_completion = groq_client.chat.completions.create(
+        model=GROQ_MODEL,
+        messages=[{"role": "user", "content": "test"}],
+        max_tokens=10
+    )
+    logger.info(f"Successfully initialized Groq client with model {GROQ_MODEL}")
+except Exception as e:
+    logger.error(f"Failed to initialize Groq client: {str(e)}")
+    raise
 
 # Configure upload folder
 UPLOAD_FOLDER = 'uploads'
@@ -22,6 +57,10 @@ app.config['MAX_CONTENT_LENGTH'] = 16 * 1024 * 1024  # Limit file size to 16MB
 
 # Create uploads directory if it doesn't exist
 os.makedirs(UPLOAD_FOLDER, exist_ok=True)
+
+# Create data directory for storing roadmaps
+DATA_FOLDER = 'data'
+os.makedirs(DATA_FOLDER, exist_ok=True)
 
 # Load spaCy model for NLP processing
 try:
@@ -64,375 +103,765 @@ def extract_text_from_file(file_path):
     return ""
 
 def extract_skills_from_text(text):
-    """Extract skills from text using NLP"""
-    # Common technical skills and keywords
-    skill_keywords = [
-        'python', 'javascript', 'typescript', 'react', 'vue', 'angular', 'node.js',
-        'java', 'c#', 'c++', 'ruby', 'php', 'swift', 'kotlin', 'html', 'css',
-        'sql', 'nosql', 'mongodb', 'postgresql', 'mysql', 'aws', 'azure', 'gcp',
-        'docker', 'kubernetes', 'git', 'ci/cd', 'agile', 'scrum', 'devops',
-        'machine learning', 'ai', 'data science', 'blockchain', 'ux', 'ui',
-        'testing', 'qa', 'linux', 'windows', 'macos', 'ios', 'android',
-        'rest api', 'graphql', 'microservices', 'security', 'networking',
-        'leadership', 'communication', 'teamwork', 'problem solving', 'creativity'
+    """Extract skills from text using Groq for dynamic skill identification"""
+    try:
+        logger.debug(f"Starting skill extraction for text of length: {len(text)}")
+        prompt = f"""Analyze the following text and extract all relevant technical and soft skills. Include both conventional and non-conventional skills that would be valuable in a professional context.
+
+Text to analyze:
+{text}
+
+Please provide a JSON response with the following structure:
+{{
+    "technical_skills": [],
+    "soft_skills": [],
+    "domain_specific_skills": [],
+    "tools_and_technologies": []
+}}
+
+For each skill, include a confidence score (0-1) indicating how certain you are that this is a relevant skill.
+Example format:
+{{
+    "technical_skills": [
+        {{"skill": "python", "confidence": 0.95}},
+        {{"skill": "machine learning", "confidence": 0.85}}
+    ],
+    "soft_skills": [
+        {{"skill": "project management", "confidence": 0.9}},
+        {{"skill": "cross-functional collaboration", "confidence": 0.8}}
+    ],
+    "domain_specific_skills": [
+        {{"skill": "financial modeling", "confidence": 0.85}},
+        {{"skill": "regulatory compliance", "confidence": 0.75}}
+    ],
+    "tools_and_technologies": [
+        {{"skill": "git", "confidence": 0.9}},
+        {{"skill": "docker", "confidence": 0.85}}
     ]
-    
-    # Process text with spaCy
+}}"""
+
+        logger.debug("Sending request to Groq API")
+        completion = groq_client.chat.completions.create(
+            model=GROQ_MODEL,
+            messages=[
+                {"role": "system", "content": "You are an expert at identifying professional skills from text, including both conventional and non-conventional skills."},
+                {"role": "user", "content": prompt}
+            ],
+            temperature=0.3,
+            max_tokens=2000,
+            top_p=1,
+            stream=False
+        )
+        
+        logger.debug("Received response from Groq API")
+        response_text = completion.choices[0].message.content
+        logger.debug(f"Raw response: {response_text[:200]}...")  # Log first 200 chars of response
+        
+        try:
+            skills_analysis = json.loads(response_text)
+            logger.debug(f"Successfully parsed JSON response with {len(skills_analysis)} categories")
+            
+            # Combine all skills into a single list with their confidence scores
+            all_skills = []
+            for category in skills_analysis.values():
+                if isinstance(category, list):
+                    for skill_item in category:
+                        if isinstance(skill_item, dict) and 'skill' in skill_item:
+                            all_skills.append({
+                                'skill': skill_item['skill'].lower(),
+                                'confidence': skill_item.get('confidence', 0.5)
+                            })
+            
+            # Sort skills by confidence score
+            all_skills.sort(key=lambda x: x['confidence'], reverse=True)
+            
+            # Return only skills with confidence above threshold
+            filtered_skills = [skill['skill'] for skill in all_skills if skill['confidence'] >= 0.6]
+            logger.debug(f"Extracted {len(filtered_skills)} skills with confidence >= 0.6")
+            return filtered_skills
+            
+        except json.JSONDecodeError as e:
+            logger.error(f"Failed to parse JSON response: {str(e)}")
+            logger.error(f"Raw response that failed to parse: {response_text}")
+            # Fall back to basic NLP extraction
+            return fallback_skill_extraction(text)
+            
+    except Exception as e:
+        logger.error(f"Error in extract_skills_from_text: {str(e)}")
+        return fallback_skill_extraction(text)
+
+def fallback_skill_extraction(text):
+    """Fallback method for skill extraction using basic NLP"""
+    logger.info("Using fallback NLP-based skill extraction")
     doc = nlp(text.lower())
-    
-    # Extract skills using named entity recognition and pattern matching
     skills = []
-    
-    # Pattern matching for skills
-    for skill in skill_keywords:
-        if re.search(r'\b' + skill + r'\b', text.lower()):
-            skills.append(skill)
-    
-    return skills
+    for chunk in doc.noun_chunks:
+        if len(chunk.text.split()) <= 3:
+            skills.append(chunk.text.lower())
+    for ent in doc.ents:
+        if ent.label_ in ['ORG', 'PRODUCT']:
+            skills.append(ent.text.lower())
+    return list(set(skills))
 
 def analyze_resume(file_path):
     """Analyze resume text to extract relevant information"""
     text = extract_text_from_file(file_path)
     skills = extract_skills_from_text(text)
     
-    # Calculate skill scores (simplified version)
-    # In a real implementation, you'd use a more sophisticated model
-    technical_score = 0
-    soft_score = 0
-    
-    technical_skills = ['python', 'javascript', 'typescript', 'react', 'vue', 'angular', 'node.js',
-                       'java', 'c#', 'c++', 'ruby', 'php', 'swift', 'kotlin', 'html', 'css',
-                       'sql', 'nosql', 'mongodb', 'postgresql', 'mysql', 'aws', 'azure', 'gcp',
-                       'docker', 'kubernetes', 'git', 'ci/cd', 'rest api', 'graphql', 'microservices']
-                       
-    soft_skills = ['agile', 'scrum', 'leadership', 'communication', 'teamwork', 
-                  'problem solving', 'creativity', 'management']
-    
-    for skill in skills:
-        if skill in technical_skills:
-            technical_score += 1
-        if skill in soft_skills:
-            soft_score += 1
-    
-    # Normalize scores
-    technical_score = min(100, technical_score * 10)
-    soft_score = min(100, soft_score * 15)
-    
-    analysis = {
-        'skills': skills,
-        'technical_score': technical_score,
-        'communication_score': soft_score,
-        'leadership_score': max(20, soft_score - 30),  # Simple heuristic
-        'problem_solving_score': technical_score * 0.9,
-        'creativity_score': (technical_score + soft_score) / 2
-    }
-    
-    return analysis
+    # Get detailed skill analysis from Groq
+    prompt = f"""Analyze the following skills extracted from a resume and provide a comprehensive assessment:
+
+Skills: {', '.join(skills)}
+
+Please provide a JSON response with the following structure:
+{{
+    "skill_categories": {{
+        "technical": [],
+        "soft": [],
+        "domain": [],
+        "tools": []
+    }},
+    "skill_scores": {{
+        "technical_score": 0,
+        "communication_score": 0,
+        "leadership_score": 0,
+        "problem_solving_score": 0,
+        "creativity_score": 0
+    }},
+    "skill_levels": {{
+        "beginner": [],
+        "intermediate": [],
+        "advanced": []
+    }}
+}}"""
+
+    try:
+        completion = groq_client.chat.completions.create(
+            model=GROQ_MODEL,
+            messages=[
+                {"role": "system", "content": "You are an expert at analyzing professional skills and providing detailed assessments."},
+                {"role": "user", "content": prompt}
+            ],
+            temperature=0.3,
+            max_tokens=2000,
+            top_p=1,
+            stream=False
+        )
+        
+        # Parse the response
+        response_text = completion.choices[0].message.content
+        try:
+            analysis = json.loads(response_text)
+            return {
+                'skills': skills,
+                'skill_categories': analysis.get('skill_categories', {}),
+                'skill_scores': analysis.get('skill_scores', {}),
+                'skill_levels': analysis.get('skill_levels', {})
+            }
+        except json.JSONDecodeError:
+            # Fallback to basic scoring if JSON parsing fails
+            return {
+                'skills': skills,
+                'technical_score': 70,
+                'communication_score': 60,
+                'leadership_score': 50,
+                'problem_solving_score': 75,
+                'creativity_score': 65
+            }
+            
+    except Exception as e:
+        # Fallback to basic scoring if Groq API fails
+        return {
+            'skills': skills,
+            'technical_score': 70,
+            'communication_score': 60,
+            'leadership_score': 50,
+            'problem_solving_score': 75,
+            'creativity_score': 65
+        }
+
+def analyze_career_gap_with_groq(
+    current_skills: List[str],
+    target_role: str,
+    job_description: str,
+    experience: str,
+    timeframe: str,
+    interests: str,
+    learning_style: str,
+    time_commitment: str,
+    budget: str
+) -> Dict[str, Any]:
+    """
+    Analyze career gap using Groq API to provide intelligent recommendations.
+    """
+    try:
+        prompt = f"""As a career development expert, analyze the following information and provide detailed recommendations:
+
+Current Skills: {', '.join(current_skills)}
+Target Role: {target_role}
+Job Description: {job_description}
+Experience Level: {experience}
+Target Timeframe: {timeframe}
+Interests: {interests}
+Learning Style: {learning_style}
+Time Commitment: {time_commitment}
+Budget: {budget}
+
+Please provide a structured analysis including:
+1. Required skills for the target role
+2. Skill gaps analysis
+3. Learning path recommendations
+4. Timeline-based milestones
+5. Resource recommendations based on learning style and budget
+6. Risk assessment and mitigation strategies
+
+Format the response as a JSON object with the following structure:
+{{
+    "required_skills": [],
+    "skill_gaps": [],
+    "learning_path": [],
+    "milestones": [],
+    "resources": [],
+    "risk_assessment": []
+}}
+
+IMPORTANT: Return ONLY the JSON object without any additional text, markdown formatting, or explanations."""
+
+        logger.debug("Sending request to Groq API")
+        completion = groq_client.chat.completions.create(
+            model=GROQ_MODEL,
+            messages=[
+                {"role": "system", "content": "You are a career development expert specializing in technical roles and skill gap analysis. Always respond with valid JSON only, without any additional text or formatting."},
+                {"role": "user", "content": prompt}
+            ],
+            temperature=0.7,
+            max_tokens=4000,
+            top_p=1,
+            stream=False
+        )
+        
+        # Parse the response
+        response_text = completion.choices[0].message.content.strip()
+        logger.debug(f"Raw response from Groq: {response_text[:200]}...")
+        
+        try:
+            # Clean the response text to ensure it's valid JSON
+            # Remove any markdown code block indicators
+            response_text = response_text.replace('```json', '').replace('```', '').strip()
+            
+            # Parse the JSON
+            analysis = json.loads(response_text)
+            
+            # Add a summary section for frontend display
+            analysis['summary'] = {
+                'title': f'Career Path Analysis for {target_role}',
+                'overview': f'Based on your current skills and the target role of {target_role}, here\'s a comprehensive analysis of your career path.',
+                'key_findings': [
+                    f'Found {len(analysis.get("required_skills", []))} key skills required for the role',
+                    f'Identified {len(analysis.get("skill_gaps", []))} skill gaps to address',
+                    f'Created a {len(analysis.get("learning_path", []))}-phase learning path',
+                    f'Set {len(analysis.get("milestones", []))} key milestones',
+                    f'Recommended {len(analysis.get("resources", []))} learning resources',
+                    f'Identified {len(analysis.get("risk_assessment", []))} potential risks and mitigation strategies'
+                ]
+            }
+            
+            logger.debug("Successfully parsed and enhanced JSON response")
+            return analysis
+            
+        except json.JSONDecodeError as e:
+            logger.error(f"Failed to parse JSON response: {str(e)}")
+            logger.error(f"Raw response that failed to parse: {response_text}")
+            return {
+                "error": "Failed to parse Groq response as JSON",
+                "raw_response": response_text
+            }
+            
+    except Exception as e:
+        logger.error(f"Error calling Groq API: {str(e)}", exc_info=True)
+        return {
+            "error": f"Error calling Groq API: {str(e)}"
+        }
 
 @app.route('/api/upload-resume', methods=['POST'])
 def upload_resume():
     """Endpoint to upload and process a resume"""
-    if 'file' not in request.files:
-        return jsonify({'error': 'No file part'}), 400
-    
-    file = request.files['file']
-    if file.filename == '':
-        return jsonify({'error': 'No selected file'}), 400
-    
-    if file and allowed_file(file.filename):
-        # Generate unique filename
-        filename = secure_filename(file.filename)
-        unique_filename = f"{str(uuid.uuid4())}_{filename}"
-        file_path = os.path.join(app.config['UPLOAD_FOLDER'], unique_filename)
+    try:
+        if 'file' not in request.files:
+            logger.error("No file part in request")
+            return jsonify({'error': 'No file part'}), 400
         
-        # Save the uploaded file
-        file.save(file_path)
+        file = request.files['file']
+        if file.filename == '':
+            logger.error("No selected file")
+            return jsonify({'error': 'No selected file'}), 400
         
-        try:
-            # Analyze the resume
-            analysis_results = analyze_resume(file_path)
+        if file and allowed_file(file.filename):
+            # Generate unique filename
+            filename = secure_filename(file.filename)
+            unique_filename = f"{str(uuid.uuid4())}_{filename}"
+            file_path = os.path.join(app.config['UPLOAD_FOLDER'], unique_filename)
             
-            # Return analysis results
-            return jsonify({
-                'message': 'Resume uploaded and analyzed successfully',
-                'analysis': analysis_results
-            })
-        except Exception as e:
-            return jsonify({'error': f'Error analyzing resume: {str(e)}'}), 500
-    
-    return jsonify({'error': 'File type not allowed'}), 400
+            # Save the uploaded file
+            file.save(file_path)
+            logger.info(f"Saved file to {file_path}")
+            
+            try:
+                # Analyze the resume
+                analysis_results = analyze_resume(file_path)
+                logger.info("Successfully analyzed resume")
+                
+                # Return analysis results
+                return jsonify({
+                    'message': 'Resume uploaded and analyzed successfully',
+                    'analysis': analysis_results
+                })
+            except Exception as e:
+                logger.error(f"Error analyzing resume: {str(e)}")
+                return jsonify({'error': f'Error analyzing resume: {str(e)}'}), 500
+            finally:
+                # Clean up the uploaded file
+                try:
+                    os.remove(file_path)
+                    logger.info(f"Cleaned up file: {file_path}")
+                except Exception as e:
+                    logger.error(f"Error cleaning up file {file_path}: {str(e)}")
+        
+        logger.error(f"File type not allowed: {file.filename}")
+        return jsonify({'error': 'File type not allowed'}), 400
+        
+    except Exception as e:
+        logger.error(f"Unexpected error in upload_resume: {str(e)}")
+        return jsonify({'error': f'Unexpected error: {str(e)}'}), 500
 
 @app.route('/api/assess-skills', methods=['POST'])
 def assess_skills():
-    """Endpoint to process skill assessment data using ML-based approach"""
-    data = request.json
-    
-    if not data:
-        return jsonify({'error': 'No data provided'}), 400
-    
-    # Extract relevant information from request
-    current_role = data.get('currentRole', '')
-    experience = data.get('experience', '')
-    technical_skills = data.get('technicalSkills', '')
-    soft_skills = data.get('softSkills', '')
-    target_role = data.get('targetRole', '')
-    job_description = data.get('jobDescription', '')
-    timeframe = data.get('timeframe', '')
-    interests = data.get('interests', '')
-    learning_style = data.get('learningStyle', '')
-    time_commitment = data.get('timeCommitment', '')
-    budget = data.get('budget', '')
-    resume_analysis = data.get('resumeAnalysis', None)
-    
-    # Extract user's current skills
-    user_skills = []
-    if resume_analysis and 'skills' in resume_analysis:
-        user_skills = resume_analysis['skills']
-    else:
-        # Extract skills from manually entered fields
-        if technical_skills:
-            user_skills.extend([s.strip().lower() for s in technical_skills.split(',') if s.strip()])
-        if soft_skills:
-            user_skills.extend([s.strip().lower() for s in soft_skills.split(',') if s.strip()])
-    
-    # Extract required skills from job description using NLP
-    required_skills = []
-    if job_description:
-        # Process job description with spaCy
-        doc = nlp(job_description.lower())
+    """Endpoint to process skill assessment data using Groq-based analysis"""
+    try:
+        data = request.json
+        logger.debug(f"Received request data: {data}")
         
-        # Use the same skill keywords list for consistency
-        skill_keywords = [
-            'python', 'javascript', 'typescript', 'react', 'vue', 'angular', 'node.js',
-            'java', 'c#', 'c++', 'ruby', 'php', 'swift', 'kotlin', 'html', 'css',
-            'sql', 'nosql', 'mongodb', 'postgresql', 'mysql', 'aws', 'azure', 'gcp',
-            'docker', 'kubernetes', 'git', 'ci/cd', 'agile', 'scrum', 'devops',
-            'machine learning', 'ai', 'data science', 'blockchain', 'ux', 'ui',
-            'testing', 'qa', 'linux', 'windows', 'macos', 'ios', 'android',
-            'rest api', 'graphql', 'microservices', 'security', 'networking',
-            'leadership', 'communication', 'teamwork', 'problem solving', 'creativity',
-            'project management', 'product management', 'data analysis', 'algorithms',
-            'system design', 'architecture', 'scalability', 'performance', 'optimization',
-            'debugging', 'testing', 'continuous integration', 'continuous deployment',
-            'backend', 'frontend', 'full-stack', 'web development', 'mobile development',
-            'cloud computing', 'devops', 'database management', 'api development',
-            'version control', 'cross-functional collaboration'
-        ]
+        if not data:
+            logger.error("No data provided in request")
+            return jsonify({'error': 'No data provided'}), 400
         
-        # Extract required skills from job description
-        for skill in skill_keywords:
-            if re.search(r'\b' + re.escape(skill) + r'\b', job_description.lower()):
-                required_skills.append(skill)
-    
-    # Identify skill gaps - skills required but not possessed by the user
-    skill_gaps = []
-    if required_skills:
-        skill_gaps = [skill for skill in required_skills if skill not in user_skills]
-    
-    # Calculate experience factor (0-1 scale)
-    experience_factor = 0.5  # default
-    if experience == "0-1":
-        experience_factor = 0.2
-    elif experience == "1-3":
-        experience_factor = 0.4
-    elif experience == "3-5":
-        experience_factor = 0.6
-    elif experience == "5-10":
-        experience_factor = 0.8
-    elif experience == "10+":
-        experience_factor = 1.0
-    
-    # Calculate timeline factor (0-1 scale) - shorter timeline means more urgency
-    timeline_factor = 0.5  # default
-    if timeframe == "6m":
-        timeline_factor = 0.9
-    elif timeframe == "1y":
-        timeline_factor = 0.7
-    elif timeframe == "2y":
-        timeline_factor = 0.5
-    elif timeframe == "5y":
-        timeline_factor = 0.3
+        # Extract relevant information from request
+        current_role = data.get('currentRole', '')
+        experience = data.get('experience', '')
+        technical_skills = data.get('technicalSkills', '')
+        soft_skills = data.get('softSkills', '')
+        target_role = data.get('targetRole', '')
+        job_description = data.get('jobDescription', '')
+        timeframe = data.get('timeframe', '')
+        interests = data.get('interests', '')
+        learning_style = data.get('learningStyle', '')
+        time_commitment = data.get('timeCommitment', '')
+        budget = data.get('budget', '')
+        resume_analysis = data.get('resumeAnalysis', None)
         
-    # Calculate commitment factor (0-1 scale)
-    commitment_factor = 0.5  # default
-    if time_commitment == "1-3":
-        commitment_factor = 0.3
-    elif time_commitment == "4-7":
-        commitment_factor = 0.5
-    elif time_commitment == "8-15":
-        commitment_factor = 0.8
-    elif time_commitment == "16+":
-        commitment_factor = 1.0
-    
-    # Process score calculation with all available inputs
-    # If resume analysis is available, use those scores as a starting point
-    if resume_analysis:
-        skill_scores = {
-            'technical': resume_analysis.get('technical_score', 70),
-            'communication': resume_analysis.get('communication_score', 60),
-            'leadership': resume_analysis.get('leadership_score', 50),
-            'problem_solving': resume_analysis.get('problem_solving_score', 75),
-            'creativity': resume_analysis.get('creativity_score', 65)
-        }
-    else:
-        # Generate scores based on input text and factors
-        combined_input = f"{current_role} {technical_skills} {soft_skills} {target_role} {interests}"
+        logger.debug(f"Extracted data - Target Role: {target_role}, Experience: {experience}")
         
-        tech_keywords = ['python', 'javascript', 'react', 'vue', 'angular', 'node', 'java', 'c#', 'c++', 
-                       'aws', 'cloud', 'database', 'sql', 'algorithm', 'api', 'backend', 'frontend']
-        soft_keywords = ['communicate', 'lead', 'manage', 'collaborate', 'team', 'problem-solving', 
-                        'creativity', 'adaptability', 'presentation', 'mentoring']
-        
-        # Adjust scoring based on extracted skills and input factors
-        technical_score = sum(10 for word in tech_keywords if word.lower() in combined_input.lower())
-        soft_score = sum(15 for word in soft_keywords if word.lower() in combined_input.lower())
-        
-        # Adjust scores based on experience and other factors
-        technical_score = min(100, max(30, technical_score * (0.8 + experience_factor * 0.4)))
-        soft_score = min(100, max(30, soft_score * (0.7 + experience_factor * 0.5)))
-        
-        # Calculate derived scores
-        leadership_score = max(30, soft_score - 20 + (experience_factor * 15))
-        problem_solving_score = max(40, technical_score - 10 + (commitment_factor * 10))
-        creativity_score = max(40, (technical_score + soft_score) // 2)
-        
-        skill_scores = {
-            'technical': technical_score,
-            'communication': soft_score,
-            'leadership': leadership_score,
-            'problem_solving': problem_solving_score,
-            'creativity': creativity_score
-        }
-    
-    # Categorize skill gaps by priority
-    high_priority_gaps = []
-    medium_priority_gaps = []
-    
-    for skill in skill_gaps:
-        # Assess criticality based on frequency in job description
-        occurrences = len(re.findall(r'\b' + skill + r'\b', job_description.lower()))
-        if occurrences > 1 or timeline_factor > 0.7:
-            high_priority_gaps.append(skill)
+        # Extract user's current skills
+        user_skills = []
+        if resume_analysis and 'skills' in resume_analysis:
+            user_skills = resume_analysis['skills']
         else:
-            medium_priority_gaps.append(skill)
-    
-    # Generate personalized recommendations based on the scores and context
-    recommendations = []
-    gap_recommendations = []
-    improvement_recommendations = []
-    
-    # Technical skills recommendations
-    if skill_scores['technical'] < 60:
-        recommendations.append("Focus on building technical fundamentals in your domain")
-    elif skill_scores['technical'] < 80:
-        recommendations.append("Strengthen advanced technical concepts in your target role area")
-    else:
-        recommendations.append("Maintain and mentor others in technical skills while focusing on other areas")
-    
-    # Leadership recommendations
-    if skill_scores['leadership'] < 60:
-        recommendations.append("Develop leadership skills through team projects and conflict resolution practice")
-    else:
-        recommendations.append("Seek opportunities to lead cross-functional initiatives to enhance leadership abilities")
-    
-    # Learning style-specific recommendations
-    learning_method = ""
-    if learning_style == "visual":
-        learning_method = "video courses and visual learning materials"
-    elif learning_style == "reading":
-        learning_method = "books, articles, and documentation"
-    elif learning_style == "interactive":
-        learning_method = "hands-on projects and interactive workshops"
-    elif learning_style == "audio_video":
-        learning_method = "podcasts, video tutorials, and recorded lectures"
-    
-    # Time commitment and budget-aware recommendation
-    if learning_method:
-        if time_commitment in ["1-3", "4-7"] and budget in ["free", "low"]:
-            recommendations.append(f"Allocate your limited time to focused {learning_method} that target your highest priority skill gaps")
-        elif time_commitment in ["8-15", "16+"] and budget in ["medium", "high"]:
-            recommendations.append(f"Invest in intensive {learning_method} like bootcamps or certification programs")
-        else:
-            recommendations.append(f"Utilize {learning_method} while balancing your time and budget constraints")
-    
-    # Gap-specific recommendations
-    if high_priority_gaps:
-        gap_text = ", ".join(high_priority_gaps[:3])
-        if len(high_priority_gaps) > 3:
-            gap_text += f", and {len(high_priority_gaps) - 3} more"
-        gap_recommendations.append(f"High Priority Skills to Develop: {gap_text}")
-    
-    if medium_priority_gaps:
-        gap_text = ", ".join(medium_priority_gaps[:3])
-        if len(medium_priority_gaps) > 3:
-            gap_text += f", and {len(medium_priority_gaps) - 3} more"
-        gap_recommendations.append(f"Medium Priority Skills to Develop: {gap_text}")
-    
-    # Generate target role achievement timeline based on gaps and commitment
-    months_estimate = 12  # Default 1 year
-    if high_priority_gaps:
-        # Adjust based on number of gaps and commitment
-        gap_factor = len(high_priority_gaps) + len(medium_priority_gaps) * 0.5
-        months_estimate = int(gap_factor * 3 / commitment_factor)
-        months_estimate = max(3, min(36, months_estimate))  # Keep between 3-36 months
+            # Extract skills from manually entered fields
+            if technical_skills:
+                user_skills.extend([s.strip().lower() for s in technical_skills.split(',') if s.strip()])
+            if soft_skills:
+                user_skills.extend([s.strip().lower() for s in soft_skills.split(',') if s.strip()])
         
-    if timeframe == "6m" and months_estimate > 6:
-        improvement_recommendations.append(f"Your target timeline of 6 months may be challenging. Consider extending to {months_estimate} months or increasing your time commitment.")
-    elif timeframe == "1y" and months_estimate > 12:
-        improvement_recommendations.append(f"Based on your skill gaps, we estimate {months_estimate} months to reach your target role. Consider increasing your weekly learning time.")
-    
-    # Calculate the weighted improvement opportunities
-    areas_for_improvement = []
-    scores_list = [
-        ("technical_skills", skill_scores['technical']),
-        ("communication", skill_scores['communication']),
-        ("leadership", skill_scores['leadership']),
-        ("problem_solving", skill_scores['problem_solving']),
-        ("creativity", skill_scores['creativity'])
-    ]
-    
-    # Sort by score (ascending) to find weakest areas
-    scores_list.sort(key=lambda x: x[1])
-    
-    # Add specific improvement recommendations for lowest 2 scores
-    for area, score in scores_list[:2]:
-        if area == "technical_skills" and score < 70:
-            areas_for_improvement.append("Technical skills: Focus on hands-on projects to build proficiency")
-        elif area == "communication" and score < 70:
-            areas_for_improvement.append("Communication: Practice presenting technical concepts to non-technical audiences")
-        elif area == "leadership" and score < 70:
-            areas_for_improvement.append("Leadership: Volunteer to lead small projects or mentor junior team members")
-        elif area == "problem_solving" and score < 70:
-            areas_for_improvement.append("Problem solving: Work on algorithm challenges and system design exercises")
-        elif area == "creativity" and score < 70:
-            areas_for_improvement.append("Creativity: Explore innovative solutions to existing problems in your domain")
-    
-    # Return comprehensive assessment results
-    assessment_result = {
-        'skillScores': [
-            {'name': 'Technical Skills', 'value': int(skill_scores['technical']), 'color': '#3182CE'},
-            {'name': 'Communication', 'value': int(skill_scores['communication']), 'color': '#38B2AC'},
-            {'name': 'Leadership', 'value': int(skill_scores['leadership']), 'color': '#4C51BF'},
-            {'name': 'Problem Solving', 'value': int(skill_scores['problem_solving']), 'color': '#2C7A7B'},
-            {'name': 'Creativity', 'value': int(skill_scores['creativity']), 'color': '#2B6CB0'}
-        ],
-        'recommendations': recommendations,
-        'skillGaps': {
-            'highPriority': high_priority_gaps,
-            'mediumPriority': medium_priority_gaps
-        },
-        'gapRecommendations': gap_recommendations,
-        'improvementAreas': areas_for_improvement,
-        'timelineRecommendations': improvement_recommendations,
-        'estimatedMonths': months_estimate
-    }
-    
-    return jsonify(assessment_result)
+        logger.debug(f"Extracted user skills: {user_skills}")
+        
+        # Validate required fields
+        if not target_role:
+            logger.error("Target role is missing")
+            return jsonify({'error': 'Target role is required'}), 400
+        if not job_description:
+            logger.error("Job description is missing")
+            return jsonify({'error': 'Job description is required'}), 400
+        
+        # Get career gap analysis from Groq
+        logger.debug("Calling analyze_career_gap_with_groq")
+        analysis = analyze_career_gap_with_groq(
+            current_skills=user_skills,
+            target_role=target_role,
+            job_description=job_description,
+            experience=experience,
+            timeframe=timeframe,
+            interests=interests,
+            learning_style=learning_style,
+            time_commitment=time_commitment,
+            budget=budget
+        )
+        
+        logger.debug(f"Received analysis from Groq: {analysis}")
+        
+        if 'error' in analysis:
+            logger.error(f"Error in analysis: {analysis['error']}")
+            return jsonify({'error': analysis['error']}), 500
+        
+        # Add additional context to the response
+        response = {
+            'analysis': analysis,
+            'current_role': current_role,
+            'target_role': target_role,
+            'experience_level': experience,
+            'timeframe': timeframe,
+            'current_skills': user_skills,
+            'display_format': {
+                'sections': [
+                    {
+                        'title': 'Summary',
+                        'type': 'summary',
+                        'content': analysis.get('summary', {})
+                    },
+                    {
+                        'title': 'Required Skills',
+                        'type': 'list',
+                        'content': analysis.get('required_skills', [])
+                    },
+                    {
+                        'title': 'Skill Gaps',
+                        'type': 'table',
+                        'content': analysis.get('skill_gaps', [])
+                    },
+                    {
+                        'title': 'Learning Path',
+                        'type': 'timeline',
+                        'content': analysis.get('learning_path', [])
+                    },
+                    {
+                        'title': 'Milestones',
+                        'type': 'timeline',
+                        'content': analysis.get('milestones', [])
+                    },
+                    {
+                        'title': 'Recommended Resources',
+                        'type': 'cards',
+                        'content': analysis.get('resources', [])
+                    },
+                    {
+                        'title': 'Risk Assessment',
+                        'type': 'table',
+                        'content': analysis.get('risk_assessment', [])
+                    }
+                ]
+            }
+        }
+        
+        logger.debug("Successfully prepared response")
+        return jsonify(response)
+        
+    except Exception as e:
+        logger.error(f"Unexpected error in assess_skills: {str(e)}", exc_info=True)
+        return jsonify({'error': f'Unexpected error: {str(e)}'}), 500
 
 @app.route('/api/health', methods=['GET'])
 def health_check():
     """Health check endpoint"""
     return jsonify({'status': 'ok'})
 
+@app.route('/api/save-assessment', methods=['POST'])
+def save_assessment():
+    """Save assessment results for a user"""
+    try:
+        data = request.json
+        
+        # Validate required fields
+        if not data:
+            return jsonify({'error': 'No data provided'}), 400
+        
+        # Extract user information
+        user_id = data.get('user_id', str(uuid.uuid4()))
+        user_name = data.get('user_name', 'Anonymous User')
+        user_email = data.get('user_email', f'user_{user_id}@example.com')
+        
+        # Extract assessment data
+        target_role = data.get('target_role', '')
+        current_role = data.get('current_role', '')
+        experience = data.get('experience', '')
+        timeframe = data.get('timeframe', '')
+        assessment_results = data.get('assessment_results', {})
+        
+        # Generate a unique ID for the assessment
+        assessment_id = str(uuid.uuid4())
+        
+        # Create user directory if it doesn't exist
+        user_dir = os.path.join(DATA_FOLDER, user_id)
+        os.makedirs(user_dir, exist_ok=True)
+        
+        # Save user info if it doesn't exist
+        user_info_file = os.path.join(user_dir, 'user_info.json')
+        if not os.path.exists(user_info_file):
+            user_info = {
+                'id': user_id,
+                'name': user_name,
+                'email': user_email,
+                'created_at': datetime.now().isoformat()
+            }
+            with open(user_info_file, 'w') as f:
+                json.dump(user_info, f, indent=2)
+        
+        # Create assessment directory
+        assessment_dir = os.path.join(user_dir, assessment_id)
+        os.makedirs(assessment_dir, exist_ok=True)
+        
+        # Prepare assessment data
+        assessment_data = {
+            'id': assessment_id,
+            'user_id': user_id,
+            'target_role': target_role,
+            'current_role': current_role,
+            'experience': experience,
+            'timeframe': timeframe,
+            'assessment_data': assessment_results,
+            'created_at': datetime.now().isoformat(),
+            'status': 'active'  # Add status field for tracking
+        }
+        
+        # Save assessment data
+        with open(os.path.join(assessment_dir, 'assessment.json'), 'w') as f:
+            json.dump(assessment_data, f, indent=2)
+        
+        # Save milestones if they exist
+        if assessment_results and 'analysis' in assessment_results and 'milestones' in assessment_results['analysis']:
+            milestones = []
+            for milestone in assessment_results['analysis']['milestones']:
+                milestone_id = milestone.get('milestone', '').replace(' ', '_').lower()
+                milestone_data = {
+                    'id': str(uuid.uuid4()),
+                    'assessment_id': assessment_id,
+                    'milestone_id': milestone_id,
+                    'milestone': milestone.get('milestone', ''),
+                    'target_date': milestone.get('target_date', ''),
+                    'status': 'not_started',
+                    'notes': '',
+                    'created_at': datetime.now().isoformat()
+                }
+                milestones.append(milestone_data)
+            
+            # Save milestones
+            with open(os.path.join(assessment_dir, 'milestones.json'), 'w') as f:
+                json.dump(milestones, f, indent=2)
+        
+        # Save learning path if it exists
+        if assessment_results and 'analysis' in assessment_results and 'learning_path' in assessment_results['analysis']:
+            learning_path = assessment_results['analysis']['learning_path']
+            with open(os.path.join(assessment_dir, 'learning_path.json'), 'w') as f:
+                json.dump(learning_path, f, indent=2)
+        
+        # Save skill gaps if they exist
+        if assessment_results and 'analysis' in assessment_results and 'skill_gaps' in assessment_results['analysis']:
+            skill_gaps = assessment_results['analysis']['skill_gaps']
+            with open(os.path.join(assessment_dir, 'skill_gaps.json'), 'w') as f:
+                json.dump(skill_gaps, f, indent=2)
+        
+        return jsonify({
+            'message': 'Assessment saved successfully',
+            'assessment_id': assessment_id,
+            'user_id': user_id
+        })
+        
+    except Exception as e:
+        logger.error(f"Error saving assessment: {str(e)}", exc_info=True)
+        return jsonify({'error': f'Error saving assessment: {str(e)}'}), 500
+
+@app.route('/api/get-assessments/<user_id>', methods=['GET'])
+def get_assessments(user_id):
+    """Get all assessments for a user"""
+    try:
+        user_dir = os.path.join(DATA_FOLDER, user_id)
+        if not os.path.exists(user_dir):
+            return jsonify({'assessments': []})
+        
+        assessments = []
+        for assessment_id in os.listdir(user_dir):
+            if assessment_id == 'user_info.json':
+                continue
+                
+            assessment_dir = os.path.join(user_dir, assessment_id)
+            if os.path.isdir(assessment_dir):
+                assessment_file = os.path.join(assessment_dir, 'assessment.json')
+                if os.path.exists(assessment_file):
+                    with open(assessment_file, 'r') as f:
+                        assessment = json.load(f)
+                        
+                        # Load milestones if they exist
+                        milestones_file = os.path.join(assessment_dir, 'milestones.json')
+                        if os.path.exists(milestones_file):
+                            with open(milestones_file, 'r') as mf:
+                                milestones = json.load(mf)
+                                # Calculate progress
+                                total_milestones = len(milestones)
+                                completed_milestones = len([m for m in milestones if m['status'] == 'completed'])
+                                progress = (completed_milestones / total_milestones * 100) if total_milestones > 0 else 0
+                                assessment['progress'] = progress
+                        
+                        assessments.append(assessment)
+        
+        # Sort assessments by created_at
+        assessments.sort(key=lambda x: x.get('created_at', ''), reverse=True)
+        
+        return jsonify({
+            'assessments': assessments
+        })
+        
+    except Exception as e:
+        logger.error(f"Error retrieving assessments: {str(e)}", exc_info=True)
+        return jsonify({'error': f'Error retrieving assessments: {str(e)}'}), 500
+
+@app.route('/api/get-assessment/<assessment_id>', methods=['GET'])
+def get_assessment(assessment_id):
+    """Get a specific assessment by ID"""
+    try:
+        # Find the assessment directory
+        assessment_dir = None
+        for user_id in os.listdir(DATA_FOLDER):
+            user_dir = os.path.join(DATA_FOLDER, user_id)
+            if os.path.isdir(user_dir):
+                potential_dir = os.path.join(user_dir, assessment_id)
+                if os.path.isdir(potential_dir):
+                    assessment_dir = potential_dir
+                    break
+        
+        if not assessment_dir:
+            return jsonify({'error': 'Assessment not found'}), 404
+        
+        # Load assessment data
+        assessment_file = os.path.join(assessment_dir, 'assessment.json')
+        with open(assessment_file, 'r') as f:
+            assessment = json.load(f)
+        
+        # Load milestones if they exist
+        progress = []
+        milestones_file = os.path.join(assessment_dir, 'milestones.json')
+        if os.path.exists(milestones_file):
+            with open(milestones_file, 'r') as f:
+                progress = json.load(f)
+        
+        # Load learning path if it exists
+        learning_path = []
+        learning_path_file = os.path.join(assessment_dir, 'learning_path.json')
+        if os.path.exists(learning_path_file):
+            with open(learning_path_file, 'r') as f:
+                learning_path = json.load(f)
+        
+        # Load skill gaps if they exist
+        skill_gaps = []
+        skill_gaps_file = os.path.join(assessment_dir, 'skill_gaps.json')
+        if os.path.exists(skill_gaps_file):
+            with open(skill_gaps_file, 'r') as f:
+                skill_gaps = json.load(f)
+        
+        # Calculate overall progress
+        total_milestones = len(progress)
+        completed_milestones = len([m for m in progress if m['status'] == 'completed'])
+        overall_progress = (completed_milestones / total_milestones * 100) if total_milestones > 0 else 0
+        
+        response = {
+            'assessment': assessment,
+            'progress': progress,
+            'learning_path': learning_path,
+            'skill_gaps': skill_gaps,
+            'overall_progress': overall_progress
+        }
+        
+        return jsonify(response)
+        
+    except Exception as e:
+        logger.error(f"Error retrieving assessment: {str(e)}", exc_info=True)
+        return jsonify({'error': f'Error retrieving assessment: {str(e)}'}), 500
+
+@app.route('/api/update-progress', methods=['POST'])
+def update_progress():
+    """Update the status of a learning milestone"""
+    try:
+        data = request.json
+        
+        # Validate required fields
+        if not data or 'progress_id' not in data or 'status' not in data:
+            return jsonify({'error': 'Missing required fields'}), 400
+        
+        progress_id = data['progress_id']
+        status = data['status']
+        notes = data.get('notes', '')
+        
+        # Find the milestone file
+        milestone_file = None
+        for user_id in os.listdir(DATA_FOLDER):
+            user_dir = os.path.join(DATA_FOLDER, user_id)
+            if os.path.isdir(user_dir):
+                for assessment_id in os.listdir(user_dir):
+                    if assessment_id == 'user_info.json':
+                        continue
+                        
+                    assessment_dir = os.path.join(user_dir, assessment_id)
+                    if os.path.isdir(assessment_dir):
+                        potential_file = os.path.join(assessment_dir, 'milestones.json')
+                        if os.path.exists(potential_file):
+                            with open(potential_file, 'r') as f:
+                                milestones = json.load(f)
+                                for milestone in milestones:
+                                    if milestone['id'] == progress_id:
+                                        milestone_file = potential_file
+                                        # Update milestone
+                                        milestone['status'] = status
+                                        milestone['notes'] = notes
+                                        if status == 'completed':
+                                            milestone['completed_at'] = datetime.now().isoformat()
+                                        else:
+                                            milestone['completed_at'] = None
+                                        break
+                                if milestone_file:
+                                    break
+                    if milestone_file:
+                        break
+                if milestone_file:
+                    break
+        
+        if not milestone_file:
+            return jsonify({'error': 'Milestone not found'}), 404
+        
+        # Save updated milestones
+        with open(milestone_file, 'w') as f:
+            json.dump(milestones, f, indent=2)
+        
+        return jsonify({
+            'message': 'Progress updated successfully'
+        })
+        
+    except Exception as e:
+        logger.error(f"Error updating progress: {str(e)}", exc_info=True)
+        return jsonify({'error': f'Error updating progress: {str(e)}'}), 500
+
+@app.route('/api/get-resources/<skill>', methods=['GET'])
+def get_resources(skill):
+    """Get learning resources for a specific skill"""
+    try:
+        max_results = request.args.get('max', 10, type=int)
+        
+        # Create resources directory if it doesn't exist
+        resources_dir = os.path.join(DATA_FOLDER, 'resources')
+        os.makedirs(resources_dir, exist_ok=True)
+        
+        # Load resources for the skill
+        skill_file = os.path.join(resources_dir, f"{skill.lower().replace(' ', '_')}.json")
+        resources = []
+        
+        if os.path.exists(skill_file):
+            with open(skill_file, 'r') as f:
+                resources = json.load(f)
+        
+        return jsonify({
+            'skill': skill,
+            'resources': resources[:max_results]
+        })
+        
+    except Exception as e:
+        logger.error(f"Error retrieving resources: {str(e)}", exc_info=True)
+        return jsonify({'error': f'Error retrieving resources: {str(e)}'}), 500
+
 if __name__ == '__main__':
-    app.run(debug=True, host='0.0.0.0', port=5000) 
+    app.run(debug=True, host='0.0.0.0', port=5000)
