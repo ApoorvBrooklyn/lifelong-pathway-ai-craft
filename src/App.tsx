@@ -13,6 +13,7 @@ import Navbar from '@/components/layout/Navbar';
 import Footer from '@/components/layout/Footer';
 import CareerPathSelector from '@/pages/CareerPathSelector';
 import VRCareerPath from "@/pages/VRCareerPath";
+import SelfAssessment from "@/pages/SelfAssessment";
 import { SessionProvider } from "./providers/SessionProvider";
 import { ProtectedRoute } from "./components/auth/ProtectedRoute";
 
@@ -39,6 +40,16 @@ const App = () => (
                 <Route path="/dashboard" element={
                   <ProtectedRoute>
                     <Dashboard />
+                  </ProtectedRoute>
+                } />
+                <Route path="/learning" element={
+                  <ProtectedRoute>
+                    <SelfAssessment />
+                  </ProtectedRoute>
+                } />
+                <Route path="/self-assessment" element={
+                  <ProtectedRoute>
+                    <SelfAssessment />
                   </ProtectedRoute>
                 } />
                 {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}

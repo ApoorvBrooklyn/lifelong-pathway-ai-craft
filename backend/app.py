@@ -1029,5 +1029,135 @@ def get_resources(skill):
         logger.error(f"Error retrieving resources: {str(e)}", exc_info=True)
         return jsonify({'error': f'Error retrieving resources: {str(e)}'}), 500
 
+@app.route('/api/generate-assessment', methods=['POST'])
+def generate_assessment():
+    try:
+        # Check for data in form
+        topic = request.form.get('topic')
+        resume_file = request.files.get('resume')
+        
+        # Also check for JSON data if not in form
+        if not topic and request.is_json:
+            data = request.json
+            topic = data.get('topic')
+            
+        if not topic and not resume_file:
+            return jsonify({'error': 'Either topic or resume must be provided'}), 400
+
+        logger.info(f"Generating assessment for topic: {topic}")
+
+        # Extract skills from resume if provided
+        skills = []
+        if resume_file:
+            if not allowed_file(resume_file.filename):
+                return jsonify({'error': 'Invalid file type'}), 400
+            
+            filename = secure_filename(resume_file.filename)
+            file_path = os.path.join(app.config['UPLOAD_FOLDER'], filename)
+            resume_file.save(file_path)
+            
+            # Extract text from resume
+            text = extract_text_from_file(file_path)
+            skills = extract_skills_from_text(text)
+            
+            # Clean up the file
+            os.remove(file_path)
+
+        # Generate questions using Groq
+        prompt = f"""Generate a comprehensive skill assessment with 10 multiple-choice questions.
+        {'Based on the following skills: ' + ', '.join(skills) if skills else f'On the topic of: {topic}'}
+        
+        Create 10 questions that test both theoretical knowledge and practical application. The questions should be of medium difficulty level - challenging enough for professionals but not extremely advanced.
+        
+        For each question, provide:
+        1. A clear and specific question
+        2. Four possible answers (A, B, C, D)
+        3. The correct answer
+        
+        Format the response as a JSON object with the following structure:
+        {{
+            "questions": [
+                {{
+                    "question": "Question text",
+                    "options": ["Option A", "Option B", "Option C", "Option D"],
+                    "correctAnswer": "Option A"
+                }}
+                // 9 more questions with similar structure
+            ],
+            "topic": "{topic if topic else 'Skill Assessment'}"
+        }}
+        
+        VERY IMPORTANT: 
+        1. Return ONLY the JSON object without any additional text, comments, markdown formatting, or explanations.
+        2. Ensure the questions are of medium difficulty level.
+        3. Include a mix of theoretical and practical questions.
+        4. Make sure all 10 questions cover different aspects of the topic(s)."""
+
+        completion = groq_client.chat.completions.create(
+            model=GROQ_MODEL,
+            messages=[
+                {"role": "system", "content": "You are an expert at creating skill assessment questions. Always respond with only the requested JSON format, without any additional text or explanations."},
+                {"role": "user", "content": prompt}
+            ],
+            temperature=0.7,
+            max_tokens=3000,
+            top_p=1,
+            stream=False
+        )
+
+        response_text = completion.choices[0].message.content
+        logger.info(f"Raw response from Groq (first 200 chars): {response_text[:200]}")
+        
+        try:
+            # Try to extract JSON from markdown if present
+            import re
+            json_match = re.search(r'```(?:json)?(.*?)```', response_text, re.DOTALL)
+            if json_match:
+                # Extract JSON from markdown code block
+                cleaned_json = json_match.group(1).strip()
+                logger.info(f"Extracted JSON from markdown code block")
+            else:
+                # Try to find JSON object within the text
+                json_match = re.search(r'({.*})', response_text, re.DOTALL)
+                if json_match:
+                    cleaned_json = json_match.group(1).strip()
+                    logger.info(f"Extracted JSON from text")
+                else:
+                    # Use the full response as is
+                    cleaned_json = response_text.strip()
+                    logger.info(f"Using full response as JSON")
+            
+            assessment_data = json.loads(cleaned_json)
+            
+            # Validate the assessment data structure
+            if 'questions' not in assessment_data or not isinstance(assessment_data['questions'], list):
+                logger.error("Missing or invalid 'questions' field in assessment data")
+                return jsonify({'error': 'Invalid assessment data format'}), 500
+                
+            # Ensure each question has the required fields and format them correctly
+            for i, question in enumerate(assessment_data['questions']):
+                # Make sure we have options as a list
+                if 'options' not in question or not isinstance(question['options'], list):
+                    logger.error(f"Missing or invalid 'options' in question {i+1}")
+                    return jsonify({'error': f'Invalid options format in question {i+1}'}), 500
+                
+                # Convert correctAnswer from letter to option text if needed
+                if 'correctAnswer' in question and question['correctAnswer'] in ['A', 'B', 'C', 'D']:
+                    index = ord(question['correctAnswer']) - ord('A')
+                    if 0 <= index < len(question['options']):
+                        question['correctAnswer'] = question['options'][index]
+                    
+            logger.info(f"Successfully processed assessment with {len(assessment_data['questions'])} questions")
+            return jsonify(assessment_data)
+            
+        except json.JSONDecodeError as e:
+            logger.error(f"Failed to parse JSON response: {str(e)}")
+            logger.error(f"Raw response: {response_text}")
+            return jsonify({'error': 'Failed to generate assessment'}), 500
+
+    except Exception as e:
+        logger.error(f"Error in generate_assessment: {str(e)}", exc_info=True)
+        return jsonify({'error': str(e)}), 500
+
 if __name__ == '__main__':
     app.run(debug=True, host='0.0.0.0', port=5000)
