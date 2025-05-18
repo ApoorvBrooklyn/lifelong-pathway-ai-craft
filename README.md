@@ -1,73 +1,135 @@
-# Welcome to your Lovable project
+# Lifelong Pathway AI Craft
 
-## Project info
+A modern career development platform that uses AI to help users assess their skills, identify gaps, and create personalized learning paths to reach their career goals.
 
-**URL**: https://lovable.dev/projects/aae6a60c-296c-4e1e-9a7c-5ee0591a9b45
+## Features
 
-## How can I edit this code?
+- **Skills Assessment**: Evaluate your current technical and soft skills through AI-powered analysis
+- **Career Path Generation**: Get personalized learning paths based on your target role and current skills
+- **Learning Path Dashboard**: Track your progress through interactive milestones
+- **Skill Gap Analysis**: Identify the skills you need to develop for your desired role
+- **Curated Resources**: Get personalized learning resources based on your learning style and budget
+- **Progress Tracking**: Mark milestones as in-progress or completed to track your journey
 
-There are several ways of editing your application.
+## Technology Stack
 
-**Use Lovable**
+### Frontend
+- React.js
+- TypeScript
+- Tailwind CSS
+- shadcn/ui components
+- React Router for navigation
 
-Simply visit the [Lovable Project](https://lovable.dev/projects/aae6a60c-296c-4e1e-9a7c-5ee0591a9b45) and start prompting.
+### Backend
+- Python with Flask
+- Groq API for AI language model capabilities
+- File-based data storage
+- Milvus vector database (optional)
 
-Changes made via Lovable will be committed automatically to this repo.
+## Getting Started
 
-**Use your preferred IDE**
+### Prerequisites
+- Node.js (v16+)
+- Python (v3.8+)
+- Groq API key (for AI capabilities)
 
-If you want to work locally using your own IDE, you can clone this repo and push changes. Pushed changes will also be reflected in Lovable.
+### Installation
 
-The only requirement is having Node.js & npm installed - [install with nvm](https://github.com/nvm-sh/nvm#installing-and-updating)
+1. Clone the repository
+```bash
+git clone https://github.com/yourusername/lifelong-pathway-ai-craft.git
+cd lifelong-pathway-ai-craft
+```
 
-Follow these steps:
+2. Install frontend dependencies
+```bash
+cd frontend
+npm install
+```
 
-```sh
-# Step 1: Clone the repository using the project's Git URL.
-git clone <YOUR_GIT_URL>
+3. Install backend dependencies
+```bash
+cd backend
+pip install -r requirements.txt
+```
 
-# Step 2: Navigate to the project directory.
-cd <YOUR_PROJECT_NAME>
+4. Set up your Groq API key in the backend
+```bash
+# Add your key to the backend/app.py file or use an environment variable
+```
 
-# Step 3: Install the necessary dependencies.
-npm i
+### Running the application
 
-# Step 4: Start the development server with auto-reloading and an instant preview.
+1. Start the backend server
+```bash
+cd backend
+python app.py
+```
+
+2. Start the frontend development server
+```bash
+cd frontend
 npm run dev
 ```
 
-**Edit a file directly in GitHub**
+3. Open your browser and navigate to `http://localhost:8080`
 
-- Navigate to the desired file(s).
-- Click the "Edit" button (pencil icon) at the top right of the file view.
-- Make your changes and commit the changes.
+## Usage Guide
 
-**Use GitHub Codespaces**
+### Creating Your First Assessment
 
-- Navigate to the main page of your repository.
-- Click on the "Code" button (green button) near the top right.
-- Select the "Codespaces" tab.
-- Click on "New codespace" to launch a new Codespace environment.
-- Edit files directly within the Codespace and commit and push your changes once you're done.
+1. Click on "New Assessment" from the dashboard or navigate to the assessment page
+2. Fill in your current skills, experience, and target role
+3. Optionally upload your resume for automated skills extraction
+4. Complete all assessment steps including learning preferences
+5. Submit to receive your personalized career path
 
-## What technologies are used for this project?
+### Tracking Your Progress
 
-This project is built with:
+1. View your generated learning paths on the dashboard
+2. Click "Track Progress" to update milestone status
+3. Mark milestones as "In Progress" or "Completed"
+4. Navigate to the detailed learning path view to see skill gaps and resources
 
-- Vite
-- TypeScript
-- React
-- shadcn-ui
-- Tailwind CSS
+### Managing Learning Paths
 
-## How can I deploy this project?
+- Refresh your assessments anytime from the dashboard
+- View detailed information by clicking on a specific learning path
+- Delete learning paths you no longer need from the dashboard or learning path view
 
-Simply open [Lovable](https://lovable.dev/projects/aae6a60c-296c-4e1e-9a7c-5ee0591a9b45) and click on Share -> Publish.
+## Project Structure
 
-## Can I connect a custom domain to my Lovable project?
+```
+lifelong-pathway-ai-craft/
+├── frontend/              # React frontend application
+│   ├── src/               # Source code
+│   │   ├── components/    # UI components
+│   │   ├── pages/         # Page components
+│   │   ├── providers/     # Context providers
+│   │   └── hooks/         # Custom React hooks
+│   └── public/            # Static assets
+└── backend/               # Flask backend application
+    ├── app.py             # Main application file
+    ├── data/              # Data storage directory
+    └── uploads/           # Temporary upload directory
+```
 
-Yes, you can!
+## Contributing
 
-To connect a domain, navigate to Project > Settings > Domains and click Connect Domain.
+Contributions are welcome! Please feel free to submit a Pull Request.
 
-Read more here: [Setting up a custom domain](https://docs.lovable.dev/tips-tricks/custom-domain#step-by-step-guide)
+1. Fork the repository
+2. Create your feature branch (`git checkout -b feature/amazing-feature`)
+3. Commit your changes (`git commit -m 'Add some amazing feature'`)
+4. Push to the branch (`git push origin feature/amazing-feature`)
+5. Open a Pull Request
+
+## License
+
+This project is licensed under the MIT License - see the LICENSE file for details.
+
+## Acknowledgements
+
+- [Groq API](https://groq.com) for providing the AI language model capabilities
+- [shadcn/ui](https://ui.shadcn.com/) for the beautiful UI components
+- [Tailwind CSS](https://tailwindcss.com/) for the utility-first CSS framework
