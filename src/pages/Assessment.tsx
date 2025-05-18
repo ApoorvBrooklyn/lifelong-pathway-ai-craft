@@ -454,16 +454,19 @@ const Assessment = () => {
                         </div>
                         <div>
                           <label className="block text-sm font-medium mb-1">
-                            Job Description (paste target role description)
+                            Job Description (optional)
                           </label>
                           <textarea
                             id="jobDescription"
                             className="w-full p-2 border border-border rounded-md"
                             rows={4}
-                            placeholder="Paste the job description for your target role to help our AI analyze skill gaps"
+                            placeholder="Paste a specific job description or leave blank to use AI-generated description"
                             value={formData.jobDescription}
                             onChange={handleInputChange}
                           ></textarea>
+                          <p className="text-xs text-muted-foreground mt-1">
+                            If left blank, we'll generate a general job description based on the target role.
+                          </p>
                         </div>
                         <div>
                           <label className="block text-sm font-medium mb-1">
@@ -611,11 +614,19 @@ const Assessment = () => {
                   </Card>
                 )}
                 
-                <div className="flex justify-center mt-8">
-                  <Button onClick={resetAssessment} variant="outline" className="mr-4">
+                <div className="flex flex-wrap justify-center gap-3 mt-8">
+                  <Button onClick={resetAssessment} variant="outline">
                     Restart Assessment
                   </Button>
-                  <Button asChild className="mr-4">
+                  <Button onClick={handleSaveAssessment} variant="default" className="bg-green-600 hover:bg-green-700">
+                    <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4 mr-2" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                      <path d="M19 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11l5 5v11a2 2 0 0 1-2 2z"/>
+                      <polyline points="17 21 17 13 7 13 7 21"/>
+                      <polyline points="7 3 7 8 15 8"/>
+                    </svg>
+                    Save Assessment
+                  </Button>
+                  <Button asChild>
                     <a href="/dashboard">View Dashboard</a>
                   </Button>
                   <Button asChild variant="secondary">

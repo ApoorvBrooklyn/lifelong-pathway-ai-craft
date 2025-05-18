@@ -6,6 +6,7 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Index from "./pages/Index";
 import Assessment from "./pages/Assessment";
 import Dashboard from "./pages/Dashboard";
+import LearningPath from "./pages/LearningPath";
 import NotFound from "./pages/NotFound";
 import Auth from "./pages/Auth";
 import AuthCallback from "./pages/AuthCallback";
@@ -56,6 +57,11 @@ const App = () => (
                 <Route path="/learn-with-ai" element={
                   <ProtectedRoute>
                     <LearnWithAI />
+                  </ProtectedRoute>
+                } />
+                <Route path="/learning-path/:assessmentId" element={
+                  <ProtectedRoute>
+                    <LearningPath />
                   </ProtectedRoute>
                 } />
                 {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}

@@ -582,9 +582,17 @@ def assess_skills():
         if not target_role:
             logger.error("Target role is missing")
             return jsonify({'error': 'Target role is required'}), 400
+            
+        # If job description is not provided, fetch a general description from GROQ
         if not job_description:
-            logger.error("Job description is missing")
-            return jsonify({'error': 'Job description is required'}), 400
+            logger.info(f"Job description not provided, fetching general description for {target_role}")
+            try:
+                # Fetch job description using GROQ
+                job_description = fetch_job_description_from_groq(target_role)
+                logger.info(f"Successfully fetched job description for {target_role}")
+            except Exception as e:
+                logger.error(f"Error fetching job description from GROQ: {str(e)}")
+                return jsonify({'error': f'Failed to fetch job description: {str(e)}'}), 500
         
         # Get career gap analysis from Groq
         logger.debug("Calling analyze_career_gap_with_groq")
@@ -672,6 +680,7 @@ def save_assessment():
     """Save assessment results for a user"""
     try:
         data = request.json
+        logger.info("Received assessment data for saving")
         
         # Validate required fields
         if not data:
@@ -694,6 +703,7 @@ def save_assessment():
         
         # Create user directory if it doesn't exist
         user_dir = os.path.join(DATA_FOLDER, user_id)
+        logger.info(f"Creating user directory at {user_dir}")
         os.makedirs(user_dir, exist_ok=True)
         
         # Save user info if it doesn't exist
@@ -707,10 +717,12 @@ def save_assessment():
             }
             with open(user_info_file, 'w') as f:
                 json.dump(user_info, f, indent=2)
+            logger.info(f"Created user info file at {user_info_file}")
         
         # Create assessment directory
         assessment_dir = os.path.join(user_dir, assessment_id)
         os.makedirs(assessment_dir, exist_ok=True)
+        logger.info(f"Created assessment directory at {assessment_dir}")
         
         # Prepare assessment data
         assessment_data = {
@@ -726,8 +738,18 @@ def save_assessment():
         }
         
         # Save assessment data
-        with open(os.path.join(assessment_dir, 'assessment.json'), 'w') as f:
+        assessment_file = os.path.join(assessment_dir, 'assessment.json')
+        with open(assessment_file, 'w') as f:
             json.dump(assessment_data, f, indent=2)
+        logger.info(f"Saved assessment data to {assessment_file}")
+        
+        # Also save a session copy for immediate access
+        session_file = os.path.join(DATA_FOLDER, f"session_{user_id}.json")
+        with open(session_file, 'w') as f:
+            json.dump({
+                'assessments': [assessment_data]
+            }, f, indent=2)
+        logger.info(f"Saved session assessment data to {session_file}")
         
         # Save milestones if they exist
         if assessment_results and 'analysis' in assessment_results and 'milestones' in assessment_results['analysis']:
@@ -747,20 +769,26 @@ def save_assessment():
                 milestones.append(milestone_data)
             
             # Save milestones
-            with open(os.path.join(assessment_dir, 'milestones.json'), 'w') as f:
+            milestones_file = os.path.join(assessment_dir, 'milestones.json')
+            with open(milestones_file, 'w') as f:
                 json.dump(milestones, f, indent=2)
+            logger.info(f"Saved milestones to {milestones_file}")
         
         # Save learning path if it exists
         if assessment_results and 'analysis' in assessment_results and 'learning_path' in assessment_results['analysis']:
             learning_path = assessment_results['analysis']['learning_path']
-            with open(os.path.join(assessment_dir, 'learning_path.json'), 'w') as f:
+            path_file = os.path.join(assessment_dir, 'learning_path.json')
+            with open(path_file, 'w') as f:
                 json.dump(learning_path, f, indent=2)
+            logger.info(f"Saved learning path to {path_file}")
         
         # Save skill gaps if they exist
         if assessment_results and 'analysis' in assessment_results and 'skill_gaps' in assessment_results['analysis']:
             skill_gaps = assessment_results['analysis']['skill_gaps']
-            with open(os.path.join(assessment_dir, 'skill_gaps.json'), 'w') as f:
+            gaps_file = os.path.join(assessment_dir, 'skill_gaps.json')
+            with open(gaps_file, 'w') as f:
                 json.dump(skill_gaps, f, indent=2)
+            logger.info(f"Saved skill gaps to {gaps_file}")
         
         return jsonify({
             'message': 'Assessment saved successfully',
@@ -776,10 +804,27 @@ def save_assessment():
 def get_assessments(user_id):
     """Get all assessments for a user"""
     try:
+        logger.info(f"Fetching assessments for user {user_id}")
+        
+        # First check if we have a session file for this user
+        session_file = os.path.join(DATA_FOLDER, f"session_{user_id}.json")
+        if os.path.exists(session_file):
+            logger.info(f"Found session file at {session_file}")
+            try:
+                with open(session_file, 'r') as f:
+                    session_data = json.load(f)
+                    return jsonify(session_data)
+            except Exception as e:
+                logger.error(f"Error reading session file: {str(e)}")
+                # Continue to normal directory check if session file is corrupted
+        
+        # Check user directory
         user_dir = os.path.join(DATA_FOLDER, user_id)
         if not os.path.exists(user_dir):
+            logger.info(f"User directory not found at {user_dir}")
             return jsonify({'assessments': []})
         
+        logger.info(f"Looking for assessments in {user_dir}")
         assessments = []
         for assessment_id in os.listdir(user_dir):
             if assessment_id == 'user_info.json':
@@ -789,6 +834,7 @@ def get_assessments(user_id):
             if os.path.isdir(assessment_dir):
                 assessment_file = os.path.join(assessment_dir, 'assessment.json')
                 if os.path.exists(assessment_file):
+                    logger.info(f"Found assessment file at {assessment_file}")
                     with open(assessment_file, 'r') as f:
                         assessment = json.load(f)
                         
@@ -807,6 +853,14 @@ def get_assessments(user_id):
         
         # Sort assessments by created_at
         assessments.sort(key=lambda x: x.get('created_at', ''), reverse=True)
+        
+        # Save to session file for faster access next time
+        if assessments:
+            logger.info(f"Saving {len(assessments)} assessments to session file")
+            with open(session_file, 'w') as f:
+                json.dump({
+                    'assessments': assessments
+                }, f, indent=2)
         
         return jsonify({
             'assessments': assessments
@@ -1790,6 +1844,114 @@ def learn_with_ai_chat():
     except Exception as e:
         logger.error(f"Error in Learn With AI chat: {str(e)}", exc_info=True)
         return jsonify({'error': f'Error processing request: {str(e)}'}), 500
+
+def fetch_job_description_from_groq(job_title: str) -> str:
+    """
+    Fetch a general job description for a given job title using GROQ API.
+    
+    Args:
+        job_title: The job title to fetch description for.
+        
+    Returns:
+        A string containing the job description.
+    """
+    try:
+        logger.debug(f"Fetching job description for {job_title}")
+        
+        prompt = f"""Generate a comprehensive job description for a {job_title} position. Include:
+1. Role overview and main responsibilities
+2. Required technical skills and expertise
+3. Key qualifications and experience needed
+4. Preferred soft skills
+5. Common tools, languages, and technologies used in this role
+
+Keep the description professional, detailed, and realistic as if it were from a top company in the industry.
+"""
+
+        completion = groq_client.chat.completions.create(
+            model=GROQ_MODEL,
+            messages=[
+                {"role": "system", "content": "You are a professional HR and recruiting expert specializing in technical roles."},
+                {"role": "user", "content": prompt}
+            ],
+            temperature=0.7,
+            max_tokens=1000,
+            top_p=1,
+            stream=False
+        )
+        
+        # Get the job description from response
+        job_description = completion.choices[0].message.content.strip()
+        
+        # Add a note that this is an AI-generated description
+        job_description = f"{job_description}\n\n[This is an AI-generated job description based on standard industry expectations for this role.]"
+        
+        logger.debug(f"Successfully generated job description for {job_title}")
+        return job_description
+    
+    except Exception as e:
+        logger.error(f"Error generating job description: {str(e)}")
+        raise Exception(f"Failed to generate job description: {str(e)}")
+
+@app.route('/api/delete-assessment/<assessment_id>', methods=['DELETE'])
+def delete_assessment(assessment_id):
+    """Delete a specific assessment by ID"""
+    try:
+        # Find the assessment directory
+        assessment_dir = None
+        user_id = None
+        
+        for uid in os.listdir(DATA_FOLDER):
+            user_dir = os.path.join(DATA_FOLDER, uid)
+            if os.path.isdir(user_dir):
+                potential_dir = os.path.join(user_dir, assessment_id)
+                if os.path.isdir(potential_dir):
+                    assessment_dir = potential_dir
+                    user_id = uid
+                    break
+        
+        if not assessment_dir or not user_id:
+            return jsonify({'error': 'Assessment not found'}), 404
+        
+        # Delete all files in the assessment directory
+        for file_name in os.listdir(assessment_dir):
+            file_path = os.path.join(assessment_dir, file_name)
+            try:
+                if os.path.isfile(file_path):
+                    os.remove(file_path)
+                    logger.info(f"Deleted file {file_path}")
+            except Exception as e:
+                logger.error(f"Error deleting file {file_path}: {str(e)}")
+        
+        # Remove the directory
+        os.rmdir(assessment_dir)
+        logger.info(f"Deleted assessment directory {assessment_dir}")
+        
+        # Update the session file
+        session_file = os.path.join(DATA_FOLDER, f"session_{user_id}.json")
+        if os.path.exists(session_file):
+            try:
+                with open(session_file, 'r') as f:
+                    session_data = json.load(f)
+                
+                # Filter out the deleted assessment
+                assessments = [a for a in session_data.get('assessments', []) if a.get('id') != assessment_id]
+                
+                # Save updated session data
+                with open(session_file, 'w') as f:
+                    json.dump({'assessments': assessments}, f, indent=2)
+                logger.info(f"Updated session file after deletion")
+            except Exception as e:
+                logger.error(f"Error updating session file: {str(e)}")
+        
+        return jsonify({
+            'message': 'Assessment deleted successfully',
+            'assessment_id': assessment_id
+        })
+        
+    except Exception as e:
+        logger.error(f"Error deleting assessment: {str(e)}", exc_info=True)
+        return jsonify({'error': f'Error deleting assessment: {str(e)}'}), 500
 
 if __name__ == '__main__':
     app.run(debug=True, host='0.0.0.0', port=5000)
