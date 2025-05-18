@@ -1063,16 +1063,54 @@ def generate_assessment():
             # Clean up the file
             os.remove(file_path)
 
+        # Determine if coding questions are appropriate for this topic
+        # List of topics that are well-suited for coding questions
+        coding_relevant_topics = [
+            'programming', 'coding', 'python', 'javascript', 'java', 'c++', 'web development',
+            'software engineering', 'data structures', 'algorithms', 'react', 'angular', 'vue',
+            'node.js', 'backend', 'frontend', 'fullstack', 'data science', 'machine learning'
+        ]
+        
+        # Check if any of the coding-relevant topics are in the user's topic
+        topic_lower = topic.lower()
+        include_coding = any(coding_topic in topic_lower for coding_topic in coding_relevant_topics)
+        
         # Generate questions using Groq
-        prompt = f"""Generate a comprehensive skill assessment with 10 multiple-choice questions.
+        if include_coding:
+            # Include a mix of multiple choice and optional coding questions
+            question_structure = """
+            Create a comprehensive assessment with a total of 10-15 questions maximum (limiting to 20 absolute maximum if complex topics):
+            - The majority should be multiple-choice questions that test theoretical knowledge and practical understanding
+            - Include 1-2 coding questions only if appropriate for the topic
+            
+            For multiple-choice questions, provide:
+            1. A clear and specific question
+            2. Four possible answers (A, B, C, D)
+            3. The correct answer
+            
+            For coding questions (only if topic is programming-related), provide:
+            1. A clear problem statement
+            2. Input and expected output examples
+            3. Constraints or requirements
+            4. A starter code template (if applicable)
+            5. The correct solution code
+            """
+        else:
+            # Only include multiple choice questions for non-coding topics
+            question_structure = """
+            Create a comprehensive assessment with a total of 10-15 questions maximum (limiting to 20 absolute maximum if complex topics):
+            - All questions should be multiple-choice that thoroughly test both theoretical knowledge and practical understanding
+            
+            For each question, provide:
+            1. A clear and specific question
+            2. Four possible answers (A, B, C, D)
+            3. The correct answer
+            """
+
+        prompt = f"""Generate a comprehensive skill assessment.
         {'Based on the following skills: ' + ', '.join(skills) if skills else f'On the topic of: {topic}'}
         
-        Create 10 questions that test both theoretical knowledge and practical application. The questions should be of medium difficulty level - challenging enough for professionals but not extremely advanced.
-        
-        For each question, provide:
-        1. A clear and specific question
-        2. Four possible answers (A, B, C, D)
-        3. The correct answer
+        {question_structure}
         
         Format the response as a JSON object with the following structure:
         {{
@@ -1080,9 +1118,26 @@ def generate_assessment():
                 {{
                     "question": "Question text",
                     "options": ["Option A", "Option B", "Option C", "Option D"],
-                    "correctAnswer": "Option A"
+                    "correctAnswer": "Option A",
+                    "type": "multiple_choice"
+                }},
+                // Additional multiple choice questions...
+                
+                // Only include coding questions if topic is programming-related
+                {{
+                    "question": "Problem statement",
+                    "examples": [
+                        {{
+                            "input": "Example input",
+                            "output": "Expected output"
+                        }}
+                    ],
+                    "constraints": "Any constraints or requirements",
+                    "starter_code": "// starter code template if applicable",
+                    "solution": "// correct solution code",
+                    "type": "coding"
                 }}
-                // 9 more questions with similar structure
+                // Maximum 1-2 coding questions if applicable
             ],
             "topic": "{topic if topic else 'Skill Assessment'}"
         }}
@@ -1091,16 +1146,17 @@ def generate_assessment():
         1. Return ONLY the JSON object without any additional text, comments, markdown formatting, or explanations.
         2. Ensure the questions are of medium difficulty level.
         3. Include a mix of theoretical and practical questions.
-        4. Make sure all 10 questions cover different aspects of the topic(s)."""
+        4. LIMIT THE TOTAL NUMBER OF QUESTIONS TO 20 MAXIMUM, preferably 10-15 for most topics.
+        5. Only include coding questions if the topic is directly related to programming or software development."""
 
         completion = groq_client.chat.completions.create(
             model=GROQ_MODEL,
             messages=[
-                {"role": "system", "content": "You are an expert at creating skill assessment questions. Always respond with only the requested JSON format, without any additional text or explanations."},
+                {"role": "system", "content": "You are an expert at creating skill assessment questions. Always respond with only the requested JSON format, without any additional text or explanations. IMPORTANT: Limit the total number of questions to 20 maximum."},
                 {"role": "user", "content": prompt}
             ],
             temperature=0.7,
-            max_tokens=3000,
+            max_tokens=4000,
             top_p=1,
             stream=False
         )
@@ -1129,23 +1185,78 @@ def generate_assessment():
             
             assessment_data = json.loads(cleaned_json)
             
-            # Validate the assessment data structure
-            if 'questions' not in assessment_data or not isinstance(assessment_data['questions'], list):
-                logger.error("Missing or invalid 'questions' field in assessment data")
+            # Handle different response formats
+            questions = []
+            
+            # Check if the response uses the new format with separate arrays
+            if 'multiple_choice_questions' in assessment_data and 'coding_questions' in assessment_data:
+                # Add type field to each question if not present
+                for q in assessment_data['multiple_choice_questions']:
+                    if 'type' not in q:
+                        q['type'] = 'multiple_choice'
+                    questions.append(q)
+                
+                for q in assessment_data['coding_questions']:
+                    if 'type' not in q:
+                        q['type'] = 'coding'
+                    questions.append(q)
+                
+                # Create a standard format
+                assessment_data['questions'] = questions
+            elif 'questions' not in assessment_data:
+                logger.error("No questions field in assessment data")
                 return jsonify({'error': 'Invalid assessment data format'}), 500
+            
+            # Validate the assessment data structure
+            if not isinstance(assessment_data['questions'], list):
+                logger.error("Invalid 'questions' field in assessment data")
+                return jsonify({'error': 'Invalid assessment data format'}), 500
+            
+            # Limit the number of questions to 20 maximum
+            if len(assessment_data['questions']) > 20:
+                logger.warning(f"Too many questions generated ({len(assessment_data['questions'])}), limiting to 20")
+                assessment_data['questions'] = assessment_data['questions'][:20]
                 
             # Ensure each question has the required fields and format them correctly
             for i, question in enumerate(assessment_data['questions']):
-                # Make sure we have options as a list
-                if 'options' not in question or not isinstance(question['options'], list):
-                    logger.error(f"Missing or invalid 'options' in question {i+1}")
-                    return jsonify({'error': f'Invalid options format in question {i+1}'}), 500
+                # Add type if not present (assume multiple choice as default)
+                if 'type' not in question:
+                    if 'options' in question:
+                        question['type'] = 'multiple_choice'
+                    else:
+                        question['type'] = 'coding'
                 
-                # Convert correctAnswer from letter to option text if needed
-                if 'correctAnswer' in question and question['correctAnswer'] in ['A', 'B', 'C', 'D']:
-                    index = ord(question['correctAnswer']) - ord('A')
-                    if 0 <= index < len(question['options']):
-                        question['correctAnswer'] = question['options'][index]
+                # Process multiple choice questions
+                if question['type'] == 'multiple_choice':
+                    # Make sure we have options as a list
+                    if 'options' not in question or not isinstance(question['options'], list):
+                        logger.error(f"Missing or invalid 'options' in question {i+1}")
+                        return jsonify({'error': f'Invalid options format in question {i+1}'}), 500
+                    
+                    # Convert correctAnswer from letter to option text if needed
+                    if 'correctAnswer' in question and question['correctAnswer'] in ['A', 'B', 'C', 'D']:
+                        index = ord(question['correctAnswer']) - ord('A')
+                        if 0 <= index < len(question['options']):
+                            question['correctAnswer'] = question['options'][index]
+                
+                # Process coding questions
+                elif question['type'] == 'coding':
+                    # Ensure required fields
+                    required_fields = ['question', 'solution']
+                    for field in required_fields:
+                        if field not in question:
+                            logger.error(f"Missing '{field}' in coding question {i+1}")
+                            question[field] = f"Default {field} for coding question {i+1}"
+                    
+                    # Add empty arrays/fields if missing
+                    if 'examples' not in question or not isinstance(question['examples'], list):
+                        question['examples'] = []
+                    
+                    if 'constraints' not in question:
+                        question['constraints'] = "No specific constraints"
+                    
+                    if 'starter_code' not in question:
+                        question['starter_code'] = "// Write your solution here"
                     
             logger.info(f"Successfully processed assessment with {len(assessment_data['questions'])} questions")
             return jsonify(assessment_data)

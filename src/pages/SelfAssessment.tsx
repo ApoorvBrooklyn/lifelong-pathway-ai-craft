@@ -8,12 +8,25 @@ import { Textarea } from "@/components/ui/textarea";
 import { useToast } from "@/components/ui/use-toast";
 import { useSession } from "@/providers/SessionProvider";
 import { Progress } from "@/components/ui/progress";
+import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 
-interface Question {
+interface MultipleChoiceQuestion {
   question: string;
   options: string[];
   correctAnswer?: string;
+  type: 'multiple_choice';
 }
+
+interface CodingQuestion {
+  question: string;
+  examples?: Array<{ input: string, output: string }>;
+  constraints?: string;
+  starter_code?: string;
+  solution?: string;
+  type: 'coding';
+}
+
+type Question = MultipleChoiceQuestion | CodingQuestion;
 
 const SelfAssessment = () => {
   const { user, loading: isLoadingSession } = useSession();
@@ -23,7 +36,8 @@ const SelfAssessment = () => {
   const [topics, setTopics] = useState('');
   const [questions, setQuestions] = useState<Question[]>([]);
   const [currentQuestion, setCurrentQuestion] = useState(0);
-  const [answers, setAnswers] = useState<string[]>([]);
+  const [answers, setAnswers] = useState<(string | null)[]>([]);
+  const [codingAnswers, setCodingAnswers] = useState<string[]>([]);
   const [score, setScore] = useState<number | null>(null);
   const [correctAnswers, setCorrectAnswers] = useState<number[]>([]);
 
@@ -66,24 +80,22 @@ const SelfAssessment = () => {
         throw new Error('Invalid response format');
       }
 
-      // Clean up the questions to ensure they have all required fields
-      const formattedQuestions = data.questions.map((q: Question) => ({
-        question: q.question,
-        options: q.options || [],
-        correctAnswer: q.correctAnswer || q.options?.[0] || ''
-      }));
+      // Initialize the coding answers array with empty strings for each coding question
+      const newCodingAnswers = new Array(data.questions.filter(q => q.type === 'coding').length).fill('');
+      setCodingAnswers(newCodingAnswers);
       
-      console.log('Formatted questions:', formattedQuestions);
+      // Initialize answers array with nulls to match the length of questions
+      const initialAnswers = new Array(data.questions.length).fill(null);
+      setAnswers(initialAnswers);
       
-      setQuestions(formattedQuestions);
+      setQuestions(data.questions);
       setCurrentQuestion(0);
-      setAnswers([]);
       setCorrectAnswers([]);
       setScore(null);
       
       toast({
         title: "Assessment Generated",
-        description: `Successfully created assessment with ${formattedQuestions.length} questions on ${topics}`,
+        description: `Successfully created assessment with ${data.questions.length} questions on ${topics}`,
       });
     } catch (error) {
       console.error('Error generating assessment:', error);
@@ -97,25 +109,68 @@ const SelfAssessment = () => {
     }
   };
 
-  const handleAnswer = (answer: string) => {
-    const newAnswers = [...answers, answer];
+  const handleMultipleChoiceAnswer = (answer: string) => {
+    // Create a new answers array with this answer
+    const newAnswers = [...answers];
+    newAnswers[currentQuestion] = answer;
     setAnswers(newAnswers);
     
     // Check if the answer is correct
-    const isCorrect = answer === questions[currentQuestion].correctAnswer;
-    const newCorrectAnswers = [...correctAnswers];
-    if (isCorrect) {
-      newCorrectAnswers.push(currentQuestion);
-      setCorrectAnswers(newCorrectAnswers);
+    const question = questions[currentQuestion] as MultipleChoiceQuestion;
+    const isCorrect = answer === question.correctAnswer;
+    
+    if (isCorrect && !correctAnswers.includes(currentQuestion)) {
+      setCorrectAnswers([...correctAnswers, currentQuestion]);
+    } else if (!isCorrect && correctAnswers.includes(currentQuestion)) {
+      setCorrectAnswers(correctAnswers.filter(i => i !== currentQuestion));
     }
 
+    // Move to next question
     if (currentQuestion < questions.length - 1) {
       setCurrentQuestion(currentQuestion + 1);
-    } else {
-      // Calculate score and show results
-      const score = (newCorrectAnswers.length / questions.length) * 100;
-      setScore(score);
     }
+  };
+
+  const handleCodingAnswerChange = (answer: string) => {
+    // Find the index of this coding question among all coding questions
+    const codingQuestionIndex = questions
+      .slice(0, currentQuestion + 1)
+      .filter(q => q.type === 'coding')
+      .length - 1;
+    
+    // Update the coding answers array
+    const newCodingAnswers = [...codingAnswers];
+    newCodingAnswers[codingQuestionIndex] = answer;
+    setCodingAnswers(newCodingAnswers);
+    
+    // Also update the main answers array
+    const newAnswers = [...answers];
+    newAnswers[currentQuestion] = answer;
+    setAnswers(newAnswers);
+  };
+
+  const handleCodingSubmit = () => {
+    // For simplicity, we're not actually evaluating the code
+    // In a real implementation, you would send the code to a backend for evaluation
+    
+    // Move to next question
+    if (currentQuestion < questions.length - 1) {
+      setCurrentQuestion(currentQuestion + 1);
+    }
+  };
+  
+  const finishAssessment = () => {
+    // Count correct multiple choice answers
+    const multipleChoiceCorrect = correctAnswers.length;
+    
+    // For coding questions, we'll just check if they submitted something
+    // In a real implementation, you would evaluate the code
+    const codingQuestions = questions.filter(q => q.type === 'coding');
+    
+    // Calculate score
+    // For simplicity, each question is worth the same (we could weight coding questions more in a real implementation)
+    const totalScore = ((multipleChoiceCorrect + codingAnswers.filter(a => a.trim().length > 0).length) / questions.length) * 100;
+    setScore(totalScore);
   };
   
   const getProgressPercentage = () => {
@@ -138,6 +193,130 @@ const SelfAssessment = () => {
       </div>
     );
   }
+
+  const renderQuestion = () => {
+    const question = questions[currentQuestion];
+    
+    if (question.type === 'multiple_choice') {
+      return (
+        <div className="space-y-4">
+          <p className="text-lg font-medium">{question.question}</p>
+          <div className="space-y-2">
+            {question.options.map((option, index) => (
+              <Button
+                key={index}
+                variant={answers[currentQuestion] === option ? "default" : "outline"}
+                className="w-full justify-start text-left py-3 h-auto"
+                onClick={() => handleMultipleChoiceAnswer(option)}
+              >
+                <span className="font-semibold mr-2">{String.fromCharCode(65 + index)}.</span> {option}
+              </Button>
+            ))}
+          </div>
+        </div>
+      );
+    } else if (question.type === 'coding') {
+      // Find the index of this coding question among all coding questions
+      const codingQuestionIndex = questions
+        .slice(0, currentQuestion + 1)
+        .filter(q => q.type === 'coding')
+        .length - 1;
+        
+      const codingAnswer = codingAnswers[codingQuestionIndex] || question.starter_code || '';
+      
+      return (
+        <div className="space-y-4">
+          <p className="text-lg font-medium">{question.question}</p>
+          
+          {question.examples && question.examples.length > 0 && (
+            <div className="mt-4">
+              <h4 className="font-medium mb-2">Examples:</h4>
+              {question.examples.map((example, idx) => (
+                <div key={idx} className="bg-muted p-3 rounded-md mb-2">
+                  <p><strong>Input:</strong> {example.input}</p>
+                  <p><strong>Output:</strong> {example.output}</p>
+                </div>
+              ))}
+            </div>
+          )}
+          
+          {question.constraints && (
+            <div className="mt-2">
+              <h4 className="font-medium mb-1">Constraints:</h4>
+              <p className="text-sm">{question.constraints}</p>
+            </div>
+          )}
+          
+          <div className="mt-4">
+            <Label htmlFor="code">Your Solution:</Label>
+            <Textarea
+              id="code"
+              value={codingAnswer}
+              onChange={(e) => handleCodingAnswerChange(e.target.value)}
+              className="font-mono h-64"
+              placeholder={question.starter_code || "// Write your solution here"}
+            />
+          </div>
+          
+          <Button 
+            onClick={handleCodingSubmit} 
+            className="mt-2"
+          >
+            Submit & Continue
+          </Button>
+          
+          <Tabs defaultValue="problem">
+            <TabsList className="grid w-full grid-cols-2">
+              <TabsTrigger value="problem">Problem</TabsTrigger>
+              <TabsTrigger value="solution">Solution (After Submission)</TabsTrigger>
+            </TabsList>
+            <TabsContent value="problem">
+              <Card>
+                <CardContent className="pt-4">
+                  <p className="text-lg font-medium">{question.question}</p>
+                  {question.examples && question.examples.length > 0 && (
+                    <div className="mt-4">
+                      <h4 className="font-medium mb-2">Examples:</h4>
+                      {question.examples.map((example, idx) => (
+                        <div key={idx} className="bg-muted p-3 rounded-md mb-2">
+                          <p><strong>Input:</strong> {example.input}</p>
+                          <p><strong>Output:</strong> {example.output}</p>
+                        </div>
+                      ))}
+                    </div>
+                  )}
+                  {question.constraints && (
+                    <div className="mt-2">
+                      <h4 className="font-medium mb-1">Constraints:</h4>
+                      <p className="text-sm">{question.constraints}</p>
+                    </div>
+                  )}
+                </CardContent>
+              </Card>
+            </TabsContent>
+            <TabsContent value="solution">
+              <Card>
+                <CardContent className="pt-4">
+                  {answers[currentQuestion] ? (
+                    <div>
+                      <h4 className="font-medium mb-2">Sample Solution:</h4>
+                      <pre className="bg-muted p-3 rounded-md overflow-x-auto">
+                        <code>{question.solution}</code>
+                      </pre>
+                    </div>
+                  ) : (
+                    <p>Submit your answer first to see the solution.</p>
+                  )}
+                </CardContent>
+              </Card>
+            </TabsContent>
+          </Tabs>
+        </div>
+      );
+    }
+    
+    return null;
+  };
 
   return (
     <div className="container mx-auto px-4 py-8">
@@ -175,7 +354,9 @@ const SelfAssessment = () => {
       ) : score === null ? (
         <Card>
           <CardHeader>
-            <CardTitle>Question {currentQuestion + 1} of {questions.length}</CardTitle>
+            <CardTitle>
+              {questions[currentQuestion].type === 'multiple_choice' ? 'Multiple Choice Question' : 'Coding Challenge'} {currentQuestion + 1} of {questions.length}
+            </CardTitle>
             <CardDescription>
               Topic: {topics}
             </CardDescription>
@@ -184,33 +365,29 @@ const SelfAssessment = () => {
             </div>
           </CardHeader>
           <CardContent>
-            <div className="space-y-4">
-              <p className="text-lg font-medium">{questions[currentQuestion].question}</p>
-              <div className="space-y-2">
-                {questions[currentQuestion].options.map((option, index) => (
-                  <Button
-                    key={index}
-                    variant="outline"
-                    className="w-full justify-start text-left py-3 h-auto"
-                    onClick={() => handleAnswer(option)}
-                  >
-                    <span className="font-semibold mr-2">{String.fromCharCode(65 + index)}.</span> {option}
-                  </Button>
-                ))}
-              </div>
-            </div>
+            {renderQuestion()}
           </CardContent>
           <CardFooter className="flex justify-between">
             <Button 
               variant="outline" 
               onClick={goToPreviousQuestion} 
-              disabled={currentQuestion === 0 || answers.length <= currentQuestion}
+              disabled={currentQuestion === 0}
             >
               Previous Question
             </Button>
+            
             <div className="text-sm text-muted-foreground">
               {currentQuestion + 1} of {questions.length}
             </div>
+            
+            {currentQuestion === questions.length - 1 && (
+              <Button 
+                onClick={finishAssessment}
+                disabled={answers[currentQuestion] === null}
+              >
+                Finish Assessment
+              </Button>
+            )}
           </CardFooter>
         </Card>
       ) : (
@@ -226,7 +403,10 @@ const SelfAssessment = () => {
               <div className="text-center">
                 <p className="text-3xl font-bold mb-2">{score.toFixed(1)}%</p>
                 <p className="text-muted-foreground">
-                  You answered {correctAnswers.length} out of {questions.length} questions correctly
+                  You answered {correctAnswers.length} out of {questions.filter(q => q.type === 'multiple_choice').length} multiple choice questions correctly.
+                </p>
+                <p className="text-muted-foreground">
+                  You submitted {codingAnswers.filter(a => a.trim().length > 0).length} out of {questions.filter(q => q.type === 'coding').length} coding challenges.
                 </p>
               </div>
               
@@ -251,6 +431,7 @@ const SelfAssessment = () => {
                 setQuestions([]);
                 setScore(null);
                 setAnswers([]);
+                setCodingAnswers([]);
                 setCorrectAnswers([]);
               }}
               className="w-full mr-2"
@@ -262,7 +443,8 @@ const SelfAssessment = () => {
                 // Reset for the same topics
                 setScore(null);
                 setCurrentQuestion(0);
-                setAnswers([]);
+                setAnswers(new Array(questions.length).fill(null));
+                setCodingAnswers(new Array(questions.filter(q => q.type === 'coding').length).fill(''));
                 setCorrectAnswers([]);
               }}
               className="w-full ml-2"

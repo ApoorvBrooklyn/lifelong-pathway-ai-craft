@@ -86,7 +86,7 @@ const Navbar = () => {
               VR Career path
             </Button>
 
-            <Link to="/learning" className="text-foreground hover:text-primary font-medium">Self Assessment and Certification</Link>
+            <Link to="/learning" className="text-foreground hover:text-primary font-medium">Self Assessment</Link>
             
             {user ? (
               <DropdownMenu>
