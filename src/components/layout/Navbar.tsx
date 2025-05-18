@@ -1,8 +1,7 @@
-
 import { useState , useEffect} from "react";
 import { Button } from "@/components/ui/button";
 import { Link, useNavigate } from "react-router-dom";
-import { GraduationCap, LogOut, User, Box } from "lucide-react";
+import { GraduationCap, LogOut, User, Box, MessageSquareText } from "lucide-react";
 import { useSession } from "@/providers/SessionProvider";
 import { supabase } from "@/integrations/supabase/client";
 import {
@@ -87,6 +86,11 @@ const Navbar = () => {
             </Button>
 
             <Link to="/learning" className="text-foreground hover:text-primary font-medium">Self Assessment</Link>
+            
+            <Link to="/learn-with-ai" className="text-foreground hover:text-primary font-medium flex items-center">
+              <MessageSquareText className="h-4 w-4 mr-1" />
+              Learn With AI
+            </Link>
             
             {user ? (
               <DropdownMenu>
@@ -187,6 +191,14 @@ const Navbar = () => {
                 onClick={() => setIsMobileMenuOpen(false)}
               >
                 Learning
+              </Link>
+              <Link 
+                to="/learn-with-ai" 
+                className="text-foreground hover:text-primary font-medium flex items-center px-3 py-2"
+                onClick={() => setIsMobileMenuOpen(false)}
+              >
+                <MessageSquareText className="h-4 w-4 mr-1" />
+                Learn With AI
               </Link>
               <div className="flex flex-col space-y-2 px-3 pt-2">
                 {user ? (
