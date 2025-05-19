@@ -1,0 +1,70 @@
+[
+  {
+    "phase": "1",
+    "title": "Programming Fundamentals (3-6 months)",
+    "description": "Phase 1: Programming Fundamentals (3-6 months)",
+    "duration": "3-6 months",
+    "skills_to_develop": [
+      "Core Programming Concepts",
+      "Data Structures",
+      "Algorithms",
+      "Version Control (Git)"
+    ],
+    "resources": [
+      "The Complete Developer Course",
+      "Grokking Algorithms",
+      "Git & GitHub Crash Course"
+    ]
+  },
+  {
+    "phase": "2",
+    "title": "Web Development (4-8 months)",
+    "description": "Phase 2: Web Development (4-8 months)",
+    "duration": "4-8 months",
+    "skills_to_develop": [
+      "HTML/CSS",
+      "JavaScript",
+      "Frontend Frameworks",
+      "Backend Development"
+    ],
+    "resources": [
+      "The Web Developer Bootcamp",
+      "React - The Complete Guide",
+      "Node.js and Express Fundamentals"
+    ]
+  },
+  {
+    "phase": "3",
+    "title": "Software Architecture (6-10 months)",
+    "description": "Phase 3: Software Architecture (6-10 months)",
+    "duration": "6-10 months",
+    "skills_to_develop": [
+      "Design Patterns",
+      "System Design",
+      "Databases",
+      "Cloud Services"
+    ],
+    "resources": [
+      "Clean Architecture",
+      "System Design Interview",
+      "AWS Certified Developer"
+    ]
+  },
+  {
+    "phase": "4",
+    "title": "Advanced Engineering (Ongoing)",
+    "description": "Phase 4: Advanced Engineering (Ongoing)",
+    "duration": "Ongoing",
+    "skills_to_develop": [
+      "DevOps",
+      "Testing Strategies",
+      "Security",
+      "Performance Optimization"
+    ],
+    "resources": [
+      "DevOps Engineering on AWS",
+      "Web Application Security",
+      "High Performance Browser Networking"
+    ]
+  }
+]

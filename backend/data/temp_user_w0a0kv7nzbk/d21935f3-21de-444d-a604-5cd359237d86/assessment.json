@@ -1,0 +1,734 @@
+{
+  "id": "d21935f3-21de-444d-a604-5cd359237d86",
+  "user_id": "temp_user_w0a0kv7nzbk",
+  "target_role": "DevOps Engineer",
+  "current_role": "Intern",
+  "experience": "0-1",
+  "timeframe": "1y",
+  "assessment_data": {
+    "analysis": {
+      "learning_path": [
+        {
+          "description": "Develop foundational knowledge of DevOps, containerization, and programming",
+          "duration": "3 months",
+          "phase": 1,
+          "resources": [
+            "Docker Tutorial",
+            "Python Course",
+            "DevOps Handbook"
+          ],
+          "skills_to_develop": [
+            "Containerization",
+            "Programming",
+            "DevOps Engineering"
+          ],
+          "title": "Foundational Knowledge"
+        },
+        {
+          "description": "Learn about infrastructure as code, CI/CD pipelines, and cloud platforms",
+          "duration": "3 months",
+          "phase": 2,
+          "resources": [
+            "Terraform Tutorial",
+            "Jenkins Course",
+            "AWS Tutorial"
+          ],
+          "skills_to_develop": [
+            "Infrastructure as Code",
+            "CI/CD Pipelines",
+            "Cloud Platforms"
+          ],
+          "title": "Infrastructure and CI/CD"
+        },
+        {
+          "description": "Dive deeper into advanced topics and specialize in a specific area",
+          "duration": "6 months",
+          "phase": 3,
+          "resources": [
+            "Networking Course",
+            "Security Tutorial",
+            "DevOps Specialization"
+          ],
+          "skills_to_develop": [
+            "Networking Fundamentals",
+            "Security",
+            "DevOps Engineering"
+          ],
+          "title": "Advanced Topics and Specialization"
+        }
+      ],
+      "milestones": [
+        {
+          "dependencies": [
+            "Containerization",
+            "Programming"
+          ],
+          "description": "Finish phase 1 and achieve a score of 60 in Containerization and Programming",
+          "milestone": "Complete foundational knowledge phase",
+          "target_date": "2024-09-30"
+        },
+        {
+          "dependencies": [
+            "Infrastructure as Code",
+            "CI/CD Pipelines"
+          ],
+          "description": "Finish phase 2 and achieve a score of 50 in Infrastructure as Code and CI/CD Pipelines",
+          "milestone": "Complete infrastructure and CI/CD phase",
+          "target_date": "2024-12-31"
+        },
+        {
+          "dependencies": [
+            "Networking Fundamentals",
+            "Security"
+          ],
+          "description": "Finish phase 3 and achieve a score of 80 in Networking Fundamentals and Security",
+          "milestone": "Complete advanced topics and specialization phase",
+          "target_date": "2025-06-30"
+        }
+      ],
+      "required_skills": [
+        {
+          "description": "Design, implement, and manage scalable, secure, and highly available infrastructure",
+          "importance": "high",
+          "skill": "DevOps Engineering"
+        },
+        {
+          "description": "Experience with Docker, Kubernetes, and container orchestration",
+          "importance": "high",
+          "skill": "Containerization"
+        },
+        {
+          "description": "Proficiency in at least one programming language (Python, Java, C++, or similar)",
+          "importance": "high",
+          "skill": "Programming"
+        },
+        {
+          "description": "Experience with IaC tools like Terraform, CloudFormation, or Ansible",
+          "importance": "medium",
+          "skill": "Infrastructure as Code"
+        },
+        {
+          "description": "Develop and maintain CI/CD pipelines using tools like Jenkins, GitLab CI/CD, or CircleCI",
+          "importance": "high",
+          "skill": "CI/CD Pipelines"
+        },
+        {
+          "description": "Experience with cloud platforms (AWS, Azure, GCP) or on-premises infrastructure",
+          "importance": "medium",
+          "skill": "Cloud Platforms"
+        },
+        {
+          "description": "Strong knowledge of networking fundamentals (TCP/IP, DNS, load balancing) and security best practices",
+          "importance": "medium",
+          "skill": "Networking Fundamentals"
+        },
+        {
+          "description": "Ensure compliance with industry standards, security best practices, and company policies",
+          "importance": "high",
+          "skill": "Security"
+        }
+      ],
+      "resources": [
+        {
+          "description": "Official Docker tutorial",
+          "difficulty": "beginner",
+          "estimated_time": "2 weeks",
+          "title": "Docker Tutorial",
+          "type": "course",
+          "url": "https://www.docker.com/get-started"
+        },
+        {
+          "description": "Official Python course",
+          "difficulty": "beginner",
+          "estimated_time": "4 weeks",
+          "title": "Python Course",
+          "type": "course",
+          "url": "https://www.python.org/about/gettingstarted/coding/"
+        },
+        {
+          "description": "Official Terraform tutorial",
+          "difficulty": "intermediate",
+          "estimated_time": "3 weeks",
+          "title": "Terraform Tutorial",
+          "type": "course",
+          "url": "https://www.terraform.io/docs"
+        },
+        {
+          "description": "Official Jenkins course",
+          "difficulty": "intermediate",
+          "estimated_time": "4 weeks",
+          "title": "Jenkins Course",
+          "type": "course",
+          "url": "https://www.jenkins.io/doc/tutorials/#getting-started"
+        },
+        {
+          "description": "Official AWS tutorial",
+          "difficulty": "beginner",
+          "estimated_time": "2 weeks",
+          "title": "AWS Tutorial",
+          "type": "course",
+          "url": "https://aws.amazon.com/getting-started/"
+        },
+        {
+          "description": "Cisco Networking Academy course",
+          "difficulty": "intermediate",
+          "estimated_time": "6 weeks",
+          "title": "Networking Course",
+          "type": "course",
+          "url": "https://www.cisco.com/c/en/us/training-events/network-academy.html"
+        },
+        {
+          "description": "Cybrary Security tutorial",
+          "difficulty": "intermediate",
+          "estimated_time": "4 weeks",
+          "title": "Security Tutorial",
+          "type": "course",
+          "url": "https://www.cybrary.it/course/security/"
+        },
+        {
+          "description": "The DevOps Handbook book",
+          "difficulty": "advanced",
+          "estimated_time": "2 weeks",
+          "title": "DevOps Handbook",
+          "type": "book",
+          "url": "https://www.devopshandbook.com/"
+        },
+        {
+          "description": "Coursera DevOps specialization",
+          "difficulty": "advanced",
+          "estimated_time": "6 months",
+          "title": "DevOps Specialization",
+          "type": "course",
+          "url": "https://www.coursera.org/specializations/devops"
+        }
+      ],
+      "risk_assessment": [
+        {
+          "impact": "high",
+          "mitigation": "Focus on developing foundational knowledge and seek guidance from experienced professionals",
+          "probability": "medium",
+          "risk": "Insufficient experience in DevOps Engineering"
+        },
+        {
+          "impact": "high",
+          "mitigation": "Prioritize learning security best practices and seek guidance from experienced professionals",
+          "probability": "medium",
+          "risk": "Limited knowledge of security best practices"
+        },
+        {
+          "impact": "medium",
+          "mitigation": "Develop strong communication and collaboration skills, and prioritize tasks effectively",
+          "probability": "low",
+          "risk": "Inability to adapt to changing priorities and deadlines"
+        }
+      ],
+      "skill_gaps": [
+        {
+          "current_score": 40,
+          "gap": "Limited experience with Docker and Kubernetes",
+          "priority": "high",
+          "skill": "Containerization",
+          "target_score": 80
+        },
+        {
+          "current_score": 20,
+          "gap": "No experience with IaC tools",
+          "priority": "medium",
+          "skill": "Infrastructure as Code",
+          "target_score": 70
+        },
+        {
+          "current_score": 30,
+          "gap": "Limited experience with CI/CD tools",
+          "priority": "high",
+          "skill": "CI/CD Pipelines",
+          "target_score": 80
+        },
+        {
+          "current_score": 10,
+          "gap": "No experience with cloud platforms",
+          "priority": "medium",
+          "skill": "Cloud Platforms",
+          "target_score": 60
+        },
+        {
+          "current_score": 60,
+          "gap": "Limited experience with Python and other programming languages",
+          "priority": "high",
+          "skill": "Programming",
+          "target_score": 80
+        },
+        {
+          "current_score": 40,
+          "gap": "Limited knowledge of networking fundamentals",
+          "priority": "medium",
+          "skill": "Networking Fundamentals",
+          "target_score": 70
+        },
+        {
+          "current_score": 30,
+          "gap": "Limited knowledge of security best practices",
+          "priority": "high",
+          "skill": "Security",
+          "target_score": 80
+        }
+      ],
+      "summary": {
+        "key_findings": [
+          "Found 8 key skills required for the role",
+          "Identified 7 skill gaps to address",
+          "Created a 3-phase learning path",
+          "Set 3 key milestones",
+          "Recommended 9 learning resources",
+          "Identified 3 potential risks and mitigation strategies"
+        ],
+        "overview": "Based on your current skills and the target role of DevOps Engineer, here's a comprehensive analysis of your career path.",
+        "title": "Career Path Analysis for DevOps Engineer"
+      }
+    },
+    "current_role": "Intern",
+    "current_skills": [
+      "\u25e6",
+      "financial markets",
+      "the application",
+      "finance",
+      "users",
+      "the application\u2019s performance",
+      "portfolio optimization",
+      "you",
+      "machine learning models",
+      "core",
+      "github",
+      "python\n\u25e6",
+      "improved accuracy",
+      "club members",
+      "40%",
+      "git",
+      "unique method",
+      "which",
+      "engineering",
+      "the club",
+      "credit risk scoring",
+      "the new structure",
+      "a transformer",
+      "\u2322",
+      "future developers",
+      "docker\n\u2022deep learning",
+      "gpa",
+      "best practices",
+      "apk",
+      "documents",
+      "risk management",
+      "rvce [/gl",
+      "financial markets\ntools",
+      "various projects",
+      "generative ai",
+      "fraud detection",
+      "\u2022data science",
+      "the\nfinancial markets",
+      "maintainability",
+      "implementation",
+      "new functionalities",
+      "various submodules",
+      "various techniques",
+      "gemini",
+      "all",
+      "96% accuracy",
+      "management",
+      "artificial intelligence",
+      "pytorch",
+      "india\n\u25e6",
+      "debugging time",
+      "overall workflow",
+      "the source code",
+      "various open-source tools",
+      "gcp",
+      "sentiment analysis",
+      "mongodb",
+      "python",
+      "\u2022r.v",
+      "internal data-storage",
+      "openai\u2019s gpt",
+      "\u25e6help",
+      "language translation",
+      "additional information\nlanguages",
+      "decoder blocks",
+      "scratch\n\u2022mathematical &",
+      "c",
+      "hindi(fluent",
+      "marathi (native)\ninterests",
+      "\u2019attention",
+      "based queries",
+      "aws\n\u2022devops",
+      "speed",
+      "vector databases",
+      "version control",
+      "english(fluent",
+      "different encoder",
+      "\u2022devops &",
+      "the members",
+      "various events",
+      "sure conversation",
+      "advanced applications",
+      "a strong foundation",
+      "a 50% improvement",
+      "college",
+      "efficiency",
+      "final stage",
+      "machine learning",
+      "ctfs\n\u25e6",
+      "application",
+      "education",
+      "gpt",
+      "javascript\n\u2022database systems",
+      "hackathons",
+      "scratch",
+      "deep interest",
+      "other students",
+      "c++",
+      "patent",
+      "nano gpt",
+      "igi global\n\u25e6chapter",
+      "\u2022qualitas technologies",
+      "sql",
+      "faiss",
+      "attention mechanism",
+      "india\n\u25e6gpa",
+      "a conducive environment",
+      "reading",
+      "image classification",
+      "paper",
+      "libraries",
+      "retrieval augmented generation",
+      "machine",
+      "the\nteam",
+      "8.57/10\nprojects",
+      "option pricing model",
+      "vector",
+      "\u25e6used reference",
+      "a transformer model",
+      "python numpy",
+      "\u25e6project",
+      "next step",
+      "scratch\ntools",
+      "only numpy library",
+      "the sales team",
+      "performance\n\u25e6"
+    ],
+    "display_format": {
+      "sections": [
+        {
+          "content": {
+            "key_findings": [
+              "Found 8 key skills required for the role",
+              "Identified 7 skill gaps to address",
+              "Created a 3-phase learning path",
+              "Set 3 key milestones",
+              "Recommended 9 learning resources",
+              "Identified 3 potential risks and mitigation strategies"
+            ],
+            "overview": "Based on your current skills and the target role of DevOps Engineer, here's a comprehensive analysis of your career path.",
+            "title": "Career Path Analysis for DevOps Engineer"
+          },
+          "title": "Summary",
+          "type": "summary"
+        },
+        {
+          "content": [
+            {
+              "description": "Design, implement, and manage scalable, secure, and highly available infrastructure",
+              "importance": "high",
+              "skill": "DevOps Engineering"
+            },
+            {
+              "description": "Experience with Docker, Kubernetes, and container orchestration",
+              "importance": "high",
+              "skill": "Containerization"
+            },
+            {
+              "description": "Proficiency in at least one programming language (Python, Java, C++, or similar)",
+              "importance": "high",
+              "skill": "Programming"
+            },
+            {
+              "description": "Experience with IaC tools like Terraform, CloudFormation, or Ansible",
+              "importance": "medium",
+              "skill": "Infrastructure as Code"
+            },
+            {
+              "description": "Develop and maintain CI/CD pipelines using tools like Jenkins, GitLab CI/CD, or CircleCI",
+              "importance": "high",
+              "skill": "CI/CD Pipelines"
+            },
+            {
+              "description": "Experience with cloud platforms (AWS, Azure, GCP) or on-premises infrastructure",
+              "importance": "medium",
+              "skill": "Cloud Platforms"
+            },
+            {
+              "description": "Strong knowledge of networking fundamentals (TCP/IP, DNS, load balancing) and security best practices",
+              "importance": "medium",
+              "skill": "Networking Fundamentals"
+            },
+            {
+              "description": "Ensure compliance with industry standards, security best practices, and company policies",
+              "importance": "high",
+              "skill": "Security"
+            }
+          ],
+          "title": "Required Skills",
+          "type": "list"
+        },
+        {
+          "content": [
+            {
+              "current_score": 40,
+              "gap": "Limited experience with Docker and Kubernetes",
+              "priority": "high",
+              "skill": "Containerization",
+              "target_score": 80
+            },
+            {
+              "current_score": 20,
+              "gap": "No experience with IaC tools",
+              "priority": "medium",
+              "skill": "Infrastructure as Code",
+              "target_score": 70
+            },
+            {
+              "current_score": 30,
+              "gap": "Limited experience with CI/CD tools",
+              "priority": "high",
+              "skill": "CI/CD Pipelines",
+              "target_score": 80
+            },
+            {
+              "current_score": 10,
+              "gap": "No experience with cloud platforms",
+              "priority": "medium",
+              "skill": "Cloud Platforms",
+              "target_score": 60
+            },
+            {
+              "current_score": 60,
+              "gap": "Limited experience with Python and other programming languages",
+              "priority": "high",
+              "skill": "Programming",
+              "target_score": 80
+            },
+            {
+              "current_score": 40,
+              "gap": "Limited knowledge of networking fundamentals",
+              "priority": "medium",
+              "skill": "Networking Fundamentals",
+              "target_score": 70
+            },
+            {
+              "current_score": 30,
+              "gap": "Limited knowledge of security best practices",
+              "priority": "high",
+              "skill": "Security",
+              "target_score": 80
+            }
+          ],
+          "title": "Skill Gaps",
+          "type": "table"
+        },
+        {
+          "content": [
+            {
+              "description": "Develop foundational knowledge of DevOps, containerization, and programming",
+              "duration": "3 months",
+              "phase": 1,
+              "resources": [
+                "Docker Tutorial",
+                "Python Course",
+                "DevOps Handbook"
+              ],
+              "skills_to_develop": [
+                "Containerization",
+                "Programming",
+                "DevOps Engineering"
+              ],
+              "title": "Foundational Knowledge"
+            },
+            {
+              "description": "Learn about infrastructure as code, CI/CD pipelines, and cloud platforms",
+              "duration": "3 months",
+              "phase": 2,
+              "resources": [
+                "Terraform Tutorial",
+                "Jenkins Course",
+                "AWS Tutorial"
+              ],
+              "skills_to_develop": [
+                "Infrastructure as Code",
+                "CI/CD Pipelines",
+                "Cloud Platforms"
+              ],
+              "title": "Infrastructure and CI/CD"
+            },
+            {
+              "description": "Dive deeper into advanced topics and specialize in a specific area",
+              "duration": "6 months",
+              "phase": 3,
+              "resources": [
+                "Networking Course",
+                "Security Tutorial",
+                "DevOps Specialization"
+              ],
+              "skills_to_develop": [
+                "Networking Fundamentals",
+                "Security",
+                "DevOps Engineering"
+              ],
+              "title": "Advanced Topics and Specialization"
+            }
+          ],
+          "title": "Learning Path",
+          "type": "timeline"
+        },
+        {
+          "content": [
+            {
+              "dependencies": [
+                "Containerization",
+                "Programming"
+              ],
+              "description": "Finish phase 1 and achieve a score of 60 in Containerization and Programming",
+              "milestone": "Complete foundational knowledge phase",
+              "target_date": "2024-09-30"
+            },
+            {
+              "dependencies": [
+                "Infrastructure as Code",
+                "CI/CD Pipelines"
+              ],
+              "description": "Finish phase 2 and achieve a score of 50 in Infrastructure as Code and CI/CD Pipelines",
+              "milestone": "Complete infrastructure and CI/CD phase",
+              "target_date": "2024-12-31"
+            },
+            {
+              "dependencies": [
+                "Networking Fundamentals",
+                "Security"
+              ],
+              "description": "Finish phase 3 and achieve a score of 80 in Networking Fundamentals and Security",
+              "milestone": "Complete advanced topics and specialization phase",
+              "target_date": "2025-06-30"
+            }
+          ],
+          "title": "Milestones",
+          "type": "timeline"
+        },
+        {
+          "content": [
+            {
+              "description": "Official Docker tutorial",
+              "difficulty": "beginner",
+              "estimated_time": "2 weeks",
+              "title": "Docker Tutorial",
+              "type": "course",
+              "url": "https://www.docker.com/get-started"
+            },
+            {
+              "description": "Official Python course",
+              "difficulty": "beginner",
+              "estimated_time": "4 weeks",
+              "title": "Python Course",
+              "type": "course",
+              "url": "https://www.python.org/about/gettingstarted/coding/"
+            },
+            {
+              "description": "Official Terraform tutorial",
+              "difficulty": "intermediate",
+              "estimated_time": "3 weeks",
+              "title": "Terraform Tutorial",
+              "type": "course",
+              "url": "https://www.terraform.io/docs"
+            },
+            {
+              "description": "Official Jenkins course",
+              "difficulty": "intermediate",
+              "estimated_time": "4 weeks",
+              "title": "Jenkins Course",
+              "type": "course",
+              "url": "https://www.jenkins.io/doc/tutorials/#getting-started"
+            },
+            {
+              "description": "Official AWS tutorial",
+              "difficulty": "beginner",
+              "estimated_time": "2 weeks",
+              "title": "AWS Tutorial",
+              "type": "course",
+              "url": "https://aws.amazon.com/getting-started/"
+            },
+            {
+              "description": "Cisco Networking Academy course",
+              "difficulty": "intermediate",
+              "estimated_time": "6 weeks",
+              "title": "Networking Course",
+              "type": "course",
+              "url": "https://www.cisco.com/c/en/us/training-events/network-academy.html"
+            },
+            {
+              "description": "Cybrary Security tutorial",
+              "difficulty": "intermediate",
+              "estimated_time": "4 weeks",
+              "title": "Security Tutorial",
+              "type": "course",
+              "url": "https://www.cybrary.it/course/security/"
+            },
+            {
+              "description": "The DevOps Handbook book",
+              "difficulty": "advanced",
+              "estimated_time": "2 weeks",
+              "title": "DevOps Handbook",
+              "type": "book",
+              "url": "https://www.devopshandbook.com/"
+            },
+            {
+              "description": "Coursera DevOps specialization",
+              "difficulty": "advanced",
+              "estimated_time": "6 months",
+              "title": "DevOps Specialization",
+              "type": "course",
+              "url": "https://www.coursera.org/specializations/devops"
+            }
+          ],
+          "title": "Recommended Resources",
+          "type": "cards"
+        },
+        {
+          "content": [
+            {
+              "impact": "high",
+              "mitigation": "Focus on developing foundational knowledge and seek guidance from experienced professionals",
+              "probability": "medium",
+              "risk": "Insufficient experience in DevOps Engineering"
+            },
+            {
+              "impact": "high",
+              "mitigation": "Prioritize learning security best practices and seek guidance from experienced professionals",
+              "probability": "medium",
+              "risk": "Limited knowledge of security best practices"
+            },
+            {
+              "impact": "medium",
+              "mitigation": "Develop strong communication and collaboration skills, and prioritize tasks effectively",
+              "probability": "low",
+              "risk": "Inability to adapt to changing priorities and deadlines"
+            }
+          ],
+          "title": "Risk Assessment",
+          "type": "table"
+        }
+      ]
+    },
+    "experience_level": "0-1",
+    "target_role": "DevOps Engineer",
+    "timeframe": "1y"
+  },
+  "created_at": "2025-05-18T11:45:04.218746",
+  "status": "active"
+}

@@ -1,0 +1,654 @@
+{
+  "id": "b9b9426a-0d23-472f-add4-b1df5d9177bd",
+  "user_id": "temp_user_w0a0kv7nzbk",
+  "target_role": "DevOps Engineer",
+  "current_role": "Intern",
+  "experience": "0-1",
+  "timeframe": "6m",
+  "assessment_data": {
+    "analysis": {
+      "learning_path": [
+        {
+          "description": "Develop foundational knowledge of DevOps tools and technologies",
+          "duration": "2 months",
+          "phase": 1,
+          "resources": [
+            "Docker documentation",
+            "Jenkins tutorial",
+            "GitLab CI/CD tutorial"
+          ],
+          "skills_to_develop": [
+            "Containerization (Docker)",
+            "CI/CD tools (Jenkins, GitLab CI/CD, CircleCI)"
+          ],
+          "title": "Foundational Knowledge"
+        },
+        {
+          "description": "Gain experience with cloud platforms and scripting skills",
+          "duration": "3 months",
+          "phase": 2,
+          "resources": [
+            "AWS tutorial",
+            "Python scripting tutorial",
+            "Bash scripting tutorial"
+          ],
+          "skills_to_develop": [
+            "Cloud platforms (AWS, Azure, GCP)",
+            "Scripting skills (Python, Bash, PowerShell)"
+          ],
+          "title": "Cloud and Scripting"
+        },
+        {
+          "description": "Learn advanced topics in DevOps, including IaC, monitoring, and logging",
+          "duration": "4 months",
+          "phase": 3,
+          "resources": [
+            "Terraform tutorial",
+            "Prometheus documentation",
+            "Grafana tutorial"
+          ],
+          "skills_to_develop": [
+            "Infrastructure as Code (IaC) tools (Terraform, Ansible, CloudFormation)",
+            "Monitoring and logging tools (Prometheus, Grafana, ELK Stack)"
+          ],
+          "title": "Advanced Topics"
+        }
+      ],
+      "milestones": [
+        {
+          "dependencies": [],
+          "description": "Complete Docker tutorial and gain hands-on experience",
+          "milestone": "Complete Docker tutorial",
+          "target_date": "2024-09-15"
+        },
+        {
+          "dependencies": [
+            "Complete Docker tutorial"
+          ],
+          "description": "Deploy an application on AWS using CI/CD tools",
+          "milestone": "Deploy application on AWS",
+          "target_date": "2024-11-15"
+        },
+        {
+          "dependencies": [
+            "Deploy application on AWS"
+          ],
+          "description": "Implement IaC using Terraform and deploy infrastructure on AWS",
+          "milestone": "Implement IaC using Terraform",
+          "target_date": "2025-01-15"
+        }
+      ],
+      "required_skills": [
+        {
+          "description": "Proficiency in Linux/Unix systems and experience with Windows environments",
+          "importance": "high",
+          "skill": "Linux/Unix systems"
+        },
+        {
+          "description": "Experience with containerization technologies (Docker) and container orchestration (Kubernetes)",
+          "importance": "high",
+          "skill": "Containerization (Docker)"
+        },
+        {
+          "description": "Experience with CI/CD tools such as Jenkins, GitLab CI/CD, or CircleCI",
+          "importance": "high",
+          "skill": "CI/CD tools (Jenkins, GitLab CI/CD, CircleCI)"
+        },
+        {
+          "description": "Knowledge of infrastructure as code (IaC) tools like Terraform, Ansible, or CloudFormation",
+          "importance": "high",
+          "skill": "Infrastructure as Code (IaC) tools (Terraform, Ansible, CloudFormation)"
+        },
+        {
+          "description": "Familiarity with cloud platforms (AWS, Azure, GCP) and experience with at least one of them",
+          "importance": "high",
+          "skill": "Cloud platforms (AWS, Azure, GCP)"
+        },
+        {
+          "description": "Scripting skills in languages such as Python, Bash, or PowerShell",
+          "importance": "high",
+          "skill": "Scripting skills (Python, Bash, PowerShell)"
+        },
+        {
+          "description": "Understanding of networking fundamentals (TCP/IP, DNS, etc.) and security best practices",
+          "importance": "medium",
+          "skill": "Networking fundamentals (TCP/IP, DNS, etc.) and security best practices"
+        },
+        {
+          "description": "Experience with monitoring and logging tools (Prometheus, Grafana, ELK Stack)",
+          "importance": "medium",
+          "skill": "Monitoring and logging tools (Prometheus, Grafana, ELK Stack)"
+        }
+      ],
+      "resources": [
+        {
+          "description": "Official Docker tutorial",
+          "difficulty": "beginner",
+          "estimated_time": "2 weeks",
+          "title": "Docker tutorial",
+          "type": "tutorial",
+          "url": "https://docs.docker.com/get-started/"
+        },
+        {
+          "description": "Jenkins tutorial",
+          "difficulty": "beginner",
+          "estimated_time": "3 weeks",
+          "title": "Jenkins tutorial",
+          "type": "tutorial",
+          "url": "https://www.tutorialspoint.com/jenkins/index.htm"
+        },
+        {
+          "description": "Official AWS tutorial",
+          "difficulty": "beginner",
+          "estimated_time": "4 weeks",
+          "title": "AWS tutorial",
+          "type": "tutorial",
+          "url": "https://docs.aws.amazon.com/gettingstarted/latest/awsbasicsguru/index.html"
+        },
+        {
+          "description": "Official Python scripting tutorial",
+          "difficulty": "beginner",
+          "estimated_time": "2 weeks",
+          "title": "Python scripting tutorial",
+          "type": "tutorial",
+          "url": "https://docs.python.org/3/tutorial/index.html"
+        },
+        {
+          "description": "Official Terraform tutorial",
+          "difficulty": "intermediate",
+          "estimated_time": "4 weeks",
+          "title": "Terraform tutorial",
+          "type": "tutorial",
+          "url": "https://learn.hashicorp.com/collections/terraform/aws-get-started"
+        }
+      ],
+      "risk_assessment": [
+        {
+          "impact": "high",
+          "mitigation": "Focus on developing foundational knowledge of DevOps tools and technologies",
+          "probability": "medium",
+          "risk": "Limited experience with DevOps tools and technologies"
+        },
+        {
+          "impact": "medium",
+          "mitigation": "Prioritize learning objectives and allocate sufficient time for each phase",
+          "probability": "high",
+          "risk": "Insufficient time commitment"
+        },
+        {
+          "impact": "medium",
+          "mitigation": "Seek guidance from mentors or experts and practice regularly",
+          "probability": "medium",
+          "risk": "Difficulty in understanding advanced topics"
+        }
+      ],
+      "skill_gaps": [
+        {
+          "current_score": 20,
+          "gap": "Limited experience with containerization technologies",
+          "priority": "high",
+          "skill": "Containerization (Docker)",
+          "target_score": 80
+        },
+        {
+          "current_score": 10,
+          "gap": "No experience with CI/CD tools",
+          "priority": "high",
+          "skill": "CI/CD tools (Jenkins, GitLab CI/CD, CircleCI)",
+          "target_score": 80
+        },
+        {
+          "current_score": 0,
+          "gap": "No knowledge of IaC tools",
+          "priority": "high",
+          "skill": "Infrastructure as Code (IaC) tools (Terraform, Ansible, CloudFormation)",
+          "target_score": 70
+        },
+        {
+          "current_score": 30,
+          "gap": "Limited experience with cloud platforms",
+          "priority": "high",
+          "skill": "Cloud platforms (AWS, Azure, GCP)",
+          "target_score": 70
+        },
+        {
+          "current_score": 40,
+          "gap": "Limited scripting skills",
+          "priority": "medium",
+          "skill": "Scripting skills (Python, Bash, PowerShell)",
+          "target_score": 80
+        },
+        {
+          "current_score": 20,
+          "gap": "Limited understanding of networking fundamentals and security best practices",
+          "priority": "medium",
+          "skill": "Networking fundamentals (TCP/IP, DNS, etc.) and security best practices",
+          "target_score": 60
+        },
+        {
+          "current_score": 0,
+          "gap": "No experience with monitoring and logging tools",
+          "priority": "medium",
+          "skill": "Monitoring and logging tools (Prometheus, Grafana, ELK Stack)",
+          "target_score": 60
+        }
+      ],
+      "summary": {
+        "key_findings": [
+          "Found 8 key skills required for the role",
+          "Identified 7 skill gaps to address",
+          "Created a 3-phase learning path",
+          "Set 3 key milestones",
+          "Recommended 5 learning resources",
+          "Identified 3 potential risks and mitigation strategies"
+        ],
+        "overview": "Based on your current skills and the target role of DevOps Engineer, here's a comprehensive analysis of your career path.",
+        "title": "Career Path Analysis for DevOps Engineer"
+      }
+    },
+    "current_role": "Intern",
+    "current_skills": [
+      "debugging time",
+      "apk",
+      "a transformer model",
+      "reading",
+      "the application\u2019s performance",
+      "india\n\u25e6gpa",
+      "sql",
+      "only numpy library",
+      "based queries",
+      "the application",
+      "8.57/10\nprojects",
+      "hackathons",
+      "\u25e6help",
+      "club members",
+      "future developers",
+      "documents",
+      "the new structure",
+      "portfolio optimization",
+      "improved accuracy",
+      "implementation",
+      "gpa",
+      "nano gpt",
+      "\u2322",
+      "\u2019attention",
+      "a transformer",
+      "attention mechanism",
+      "finance",
+      "speed",
+      "paper",
+      "college",
+      "management",
+      "\u25e6used reference",
+      "the club",
+      "the sales team",
+      "javascript\n\u2022database systems",
+      "machine learning",
+      "sentiment analysis",
+      "\u25e6project",
+      "efficiency",
+      "python numpy",
+      "\u2022data science",
+      "gpt",
+      "performance\n\u25e6",
+      "various events",
+      "scratch",
+      "deep interest",
+      "financial markets",
+      "gcp",
+      "vector databases",
+      "artificial intelligence",
+      "retrieval augmented generation",
+      "the source code",
+      "users",
+      "c",
+      "a conducive environment",
+      "language translation",
+      "sure conversation",
+      "python",
+      "english(fluent",
+      "image classification",
+      "which",
+      "internal data-storage",
+      "advanced applications",
+      "risk management",
+      "various open-source tools",
+      "decoder blocks",
+      "you",
+      "faiss",
+      "various projects",
+      "final stage",
+      "git",
+      "openai\u2019s gpt",
+      "python\n\u25e6",
+      "other students",
+      "generative ai",
+      "the members",
+      "\u2022qualitas technologies",
+      "various submodules",
+      "96% accuracy",
+      "different encoder",
+      "application",
+      "a 50% improvement",
+      "various techniques",
+      "\u2022r.v",
+      "marathi (native)\ninterests",
+      "unique method",
+      "core",
+      "fraud detection",
+      "engineering",
+      "a strong foundation",
+      "rvce [/gl",
+      "\u2022devops &",
+      "mongodb",
+      "vector",
+      "india\n\u25e6",
+      "\u25e6",
+      "overall workflow",
+      "next step",
+      "all",
+      "hindi(fluent",
+      "github",
+      "the\nfinancial markets",
+      "education",
+      "libraries",
+      "new functionalities",
+      "additional information\nlanguages",
+      "40%",
+      "c++",
+      "pytorch",
+      "ctfs\n\u25e6",
+      "maintainability",
+      "the\nteam",
+      "scratch\n\u2022mathematical &",
+      "machine",
+      "aws\n\u2022devops",
+      "igi global\n\u25e6chapter",
+      "best practices",
+      "docker\n\u2022deep learning",
+      "credit risk scoring",
+      "machine learning models",
+      "scratch\ntools",
+      "financial markets\ntools",
+      "version control",
+      "gemini",
+      "patent",
+      "option pricing model"
+    ],
+    "display_format": {
+      "sections": [
+        {
+          "content": {
+            "key_findings": [
+              "Found 8 key skills required for the role",
+              "Identified 7 skill gaps to address",
+              "Created a 3-phase learning path",
+              "Set 3 key milestones",
+              "Recommended 5 learning resources",
+              "Identified 3 potential risks and mitigation strategies"
+            ],
+            "overview": "Based on your current skills and the target role of DevOps Engineer, here's a comprehensive analysis of your career path.",
+            "title": "Career Path Analysis for DevOps Engineer"
+          },
+          "title": "Summary",
+          "type": "summary"
+        },
+        {
+          "content": [
+            {
+              "description": "Proficiency in Linux/Unix systems and experience with Windows environments",
+              "importance": "high",
+              "skill": "Linux/Unix systems"
+            },
+            {
+              "description": "Experience with containerization technologies (Docker) and container orchestration (Kubernetes)",
+              "importance": "high",
+              "skill": "Containerization (Docker)"
+            },
+            {
+              "description": "Experience with CI/CD tools such as Jenkins, GitLab CI/CD, or CircleCI",
+              "importance": "high",
+              "skill": "CI/CD tools (Jenkins, GitLab CI/CD, CircleCI)"
+            },
+            {
+              "description": "Knowledge of infrastructure as code (IaC) tools like Terraform, Ansible, or CloudFormation",
+              "importance": "high",
+              "skill": "Infrastructure as Code (IaC) tools (Terraform, Ansible, CloudFormation)"
+            },
+            {
+              "description": "Familiarity with cloud platforms (AWS, Azure, GCP) and experience with at least one of them",
+              "importance": "high",
+              "skill": "Cloud platforms (AWS, Azure, GCP)"
+            },
+            {
+              "description": "Scripting skills in languages such as Python, Bash, or PowerShell",
+              "importance": "high",
+              "skill": "Scripting skills (Python, Bash, PowerShell)"
+            },
+            {
+              "description": "Understanding of networking fundamentals (TCP/IP, DNS, etc.) and security best practices",
+              "importance": "medium",
+              "skill": "Networking fundamentals (TCP/IP, DNS, etc.) and security best practices"
+            },
+            {
+              "description": "Experience with monitoring and logging tools (Prometheus, Grafana, ELK Stack)",
+              "importance": "medium",
+              "skill": "Monitoring and logging tools (Prometheus, Grafana, ELK Stack)"
+            }
+          ],
+          "title": "Required Skills",
+          "type": "list"
+        },
+        {
+          "content": [
+            {
+              "current_score": 20,
+              "gap": "Limited experience with containerization technologies",
+              "priority": "high",
+              "skill": "Containerization (Docker)",
+              "target_score": 80
+            },
+            {
+              "current_score": 10,
+              "gap": "No experience with CI/CD tools",
+              "priority": "high",
+              "skill": "CI/CD tools (Jenkins, GitLab CI/CD, CircleCI)",
+              "target_score": 80
+            },
+            {
+              "current_score": 0,
+              "gap": "No knowledge of IaC tools",
+              "priority": "high",
+              "skill": "Infrastructure as Code (IaC) tools (Terraform, Ansible, CloudFormation)",
+              "target_score": 70
+            },
+            {
+              "current_score": 30,
+              "gap": "Limited experience with cloud platforms",
+              "priority": "high",
+              "skill": "Cloud platforms (AWS, Azure, GCP)",
+              "target_score": 70
+            },
+            {
+              "current_score": 40,
+              "gap": "Limited scripting skills",
+              "priority": "medium",
+              "skill": "Scripting skills (Python, Bash, PowerShell)",
+              "target_score": 80
+            },
+            {
+              "current_score": 20,
+              "gap": "Limited understanding of networking fundamentals and security best practices",
+              "priority": "medium",
+              "skill": "Networking fundamentals (TCP/IP, DNS, etc.) and security best practices",
+              "target_score": 60
+            },
+            {
+              "current_score": 0,
+              "gap": "No experience with monitoring and logging tools",
+              "priority": "medium",
+              "skill": "Monitoring and logging tools (Prometheus, Grafana, ELK Stack)",
+              "target_score": 60
+            }
+          ],
+          "title": "Skill Gaps",
+          "type": "table"
+        },
+        {
+          "content": [
+            {
+              "description": "Develop foundational knowledge of DevOps tools and technologies",
+              "duration": "2 months",
+              "phase": 1,
+              "resources": [
+                "Docker documentation",
+                "Jenkins tutorial",
+                "GitLab CI/CD tutorial"
+              ],
+              "skills_to_develop": [
+                "Containerization (Docker)",
+                "CI/CD tools (Jenkins, GitLab CI/CD, CircleCI)"
+              ],
+              "title": "Foundational Knowledge"
+            },
+            {
+              "description": "Gain experience with cloud platforms and scripting skills",
+              "duration": "3 months",
+              "phase": 2,
+              "resources": [
+                "AWS tutorial",
+                "Python scripting tutorial",
+                "Bash scripting tutorial"
+              ],
+              "skills_to_develop": [
+                "Cloud platforms (AWS, Azure, GCP)",
+                "Scripting skills (Python, Bash, PowerShell)"
+              ],
+              "title": "Cloud and Scripting"
+            },
+            {
+              "description": "Learn advanced topics in DevOps, including IaC, monitoring, and logging",
+              "duration": "4 months",
+              "phase": 3,
+              "resources": [
+                "Terraform tutorial",
+                "Prometheus documentation",
+                "Grafana tutorial"
+              ],
+              "skills_to_develop": [
+                "Infrastructure as Code (IaC) tools (Terraform, Ansible, CloudFormation)",
+                "Monitoring and logging tools (Prometheus, Grafana, ELK Stack)"
+              ],
+              "title": "Advanced Topics"
+            }
+          ],
+          "title": "Learning Path",
+          "type": "timeline"
+        },
+        {
+          "content": [
+            {
+              "dependencies": [],
+              "description": "Complete Docker tutorial and gain hands-on experience",
+              "milestone": "Complete Docker tutorial",
+              "target_date": "2024-09-15"
+            },
+            {
+              "dependencies": [
+                "Complete Docker tutorial"
+              ],
+              "description": "Deploy an application on AWS using CI/CD tools",
+              "milestone": "Deploy application on AWS",
+              "target_date": "2024-11-15"
+            },
+            {
+              "dependencies": [
+                "Deploy application on AWS"
+              ],
+              "description": "Implement IaC using Terraform and deploy infrastructure on AWS",
+              "milestone": "Implement IaC using Terraform",
+              "target_date": "2025-01-15"
+            }
+          ],
+          "title": "Milestones",
+          "type": "timeline"
+        },
+        {
+          "content": [
+            {
+              "description": "Official Docker tutorial",
+              "difficulty": "beginner",
+              "estimated_time": "2 weeks",
+              "title": "Docker tutorial",
+              "type": "tutorial",
+              "url": "https://docs.docker.com/get-started/"
+            },
+            {
+              "description": "Jenkins tutorial",
+              "difficulty": "beginner",
+              "estimated_time": "3 weeks",
+              "title": "Jenkins tutorial",
+              "type": "tutorial",
+              "url": "https://www.tutorialspoint.com/jenkins/index.htm"
+            },
+            {
+              "description": "Official AWS tutorial",
+              "difficulty": "beginner",
+              "estimated_time": "4 weeks",
+              "title": "AWS tutorial",
+              "type": "tutorial",
+              "url": "https://docs.aws.amazon.com/gettingstarted/latest/awsbasicsguru/index.html"
+            },
+            {
+              "description": "Official Python scripting tutorial",
+              "difficulty": "beginner",
+              "estimated_time": "2 weeks",
+              "title": "Python scripting tutorial",
+              "type": "tutorial",
+              "url": "https://docs.python.org/3/tutorial/index.html"
+            },
+            {
+              "description": "Official Terraform tutorial",
+              "difficulty": "intermediate",
+              "estimated_time": "4 weeks",
+              "title": "Terraform tutorial",
+              "type": "tutorial",
+              "url": "https://learn.hashicorp.com/collections/terraform/aws-get-started"
+            }
+          ],
+          "title": "Recommended Resources",
+          "type": "cards"
+        },
+        {
+          "content": [
+            {
+              "impact": "high",
+              "mitigation": "Focus on developing foundational knowledge of DevOps tools and technologies",
+              "probability": "medium",
+              "risk": "Limited experience with DevOps tools and technologies"
+            },
+            {
+              "impact": "medium",
+              "mitigation": "Prioritize learning objectives and allocate sufficient time for each phase",
+              "probability": "high",
+              "risk": "Insufficient time commitment"
+            },
+            {
+              "impact": "medium",
+              "mitigation": "Seek guidance from mentors or experts and practice regularly",
+              "probability": "medium",
+              "risk": "Difficulty in understanding advanced topics"
+            }
+          ],
+          "title": "Risk Assessment",
+          "type": "table"
+        }
+      ]
+    },
+    "experience_level": "0-1",
+    "target_role": "DevOps Engineer",
+    "timeframe": "6m"
+  },
+  "created_at": "2025-05-18T17:15:02.713854",
+  "status": "active"
+}

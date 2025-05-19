@@ -1,0 +1,32 @@
+[
+  {
+    "id": "0c13baae-6f66-493e-aa40-34395e9a5220",
+    "assessment_id": "ee6ce37c-3919-41d1-99a3-812d5f2a6c2a",
+    "milestone_id": "cloud_platform_fundamentals",
+    "milestone": "Cloud Platform Fundamentals",
+    "target_date": "2024-09-30",
+    "status": "not_started",
+    "notes": "",
+    "created_at": "2025-05-18T16:09:33.452901"
+  },
+  {
+    "id": "fbb29a90-570a-4f7c-a23d-4450c6e26c0d",
+    "assessment_id": "ee6ce37c-3919-41d1-99a3-812d5f2a6c2a",
+    "milestone_id": "ci/cd_tools_expertise",
+    "milestone": "CI/CD Tools Expertise",
+    "target_date": "2024-10-31",
+    "status": "not_started",
+    "notes": "",
+    "created_at": "2025-05-18T16:09:33.452926"
+  },
+  {
+    "id": "c137e7d4-22c7-458f-8623-9f8a13fc9ef5",
+    "assessment_id": "ee6ce37c-3919-41d1-99a3-812d5f2a6c2a",
+    "milestone_id": "containerization_and_orchestration",
+    "milestone": "Containerization and Orchestration",
+    "target_date": "2024-11-30",
+    "status": "not_started",
+    "notes": "",
+    "created_at": "2025-05-18T16:09:33.452940"
+  }
+]

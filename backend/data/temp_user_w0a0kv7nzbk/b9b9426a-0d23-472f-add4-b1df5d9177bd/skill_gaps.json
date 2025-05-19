@@ -1,0 +1,51 @@
+[
+  {
+    "current_score": 20,
+    "gap": "Limited experience with containerization technologies",
+    "priority": "high",
+    "skill": "Containerization (Docker)",
+    "target_score": 80
+  },
+  {
+    "current_score": 10,
+    "gap": "No experience with CI/CD tools",
+    "priority": "high",
+    "skill": "CI/CD tools (Jenkins, GitLab CI/CD, CircleCI)",
+    "target_score": 80
+  },
+  {
+    "current_score": 0,
+    "gap": "No knowledge of IaC tools",
+    "priority": "high",
+    "skill": "Infrastructure as Code (IaC) tools (Terraform, Ansible, CloudFormation)",
+    "target_score": 70
+  },
+  {
+    "current_score": 30,
+    "gap": "Limited experience with cloud platforms",
+    "priority": "high",
+    "skill": "Cloud platforms (AWS, Azure, GCP)",
+    "target_score": 70
+  },
+  {
+    "current_score": 40,
+    "gap": "Limited scripting skills",
+    "priority": "medium",
+    "skill": "Scripting skills (Python, Bash, PowerShell)",
+    "target_score": 80
+  },
+  {
+    "current_score": 20,
+    "gap": "Limited understanding of networking fundamentals and security best practices",
+    "priority": "medium",
+    "skill": "Networking fundamentals (TCP/IP, DNS, etc.) and security best practices",
+    "target_score": 60
+  },
+  {
+    "current_score": 0,
+    "gap": "No experience with monitoring and logging tools",
+    "priority": "medium",
+    "skill": "Monitoring and logging tools (Prometheus, Grafana, ELK Stack)",
+    "target_score": 60
+  }
+]

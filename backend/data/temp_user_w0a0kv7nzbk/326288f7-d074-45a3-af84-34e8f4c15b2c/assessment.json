@@ -1,0 +1,500 @@
+{
+  "id": "326288f7-d074-45a3-af84-34e8f4c15b2c",
+  "user_id": "temp_user_w0a0kv7nzbk",
+  "target_role": "Software Engineering",
+  "current_role": "Current Role",
+  "experience": "1-3",
+  "timeframe": "1y",
+  "assessment_data": {
+    "analysis": {
+      "required_skills": [
+        {
+          "skill": "Core Programming Concepts",
+          "importance": "high",
+          "description": "Required for Software Engineering"
+        },
+        {
+          "skill": "Data Structures",
+          "importance": "high",
+          "description": "Required for Software Engineering"
+        },
+        {
+          "skill": "Algorithms",
+          "importance": "high",
+          "description": "Required for Software Engineering"
+        },
+        {
+          "skill": "Version Control (Git)",
+          "importance": "high",
+          "description": "Required for Software Engineering"
+        },
+        {
+          "skill": "HTML/CSS",
+          "importance": "high",
+          "description": "Required for Software Engineering"
+        },
+        {
+          "skill": "JavaScript",
+          "importance": "high",
+          "description": "Required for Software Engineering"
+        },
+        {
+          "skill": "Frontend Frameworks",
+          "importance": "high",
+          "description": "Required for Software Engineering"
+        },
+        {
+          "skill": "Backend Development",
+          "importance": "high",
+          "description": "Required for Software Engineering"
+        },
+        {
+          "skill": "Design Patterns",
+          "importance": "high",
+          "description": "Required for Software Engineering"
+        },
+        {
+          "skill": "System Design",
+          "importance": "high",
+          "description": "Required for Software Engineering"
+        },
+        {
+          "skill": "Databases",
+          "importance": "high",
+          "description": "Required for Software Engineering"
+        },
+        {
+          "skill": "Cloud Services",
+          "importance": "high",
+          "description": "Required for Software Engineering"
+        },
+        {
+          "skill": "DevOps",
+          "importance": "high",
+          "description": "Required for Software Engineering"
+        },
+        {
+          "skill": "Testing Strategies",
+          "importance": "high",
+          "description": "Required for Software Engineering"
+        },
+        {
+          "skill": "Security",
+          "importance": "high",
+          "description": "Required for Software Engineering"
+        },
+        {
+          "skill": "Performance Optimization",
+          "importance": "high",
+          "description": "Required for Software Engineering"
+        }
+      ],
+      "skill_gaps": [
+        {
+          "skill": "Core Programming Concepts",
+          "current_score": 10,
+          "target_score": 90,
+          "gap": "Need to develop Core Programming Concepts",
+          "priority": "high"
+        },
+        {
+          "skill": "Data Structures",
+          "current_score": 10,
+          "target_score": 90,
+          "gap": "Need to develop Data Structures",
+          "priority": "high"
+        },
+        {
+          "skill": "Algorithms",
+          "current_score": 10,
+          "target_score": 90,
+          "gap": "Need to develop Algorithms",
+          "priority": "high"
+        },
+        {
+          "skill": "Version Control (Git)",
+          "current_score": 10,
+          "target_score": 90,
+          "gap": "Need to develop Version Control (Git)",
+          "priority": "high"
+        },
+        {
+          "skill": "HTML/CSS",
+          "current_score": 10,
+          "target_score": 90,
+          "gap": "Need to develop HTML/CSS",
+          "priority": "high"
+        },
+        {
+          "skill": "JavaScript",
+          "current_score": 10,
+          "target_score": 90,
+          "gap": "Need to develop JavaScript",
+          "priority": "high"
+        },
+        {
+          "skill": "Frontend Frameworks",
+          "current_score": 10,
+          "target_score": 90,
+          "gap": "Need to develop Frontend Frameworks",
+          "priority": "high"
+        },
+        {
+          "skill": "Backend Development",
+          "current_score": 10,
+          "target_score": 90,
+          "gap": "Need to develop Backend Development",
+          "priority": "high"
+        },
+        {
+          "skill": "Design Patterns",
+          "current_score": 10,
+          "target_score": 90,
+          "gap": "Need to develop Design Patterns",
+          "priority": "high"
+        },
+        {
+          "skill": "System Design",
+          "current_score": 10,
+          "target_score": 90,
+          "gap": "Need to develop System Design",
+          "priority": "high"
+        },
+        {
+          "skill": "Databases",
+          "current_score": 10,
+          "target_score": 90,
+          "gap": "Need to develop Databases",
+          "priority": "high"
+        },
+        {
+          "skill": "Cloud Services",
+          "current_score": 10,
+          "target_score": 90,
+          "gap": "Need to develop Cloud Services",
+          "priority": "high"
+        },
+        {
+          "skill": "DevOps",
+          "current_score": 10,
+          "target_score": 90,
+          "gap": "Need to develop DevOps",
+          "priority": "high"
+        },
+        {
+          "skill": "Testing Strategies",
+          "current_score": 10,
+          "target_score": 90,
+          "gap": "Need to develop Testing Strategies",
+          "priority": "high"
+        },
+        {
+          "skill": "Security",
+          "current_score": 10,
+          "target_score": 90,
+          "gap": "Need to develop Security",
+          "priority": "high"
+        },
+        {
+          "skill": "Performance Optimization",
+          "current_score": 10,
+          "target_score": 90,
+          "gap": "Need to develop Performance Optimization",
+          "priority": "high"
+        }
+      ],
+      "learning_path": [
+        {
+          "phase": "1",
+          "title": "Programming Fundamentals (3-6 months)",
+          "description": "Phase 1: Programming Fundamentals (3-6 months)",
+          "duration": "3-6 months",
+          "skills_to_develop": [
+            "Core Programming Concepts",
+            "Data Structures",
+            "Algorithms",
+            "Version Control (Git)"
+          ],
+          "resources": [
+            "The Complete Developer Course",
+            "Grokking Algorithms",
+            "Git & GitHub Crash Course"
+          ]
+        },
+        {
+          "phase": "2",
+          "title": "Web Development (4-8 months)",
+          "description": "Phase 2: Web Development (4-8 months)",
+          "duration": "4-8 months",
+          "skills_to_develop": [
+            "HTML/CSS",
+            "JavaScript",
+            "Frontend Frameworks",
+            "Backend Development"
+          ],
+          "resources": [
+            "The Web Developer Bootcamp",
+            "React - The Complete Guide",
+            "Node.js and Express Fundamentals"
+          ]
+        },
+        {
+          "phase": "3",
+          "title": "Software Architecture (6-10 months)",
+          "description": "Phase 3: Software Architecture (6-10 months)",
+          "duration": "6-10 months",
+          "skills_to_develop": [
+            "Design Patterns",
+            "System Design",
+            "Databases",
+            "Cloud Services"
+          ],
+          "resources": [
+            "Clean Architecture",
+            "System Design Interview",
+            "AWS Certified Developer"
+          ]
+        },
+        {
+          "phase": "4",
+          "title": "Advanced Engineering (Ongoing)",
+          "description": "Phase 4: Advanced Engineering (Ongoing)",
+          "duration": "Ongoing",
+          "skills_to_develop": [
+            "DevOps",
+            "Testing Strategies",
+            "Security",
+            "Performance Optimization"
+          ],
+          "resources": [
+            "DevOps Engineering on AWS",
+            "Web Application Security",
+            "High Performance Browser Networking"
+          ]
+        }
+      ],
+      "milestones": [
+        {
+          "milestone": "Master a programming language (JavaScript/Python/Java)",
+          "description": "Phase 1: Master a programming language (JavaScript/Python/Java)",
+          "target_date": "2025-05-18",
+          "dependencies": []
+        },
+        {
+          "milestone": "Implement common data structures",
+          "description": "Phase 1: Implement common data structures",
+          "target_date": "2025-06-17",
+          "dependencies": []
+        },
+        {
+          "milestone": "Solve algorithmic problems",
+          "description": "Phase 1: Solve algorithmic problems",
+          "target_date": "2025-07-17",
+          "dependencies": []
+        },
+        {
+          "milestone": "Learn Git basics and collaboration workflows",
+          "description": "Phase 1: Learn Git basics and collaboration workflows",
+          "target_date": "2025-08-16",
+          "dependencies": []
+        },
+        {
+          "milestone": "Build responsive web layouts",
+          "description": "Phase 2: Build responsive web layouts",
+          "target_date": "2025-08-16",
+          "dependencies": []
+        },
+        {
+          "milestone": "Create interactive UIs with JavaScript",
+          "description": "Phase 2: Create interactive UIs with JavaScript",
+          "target_date": "2025-09-15",
+          "dependencies": []
+        },
+        {
+          "milestone": "Develop applications with React/Vue/Angular",
+          "description": "Phase 2: Develop applications with React/Vue/Angular",
+          "target_date": "2025-10-15",
+          "dependencies": []
+        },
+        {
+          "milestone": "Implement RESTful APIs",
+          "description": "Phase 2: Implement RESTful APIs",
+          "target_date": "2025-11-14",
+          "dependencies": []
+        },
+        {
+          "milestone": "Implement common design patterns",
+          "description": "Phase 3: Implement common design patterns",
+          "target_date": "2025-11-14",
+          "dependencies": []
+        },
+        {
+          "milestone": "Design scalable architectures",
+          "description": "Phase 3: Design scalable architectures",
+          "target_date": "2025-12-14",
+          "dependencies": []
+        },
+        {
+          "milestone": "Master SQL and NoSQL databases",
+          "description": "Phase 3: Master SQL and NoSQL databases",
+          "target_date": "2026-01-13",
+          "dependencies": []
+        },
+        {
+          "milestone": "Deploy applications to cloud platforms",
+          "description": "Phase 3: Deploy applications to cloud platforms",
+          "target_date": "2026-02-12",
+          "dependencies": []
+        },
+        {
+          "milestone": "Implement CI/CD pipelines",
+          "description": "Phase 4: Implement CI/CD pipelines",
+          "target_date": "2026-02-12",
+          "dependencies": []
+        },
+        {
+          "milestone": "Master automated testing strategies",
+          "description": "Phase 4: Master automated testing strategies",
+          "target_date": "2026-03-14",
+          "dependencies": []
+        },
+        {
+          "milestone": "Secure your applications",
+          "description": "Phase 4: Secure your applications",
+          "target_date": "2026-04-13",
+          "dependencies": []
+        },
+        {
+          "milestone": "Optimize for performance and scale",
+          "description": "Phase 4: Optimize for performance and scale",
+          "target_date": "2026-05-13",
+          "dependencies": []
+        }
+      ],
+      "resources": [
+        {
+          "title": "The Complete Developer Course",
+          "type": "course",
+          "url": "https://example.com/the-complete-developer-course",
+          "description": "A course on The Complete Developer Course",
+          "difficulty": "intermediate",
+          "estimated_time": "4 weeks"
+        },
+        {
+          "title": "Grokking Algorithms",
+          "type": "book",
+          "url": "https://example.com/grokking-algorithms",
+          "description": "A book on Grokking Algorithms",
+          "difficulty": "intermediate",
+          "estimated_time": "4 weeks"
+        },
+        {
+          "title": "Git & GitHub Crash Course",
+          "type": "tutorial",
+          "url": "https://example.com/git-&-github-crash-course",
+          "description": "A tutorial on Git & GitHub Crash Course",
+          "difficulty": "intermediate",
+          "estimated_time": "4 weeks"
+        },
+        {
+          "title": "The Web Developer Bootcamp",
+          "type": "course",
+          "url": "https://example.com/the-web-developer-bootcamp",
+          "description": "A course on The Web Developer Bootcamp",
+          "difficulty": "intermediate",
+          "estimated_time": "4 weeks"
+        },
+        {
+          "title": "React - The Complete Guide",
+          "type": "course",
+          "url": "https://example.com/react---the-complete-guide",
+          "description": "A course on React - The Complete Guide",
+          "difficulty": "intermediate",
+          "estimated_time": "4 weeks"
+        },
+        {
+          "title": "Node.js and Express Fundamentals",
+          "type": "tutorial",
+          "url": "https://example.com/node.js-and-express-fundamentals",
+          "description": "A tutorial on Node.js and Express Fundamentals",
+          "difficulty": "intermediate",
+          "estimated_time": "4 weeks"
+        },
+        {
+          "title": "Clean Architecture",
+          "type": "book",
+          "url": "https://example.com/clean-architecture",
+          "description": "A book on Clean Architecture",
+          "difficulty": "intermediate",
+          "estimated_time": "4 weeks"
+        },
+        {
+          "title": "System Design Interview",
+          "type": "book",
+          "url": "https://example.com/system-design-interview",
+          "description": "A book on System Design Interview",
+          "difficulty": "intermediate",
+          "estimated_time": "4 weeks"
+        },
+        {
+          "title": "AWS Certified Developer",
+          "type": "course",
+          "url": "https://example.com/aws-certified-developer",
+          "description": "A course on AWS Certified Developer",
+          "difficulty": "intermediate",
+          "estimated_time": "4 weeks"
+        },
+        {
+          "title": "DevOps Engineering on AWS",
+          "type": "course",
+          "url": "https://example.com/devops-engineering-on-aws",
+          "description": "A course on DevOps Engineering on AWS",
+          "difficulty": "intermediate",
+          "estimated_time": "4 weeks"
+        },
+        {
+          "title": "Web Application Security",
+          "type": "tutorial",
+          "url": "https://example.com/web-application-security",
+          "description": "A tutorial on Web Application Security",
+          "difficulty": "intermediate",
+          "estimated_time": "4 weeks"
+        },
+        {
+          "title": "High Performance Browser Networking",
+          "type": "book",
+          "url": "https://example.com/high-performance-browser-networking",
+          "description": "A book on High Performance Browser Networking",
+          "difficulty": "intermediate",
+          "estimated_time": "4 weeks"
+        }
+      ],
+      "risk_assessment": [
+        {
+          "risk": "Time management",
+          "impact": "high",
+          "probability": "medium",
+          "mitigation": "Create a consistent study schedule and track progress weekly"
+        },
+        {
+          "risk": "Skill retention",
+          "impact": "medium",
+          "probability": "medium",
+          "mitigation": "Practice regularly and build projects to apply what you learn"
+        }
+      ],
+      "summary": {
+        "title": "Career Path Analysis for Software Engineering",
+        "overview": "A guided pathway to becoming a well-rounded software engineer",
+        "key_findings": [
+          "Identified 16 key skills for the role",
+          "Created a 4-phase learning path",
+          "Set 16 key milestones",
+          "Recommended 12 learning resources"
+        ]
+      }
+    }
+  },
+  "created_at": "2025-05-18T11:38:06.021238",
+  "status": "active"
+}

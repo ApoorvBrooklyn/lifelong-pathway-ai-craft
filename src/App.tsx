@@ -16,6 +16,8 @@ import CareerPathSelector from '@/pages/CareerPathSelector';
 import VRCareerPath from "@/pages/VRCareerPath";
 import SelfAssessment from "@/pages/SelfAssessment";
 import LearnWithAI from "@/pages/LearnWithAI";
+import StandardRoadmap from "@/pages/StandardRoadmap";
+import StandardRoadmaps from "@/pages/StandardRoadmaps";
 import { SessionProvider } from "./providers/SessionProvider";
 import { ProtectedRoute } from "./components/auth/ProtectedRoute";
 
@@ -39,6 +41,8 @@ const App = () => (
                 <Route path="/auth/callback" element={<AuthCallback />} />
                 <Route path="/career-paths" element={<CareerPathSelector />} />
                 <Route path="/vr-career-path/:pathId" element={<VRCareerPath />} />
+                <Route path="/standard-roadmap/:pathId" element={<StandardRoadmap />} />
+                <Route path="/standard-roadmaps" element={<StandardRoadmaps />} />
                 <Route path="/dashboard" element={
                   <ProtectedRoute>
                     <Dashboard />

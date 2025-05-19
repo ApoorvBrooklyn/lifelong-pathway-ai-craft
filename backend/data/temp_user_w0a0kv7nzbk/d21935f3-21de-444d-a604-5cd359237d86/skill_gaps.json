@@ -1,0 +1,51 @@
+[
+  {
+    "current_score": 40,
+    "gap": "Limited experience with Docker and Kubernetes",
+    "priority": "high",
+    "skill": "Containerization",
+    "target_score": 80
+  },
+  {
+    "current_score": 20,
+    "gap": "No experience with IaC tools",
+    "priority": "medium",
+    "skill": "Infrastructure as Code",
+    "target_score": 70
+  },
+  {
+    "current_score": 30,
+    "gap": "Limited experience with CI/CD tools",
+    "priority": "high",
+    "skill": "CI/CD Pipelines",
+    "target_score": 80
+  },
+  {
+    "current_score": 10,
+    "gap": "No experience with cloud platforms",
+    "priority": "medium",
+    "skill": "Cloud Platforms",
+    "target_score": 60
+  },
+  {
+    "current_score": 60,
+    "gap": "Limited experience with Python and other programming languages",
+    "priority": "high",
+    "skill": "Programming",
+    "target_score": 80
+  },
+  {
+    "current_score": 40,
+    "gap": "Limited knowledge of networking fundamentals",
+    "priority": "medium",
+    "skill": "Networking Fundamentals",
+    "target_score": 70
+  },
+  {
+    "current_score": 30,
+    "gap": "Limited knowledge of security best practices",
+    "priority": "high",
+    "skill": "Security",
+    "target_score": 80
+  }
+]

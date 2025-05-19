@@ -1,23 +1,22 @@
-
 import { Button } from "@/components/ui/button";
 import { Link } from "react-router-dom";
 import { Card, CardContent } from "@/components/ui/card";
 
 const careerPaths = [
   {
-    id: 1,
+    id: "data-science",
     title: "Data Science & Analytics",
     skills: ["Python", "Statistical Analysis", "Machine Learning", "Data Visualization"],
     jobCount: 15000,
   },
   {
-    id: 2,
+    id: "software-eng",
     title: "Software Engineering",
     skills: ["JavaScript", "Cloud Services", "System Design", "DevOps"],
     jobCount: 28000,
   },
   {
-    id: 3,
+    id: "ux-design",
     title: "UX/UI Design",
     skills: ["User Research", "Wireframing", "Prototyping", "Visual Design"],
     jobCount: 9500,
@@ -54,7 +53,7 @@ const CareerPathSection = () => {
                 <div className="flex items-center justify-between mt-4">
                   <span className="text-sm text-muted-foreground">{path.jobCount.toLocaleString()} open positions</span>
                   <Button asChild variant="outline" size="sm">
-                    <Link to={`/paths/${path.id}`}>Explore Path</Link>
+                    <Link to={`/standard-roadmap/${path.id}`}>Explore Path</Link>
                   </Button>
                 </div>
               </CardContent>
@@ -64,7 +63,7 @@ const CareerPathSection = () => {
 
         <div className="text-center">
           <Button asChild size="lg" variant="outline">
-            <Link to="/paths">View All Career Paths</Link>
+            <Link to="/standard-roadmaps">View All Career Paths</Link>
           </Button>
         </div>
       </div>

@@ -1,0 +1,51 @@
+[
+  {
+    "current_score": 40,
+    "gap": "Limited cloud platform experience",
+    "priority": "high",
+    "skill": "AWS/GCP/Azure",
+    "target_score": 80
+  },
+  {
+    "current_score": 30,
+    "gap": "Limited experience with CI/CD tools",
+    "priority": "high",
+    "skill": "CI/CD tools",
+    "target_score": 80
+  },
+  {
+    "current_score": 20,
+    "gap": "Limited containerization experience",
+    "priority": "high",
+    "skill": "Docker",
+    "target_score": 80
+  },
+  {
+    "current_score": 10,
+    "gap": "Limited container orchestration experience",
+    "priority": "high",
+    "skill": "Kubernetes",
+    "target_score": 80
+  },
+  {
+    "current_score": 20,
+    "gap": "Limited IaC tools experience",
+    "priority": "high",
+    "skill": "Terraform/CloudFormation",
+    "target_score": 80
+  },
+  {
+    "current_score": 60,
+    "gap": "Basic version control skills",
+    "priority": "medium",
+    "skill": "Git",
+    "target_score": 90
+  },
+  {
+    "current_score": 80,
+    "gap": "Strong scripting language skills",
+    "priority": "low",
+    "skill": "Python",
+    "target_score": 90
+  }
+]

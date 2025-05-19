@@ -1,0 +1,49 @@
+[
+  {
+    "description": "Develop foundational knowledge of cloud platforms, CI/CD tools, and containerization",
+    "duration": "3 months",
+    "phase": 1,
+    "resources": [
+      "https://aws.amazon.com/training/",
+      "https://www.jenkins.io/doc/tutorials/",
+      "https://www.docker.com/get-started"
+    ],
+    "skills_to_develop": [
+      "AWS/GCP/Azure",
+      "CI/CD tools",
+      "Docker"
+    ],
+    "title": "Foundational Knowledge"
+  },
+  {
+    "description": "Develop skills in container orchestration and IaC tools",
+    "duration": "3 months",
+    "phase": 2,
+    "resources": [
+      "https://kubernetes.io/docs/tutorials/",
+      "https://www.terraform.io/docs/",
+      "https://cloudformation.aws.amazon.com/"
+    ],
+    "skills_to_develop": [
+      "Kubernetes",
+      "Terraform/CloudFormation"
+    ],
+    "title": "Container Orchestration and IaC"
+  },
+  {
+    "description": "Apply skills to real-world projects and explore advanced topics",
+    "duration": "6 months",
+    "phase": 3,
+    "resources": [
+      "https://git-scm.com/book/en/v2",
+      "https://docs.python.org/3/tutorial/",
+      "https://www.coursera.org/specializations/python"
+    ],
+    "skills_to_develop": [
+      "Git",
+      "Python",
+      "CI/CD tools"
+    ],
+    "title": "Advanced Topics and Project Work"
+  }
+]

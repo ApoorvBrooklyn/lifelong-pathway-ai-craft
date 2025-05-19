@@ -1,0 +1,47 @@
+[
+  {
+    "description": "Develop foundational knowledge of DevOps tools and technologies",
+    "duration": "2 months",
+    "phase": 1,
+    "resources": [
+      "Docker documentation",
+      "Jenkins tutorial",
+      "GitLab CI/CD tutorial"
+    ],
+    "skills_to_develop": [
+      "Containerization (Docker)",
+      "CI/CD tools (Jenkins, GitLab CI/CD, CircleCI)"
+    ],
+    "title": "Foundational Knowledge"
+  },
+  {
+    "description": "Gain experience with cloud platforms and scripting skills",
+    "duration": "3 months",
+    "phase": 2,
+    "resources": [
+      "AWS tutorial",
+      "Python scripting tutorial",
+      "Bash scripting tutorial"
+    ],
+    "skills_to_develop": [
+      "Cloud platforms (AWS, Azure, GCP)",
+      "Scripting skills (Python, Bash, PowerShell)"
+    ],
+    "title": "Cloud and Scripting"
+  },
+  {
+    "description": "Learn advanced topics in DevOps, including IaC, monitoring, and logging",
+    "duration": "4 months",
+    "phase": 3,
+    "resources": [
+      "Terraform tutorial",
+      "Prometheus documentation",
+      "Grafana tutorial"
+    ],
+    "skills_to_develop": [
+      "Infrastructure as Code (IaC) tools (Terraform, Ansible, CloudFormation)",
+      "Monitoring and logging tools (Prometheus, Grafana, ELK Stack)"
+    ],
+    "title": "Advanced Topics"
+  }
+]

@@ -1,0 +1,500 @@
+{
+  "id": "c79894e2-af3a-4a3b-b1c7-7e1d412ea057",
+  "user_id": "temp_user_w0a0kv7nzbk",
+  "target_role": "Data Science & Analytics",
+  "current_role": "Current Role",
+  "experience": "1-3",
+  "timeframe": "1y",
+  "assessment_data": {
+    "analysis": {
+      "required_skills": [
+        {
+          "skill": "Python Programming",
+          "importance": "high",
+          "description": "Required for Data Science & Analytics"
+        },
+        {
+          "skill": "Statistics Fundamentals",
+          "importance": "high",
+          "description": "Required for Data Science & Analytics"
+        },
+        {
+          "skill": "Data Manipulation (Pandas)",
+          "importance": "high",
+          "description": "Required for Data Science & Analytics"
+        },
+        {
+          "skill": "Data Visualization (Matplotlib/Seaborn)",
+          "importance": "high",
+          "description": "Required for Data Science & Analytics"
+        },
+        {
+          "skill": "Machine Learning Algorithms",
+          "importance": "high",
+          "description": "Required for Data Science & Analytics"
+        },
+        {
+          "skill": "SQL & Databases",
+          "importance": "high",
+          "description": "Required for Data Science & Analytics"
+        },
+        {
+          "skill": "Feature Engineering",
+          "importance": "high",
+          "description": "Required for Data Science & Analytics"
+        },
+        {
+          "skill": "Model Evaluation",
+          "importance": "high",
+          "description": "Required for Data Science & Analytics"
+        },
+        {
+          "skill": "Deep Learning",
+          "importance": "high",
+          "description": "Required for Data Science & Analytics"
+        },
+        {
+          "skill": "Big Data Technologies",
+          "importance": "high",
+          "description": "Required for Data Science & Analytics"
+        },
+        {
+          "skill": "MLOps",
+          "importance": "high",
+          "description": "Required for Data Science & Analytics"
+        },
+        {
+          "skill": "Advanced Statistics",
+          "importance": "high",
+          "description": "Required for Data Science & Analytics"
+        },
+        {
+          "skill": "Natural Language Processing",
+          "importance": "high",
+          "description": "Required for Data Science & Analytics"
+        },
+        {
+          "skill": "Computer Vision",
+          "importance": "high",
+          "description": "Required for Data Science & Analytics"
+        },
+        {
+          "skill": "Time Series Analysis",
+          "importance": "high",
+          "description": "Required for Data Science & Analytics"
+        },
+        {
+          "skill": "Reinforcement Learning",
+          "importance": "high",
+          "description": "Required for Data Science & Analytics"
+        }
+      ],
+      "skill_gaps": [
+        {
+          "skill": "Python Programming",
+          "current_score": 10,
+          "target_score": 90,
+          "gap": "Need to develop Python Programming",
+          "priority": "high"
+        },
+        {
+          "skill": "Statistics Fundamentals",
+          "current_score": 10,
+          "target_score": 90,
+          "gap": "Need to develop Statistics Fundamentals",
+          "priority": "high"
+        },
+        {
+          "skill": "Data Manipulation (Pandas)",
+          "current_score": 10,
+          "target_score": 90,
+          "gap": "Need to develop Data Manipulation (Pandas)",
+          "priority": "high"
+        },
+        {
+          "skill": "Data Visualization (Matplotlib/Seaborn)",
+          "current_score": 10,
+          "target_score": 90,
+          "gap": "Need to develop Data Visualization (Matplotlib/Seaborn)",
+          "priority": "high"
+        },
+        {
+          "skill": "Machine Learning Algorithms",
+          "current_score": 10,
+          "target_score": 90,
+          "gap": "Need to develop Machine Learning Algorithms",
+          "priority": "high"
+        },
+        {
+          "skill": "SQL & Databases",
+          "current_score": 10,
+          "target_score": 90,
+          "gap": "Need to develop SQL & Databases",
+          "priority": "high"
+        },
+        {
+          "skill": "Feature Engineering",
+          "current_score": 10,
+          "target_score": 90,
+          "gap": "Need to develop Feature Engineering",
+          "priority": "high"
+        },
+        {
+          "skill": "Model Evaluation",
+          "current_score": 10,
+          "target_score": 90,
+          "gap": "Need to develop Model Evaluation",
+          "priority": "high"
+        },
+        {
+          "skill": "Deep Learning",
+          "current_score": 10,
+          "target_score": 90,
+          "gap": "Need to develop Deep Learning",
+          "priority": "high"
+        },
+        {
+          "skill": "Big Data Technologies",
+          "current_score": 10,
+          "target_score": 90,
+          "gap": "Need to develop Big Data Technologies",
+          "priority": "high"
+        },
+        {
+          "skill": "MLOps",
+          "current_score": 10,
+          "target_score": 90,
+          "gap": "Need to develop MLOps",
+          "priority": "high"
+        },
+        {
+          "skill": "Advanced Statistics",
+          "current_score": 10,
+          "target_score": 90,
+          "gap": "Need to develop Advanced Statistics",
+          "priority": "high"
+        },
+        {
+          "skill": "Natural Language Processing",
+          "current_score": 10,
+          "target_score": 90,
+          "gap": "Need to develop Natural Language Processing",
+          "priority": "high"
+        },
+        {
+          "skill": "Computer Vision",
+          "current_score": 10,
+          "target_score": 90,
+          "gap": "Need to develop Computer Vision",
+          "priority": "high"
+        },
+        {
+          "skill": "Time Series Analysis",
+          "current_score": 10,
+          "target_score": 90,
+          "gap": "Need to develop Time Series Analysis",
+          "priority": "high"
+        },
+        {
+          "skill": "Reinforcement Learning",
+          "current_score": 10,
+          "target_score": 90,
+          "gap": "Need to develop Reinforcement Learning",
+          "priority": "high"
+        }
+      ],
+      "learning_path": [
+        {
+          "phase": "1",
+          "title": "Foundations (3-6 months)",
+          "description": "Phase 1: Foundations (3-6 months)",
+          "duration": "3-6 months",
+          "skills_to_develop": [
+            "Python Programming",
+            "Statistics Fundamentals",
+            "Data Manipulation (Pandas)",
+            "Data Visualization (Matplotlib/Seaborn)"
+          ],
+          "resources": [
+            "Python for Data Science Handbook",
+            "Statistics and Probability in Data Science",
+            "Data Cleaning and Analysis with Pandas"
+          ]
+        },
+        {
+          "phase": "2",
+          "title": "Core Skills (4-8 months)",
+          "description": "Phase 2: Core Skills (4-8 months)",
+          "duration": "4-8 months",
+          "skills_to_develop": [
+            "Machine Learning Algorithms",
+            "SQL & Databases",
+            "Feature Engineering",
+            "Model Evaluation"
+          ],
+          "resources": [
+            "Machine Learning Specialization",
+            "Hands-On Machine Learning",
+            "SQL for Data Scientists"
+          ]
+        },
+        {
+          "phase": "3",
+          "title": "Advanced Skills (6-12 months)",
+          "description": "Phase 3: Advanced Skills (6-12 months)",
+          "duration": "6-12 months",
+          "skills_to_develop": [
+            "Deep Learning",
+            "Big Data Technologies",
+            "MLOps",
+            "Advanced Statistics"
+          ],
+          "resources": [
+            "Deep Learning Specialization",
+            "MLOps: Machine Learning Operations",
+            "Designing Data-Intensive Applications"
+          ]
+        },
+        {
+          "phase": "4",
+          "title": "Specialization (Ongoing)",
+          "description": "Phase 4: Specialization (Ongoing)",
+          "duration": "Ongoing",
+          "skills_to_develop": [
+            "Natural Language Processing",
+            "Computer Vision",
+            "Time Series Analysis",
+            "Reinforcement Learning"
+          ],
+          "resources": [
+            "NLP with Transformers",
+            "Computer Vision with Deep Learning",
+            "Time Series Forecasting in Python"
+          ]
+        }
+      ],
+      "milestones": [
+        {
+          "milestone": "Master Python basics and data structures",
+          "description": "Phase 1: Master Python basics and data structures",
+          "target_date": "2025-05-18",
+          "dependencies": []
+        },
+        {
+          "milestone": "Learn descriptive and inferential statistics",
+          "description": "Phase 1: Learn descriptive and inferential statistics",
+          "target_date": "2025-06-17",
+          "dependencies": []
+        },
+        {
+          "milestone": "Build your first data analysis project",
+          "description": "Phase 1: Build your first data analysis project",
+          "target_date": "2025-07-17",
+          "dependencies": []
+        },
+        {
+          "milestone": "Create compelling data visualizations",
+          "description": "Phase 1: Create compelling data visualizations",
+          "target_date": "2025-08-16",
+          "dependencies": []
+        },
+        {
+          "milestone": "Implement supervised learning algorithms",
+          "description": "Phase 2: Implement supervised learning algorithms",
+          "target_date": "2025-08-16",
+          "dependencies": []
+        },
+        {
+          "milestone": "Master database querying and data extraction",
+          "description": "Phase 2: Master database querying and data extraction",
+          "target_date": "2025-09-15",
+          "dependencies": []
+        },
+        {
+          "milestone": "Build end-to-end machine learning projects",
+          "description": "Phase 2: Build end-to-end machine learning projects",
+          "target_date": "2025-10-15",
+          "dependencies": []
+        },
+        {
+          "milestone": "Learn model validation techniques",
+          "description": "Phase 2: Learn model validation techniques",
+          "target_date": "2025-11-14",
+          "dependencies": []
+        },
+        {
+          "milestone": "Build neural network models",
+          "description": "Phase 3: Build neural network models",
+          "target_date": "2025-11-14",
+          "dependencies": []
+        },
+        {
+          "milestone": "Deploy ML models to production",
+          "description": "Phase 3: Deploy ML models to production",
+          "target_date": "2025-12-14",
+          "dependencies": []
+        },
+        {
+          "milestone": "Work with distributed computing frameworks",
+          "description": "Phase 3: Work with distributed computing frameworks",
+          "target_date": "2026-01-13",
+          "dependencies": []
+        },
+        {
+          "milestone": "Implement A/B testing frameworks",
+          "description": "Phase 3: Implement A/B testing frameworks",
+          "target_date": "2026-02-12",
+          "dependencies": []
+        },
+        {
+          "milestone": "Choose a specialization area",
+          "description": "Phase 4: Choose a specialization area",
+          "target_date": "2026-02-12",
+          "dependencies": []
+        },
+        {
+          "milestone": "Contribute to open-source projects",
+          "description": "Phase 4: Contribute to open-source projects",
+          "target_date": "2026-03-14",
+          "dependencies": []
+        },
+        {
+          "milestone": "Build a comprehensive portfolio",
+          "description": "Phase 4: Build a comprehensive portfolio",
+          "target_date": "2026-04-13",
+          "dependencies": []
+        },
+        {
+          "milestone": "Network with other professionals",
+          "description": "Phase 4: Network with other professionals",
+          "target_date": "2026-05-13",
+          "dependencies": []
+        }
+      ],
+      "resources": [
+        {
+          "title": "Python for Data Science Handbook",
+          "type": "book",
+          "url": "https://example.com/python-for-data-science-handbook",
+          "description": "A book on Python for Data Science Handbook",
+          "difficulty": "intermediate",
+          "estimated_time": "4 weeks"
+        },
+        {
+          "title": "Statistics and Probability in Data Science",
+          "type": "course",
+          "url": "https://example.com/statistics-and-probability-in-data-science",
+          "description": "A course on Statistics and Probability in Data Science",
+          "difficulty": "intermediate",
+          "estimated_time": "4 weeks"
+        },
+        {
+          "title": "Data Cleaning and Analysis with Pandas",
+          "type": "tutorial",
+          "url": "https://example.com/data-cleaning-and-analysis-with-pandas",
+          "description": "A tutorial on Data Cleaning and Analysis with Pandas",
+          "difficulty": "intermediate",
+          "estimated_time": "4 weeks"
+        },
+        {
+          "title": "Machine Learning Specialization",
+          "type": "course",
+          "url": "https://example.com/machine-learning-specialization",
+          "description": "A course on Machine Learning Specialization",
+          "difficulty": "intermediate",
+          "estimated_time": "4 weeks"
+        },
+        {
+          "title": "Hands-On Machine Learning",
+          "type": "book",
+          "url": "https://example.com/hands-on-machine-learning",
+          "description": "A book on Hands-On Machine Learning",
+          "difficulty": "intermediate",
+          "estimated_time": "4 weeks"
+        },
+        {
+          "title": "SQL for Data Scientists",
+          "type": "tutorial",
+          "url": "https://example.com/sql-for-data-scientists",
+          "description": "A tutorial on SQL for Data Scientists",
+          "difficulty": "intermediate",
+          "estimated_time": "4 weeks"
+        },
+        {
+          "title": "Deep Learning Specialization",
+          "type": "course",
+          "url": "https://example.com/deep-learning-specialization",
+          "description": "A course on Deep Learning Specialization",
+          "difficulty": "intermediate",
+          "estimated_time": "4 weeks"
+        },
+        {
+          "title": "MLOps: Machine Learning Operations",
+          "type": "tutorial",
+          "url": "https://example.com/mlops:-machine-learning-operations",
+          "description": "A tutorial on MLOps: Machine Learning Operations",
+          "difficulty": "intermediate",
+          "estimated_time": "4 weeks"
+        },
+        {
+          "title": "Designing Data-Intensive Applications",
+          "type": "book",
+          "url": "https://example.com/designing-data-intensive-applications",
+          "description": "A book on Designing Data-Intensive Applications",
+          "difficulty": "intermediate",
+          "estimated_time": "4 weeks"
+        },
+        {
+          "title": "NLP with Transformers",
+          "type": "book",
+          "url": "https://example.com/nlp-with-transformers",
+          "description": "A book on NLP with Transformers",
+          "difficulty": "intermediate",
+          "estimated_time": "4 weeks"
+        },
+        {
+          "title": "Computer Vision with Deep Learning",
+          "type": "course",
+          "url": "https://example.com/computer-vision-with-deep-learning",
+          "description": "A course on Computer Vision with Deep Learning",
+          "difficulty": "intermediate",
+          "estimated_time": "4 weeks"
+        },
+        {
+          "title": "Time Series Forecasting in Python",
+          "type": "tutorial",
+          "url": "https://example.com/time-series-forecasting-in-python",
+          "description": "A tutorial on Time Series Forecasting in Python",
+          "difficulty": "intermediate",
+          "estimated_time": "4 weeks"
+        }
+      ],
+      "risk_assessment": [
+        {
+          "risk": "Time management",
+          "impact": "high",
+          "probability": "medium",
+          "mitigation": "Create a consistent study schedule and track progress weekly"
+        },
+        {
+          "risk": "Skill retention",
+          "impact": "medium",
+          "probability": "medium",
+          "mitigation": "Practice regularly and build projects to apply what you learn"
+        }
+      ],
+      "summary": {
+        "title": "Career Path Analysis for Data Science & Analytics",
+        "overview": "A comprehensive roadmap for becoming a proficient data scientist",
+        "key_findings": [
+          "Identified 16 key skills for the role",
+          "Created a 4-phase learning path",
+          "Set 16 key milestones",
+          "Recommended 12 learning resources"
+        ]
+      }
+    }
+  },
+  "created_at": "2025-05-18T10:54:47.296062",
+  "status": "active"
+}
